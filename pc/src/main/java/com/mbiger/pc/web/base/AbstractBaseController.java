@@ -26,6 +26,7 @@ public abstract class AbstractBaseController {
 	 */
 	protected SessionUser getSessionUserBySid(HttpServletRequest request) {
 		String sid = request.getSession().getId();
+		logger.info("sid="+sid);
 		return userInfoService.getSessionUserBySid(sid);
 	}
 
