@@ -1,0 +1,28 @@
+.bannerBox{text-align:center;margin-top:0.2rem;}
+.bannerBox .swiper-slide{}
+.bannerBox a img{width:6.86rem;height:3rem;border-radius:0.1rem;}
+.bannerBox .swiper-pagination-bullet{background:#fff;}
+.bannerBox .swiper-pagination-bullet-active{background:#fff;}
+.tipRegBox{padding:0.3rem 0.32rem;}
+.tipRegText{font-size:0.28rem;color:#666666;float:left;line-height:0.6rem;}
+.freeRegBtn{float:right;width:2.4rem;line-height:0.6rem;background:#106fb3;color:#fff;text-align:center;border-radius:0.08rem;box-shadow:0.02rem 0.04rem 0.08rem #106fb3;}
+.freeRegBtn:hover,.freeRegBtn:active,.freeRegBtn:focus{color:#fff;text-decoration:none;}
+.indexMod{width:7.5rem;background:#fff;margin-bottom:0.2rem;}
+.modTit{line-height:0.9rem;border-bottom:0.02rem solid #e4e4e4;text-align:center;color:#333;font-size:0.36rem;}
+.cloudProList{padding-top:0.34rem;}
+.cloudProList li{float:left;text-align:center;margin-left:0.24rem;margin-bottom:0.3rem;}
+.cloudProList li a{width:3.4rem;height:2.9rem;background:url(../images/zdjs/cloundProBg1.png) no-repeat;background-size:3.5rem 3rem;display:block;color:#fff;padding-top:0.6rem;box-shadow:0.02rem 0.06rem 0.08rem #fd9873;}
+.cloudProList li a.cloPa{background:url(../images/zdjs/cloundProBg2.png) no-repeat;background-size:3.5rem 3rem;box-shadow:0.02rem 0.06rem 0.08rem #ebbbfd;}
+.cloudProList li a.cloLa{background:url(../images/zdjs/cloundProBg3.png) no-repeat;background-size:3.5rem 3rem;box-shadow:0.02rem 0.06rem 0.08rem #adfce0;}
+.cloudProList li a.cloCus{background:url(../images/zdjs/cloundProBg4.png) no-repeat;background-size:3.5rem 3rem;box-shadow:0.02rem 0.06rem 0.08rem #bac9f8;}
+.cloName{font-size:0.6rem;}
+.cloCus .cloName{font-size:0.46rem;line-height:0.6rem;}
+.cloIntro{font-size:0.24rem;width:2.6rem;margin:0 auto;padding-top:0.3rem;line-height:0.36rem;}
+.cloudProList .cloSa .cloIntro{width:2rem;}
+.cloudProList .cloLa .cloIntro{width:3rem;}
+.proFlow{padding:0.4rem 0;text-align:center;}
+.proFlow img{width:6.92rem;height:3.26rem;}
+
+
+
+

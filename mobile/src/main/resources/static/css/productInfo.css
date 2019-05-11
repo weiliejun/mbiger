@@ -1,0 +1,159 @@
+/*云计算SaaS*/
+.proBanner{text-align:center;padding:0.2rem 0;}
+.proBanner img{width:6.86rem;height:3rem;}
+.cloudName{border-bottom:0.01rem solid #e4e4e4;padding:0 0.3rem;background: #fff;}
+.cloudName span{line-height:0.94rem;color:#333;font-size:0.28rem;}
+.cloudName i{width:0.3rem;height:0.16rem;background:url(../images/public/arrowIcon.png) no-repeat;margin-top:0.38rem;float:right;background-size:0.3rem 0.16rem;transition:0.5s all ease;}
+.cloudList{padding-top:0.3rem;}
+.cloudList a{background:#faf7f2;padding:0.34rem 0.7rem 0;text-align:center;line-height:0.4rem;margin-left:0.3rem;margin-bottom:0.3rem;float:left;width:3.3rem;height:1.4rem;box-shadow:0rem 0.06rem 0.08rem #e3e3e3;font-size:0.28rem;color:#e7c28d;}
+.cloudList .cloCor2{background:#f0f5f9;color:#5ac5f7;}
+.cloudList .cloCor3{background:#faeaea;color:#fda39b;}
+.cloudList .cloCor4{background:#dff0fa;color:#5bbafc;}
+.cloudList .cloCor5{background:#f9f3e5;color:#fcbb61;}
+.listAddW a{padding:0;line-height:1.4rem;}
+.defHide .cloudList{display:none;}
+.defHide .cloudName i{transform:rotate(180deg);}
+
+/*天气查询*/
+.eachProBan{width:7.3rem;height:3.44rem;padding-top:2.1rem;text-align:center;margin:0.2rem auto 0;}
+.weatherBan{background:url(../images/productList/proWeaBann.png) no-repeat;background-size:7.3rem 3.44rem;}
+.weatherBan .applyBtn{color:#036ccf;}
+/*************公共的 申请API按钮 start**************/
+.applyBtn{width:2.36rem;height:0.6rem;background:#fff;/*box-shadow:0.02rem 0.04rem 0.08rem #4b95c7;*/margin:0 auto;display:block;border-radius:0.3rem;text-align:center;line-height:0.58rem;font-size:0.28rem;color:#106fb3;}
+.applyBtn:hover,.applyBtn:active,.applyBtn:focus{color:#106fb3;}
+/*************公共的 申请API按钮 end**************/
+.proDetailsCon{background:#fff;margin-bottom:0.2rem;}
+.detailTit{border-bottom:0.01rem solid #e4e4e4;font-size:0.32rem;color:#333333;text-align:center;line-height:0.94rem;}
+.detailText{padding:0.3rem;}
+.detailText p{font-size:0.28rem;color:#666;margin-bottom:0.16rem;line-height:0.42rem;}
+.detailText span{font-size:0.24rem;color:#999;}
+.queryCon{background:#fff;}
+.queryBox{padding-top:0.3rem;padding-left:0.3rem;margin-bottom:0.12rem;}
+.queryBox input{font-size:0.24rem;}
+.inText{width:4.5rem;float:left;height:0.78rem;box-shadow:none;border-right:none;border-top-right-radius:0;border-bottom-right-radius:0;}
+.queryBtn{width:2.4rem;float:left;height:0.78rem;font-size:0.28rem;background:#106fb3;color:#fff;text-align:center;line-height:0.82rem;border:0.01rem solid #106fb3;border-top-right-radius:0.08rem;border-bottom-right-radius:0.08rem;}
+.queryBtn:hover,.queryBtn:active,.queryBtn:focus{color:#fff;}
+.queResBox{padding:0.16rem 0.3rem 0.3rem;}
+.queResTit{font-size:0.28rem;color:#333;}
+.queResCon{font-size:0.28rem;color:#333;width:100%;margin:0.26rem 0 0.36rem;}
+.queResCon td,.queResCon th{border:0.02rem solid #e4e4e4;vertical-align:middle;}
+.queResCon th{width:25%;font-weight:normal;line-height:0.7rem;text-align:center;}
+.queResCon td{text-align:center;color:#666;}
+.queResCon td p{text-align:left;padding:0.2rem;line-height:0.4rem;}
+.futWea{width:100%;font-size:0.28rem;margin:0.26rem 0 0.3rem;}
+.futWea th,.futWea td{border:0.02rem solid #e4e4e4;}
+.futWea th{line-height:0.7rem;text-align:center;color:#333;text-align:center;font-weight: normal;}
+.futWea td{vertical-align:middle;}
+.wTxt p{color:#666;padding:0.2rem;line-height:0.4rem;}
+.wImg{text-align:center;}
+.wImg img{margin:0.1rem;}
+.wTxt span{text-align:center;display:block;}
+
+/*手机号码归属地查询*/
+.phoQCBelongBan{background:url(../images/productList/proPhoBann.png) no-repeat;background-size:7.3rem 3.44rem;}
+.phoQCBelongBan .applyBtn{color:#024c02;}
+
+/*Ip归属地查询 start*/
+.iPBelongBan{background:url(../images/productList/proIpBann.png) no-repeat;background-size:7.3rem 3.44rem;}
+.iPBelongBan .applyBtn{color:#6badf1;}
+/*驾考公开题库查询 start*/
+/*banner背景 还没换*/
+.driTestBox{}
+.driTestBox select{width:2.2rem;height:0.78rem;font-size:0.28rem;color:#666;-webkit-appearance: none;}
+.driTestBtn{width:2.2rem;float:left;border-radius:0.08rem;}
+.itemCon{font-size:0.28rem;padding-top:0.26rem;}
+.itemQues{color:#333;line-height:0.4rem;}
+.keyBox{background:#f9f9f9;}
+.subjectCon{padding:0.2rem 0 0 0.5rem;}
+.subjectCon li{margin-bottom:0.2rem;}
+.subjectCon li b{width:0.5rem;height:0.5rem;float:left;background:#d8d8d8;line-height:0.5rem;text-align:center;color:#333;border-radius:50%;font-weight:normal;}
+.subjectCon li b.rightKey{background:#b3cfe4;}
+.subjectCon li p{float:left;padding-left:0.2rem;color:#666;line-height:0.5rem;}
+.answerCon{color:#106fb3;padding:0.3rem 0;}
+.answerCon li{margin-bottom:0.2rem;}
+.answerCon li span{width:1.4rem;float:left;}
+.answerCon li p{float:left;}
+.selSelBox{float:left;}
+.selSelBox .selectStyle{width:2.2rem;float:left;position:relative;margin-right:0.16rem;}
+.selSelBox .selectStyle i{width:0.15rem;height:0.1rem;background:url(../images/public/arrowBottom.png);background-size:0.15rem 0.1rem;position:absolute;top:0.34rem;right:0.2rem;}
+
+
+/*全球物流快递查询*/
+/*.logTable{margin:0.3rem 0.3rem 0;}*/
+.logBelongBan{background:url(../images/productList/proLogisticsBann.png) no-repeat;background-size:7.3rem 3.44rem;}
+.tableBox{padding:0 0.3rem;}
+.queryData{line-height:0.7rem;text-align:center;color:#999;}
+.expressCon th{width:40%;}
+.logBelongBan .applyBtn{color:#40b497;}
+
+/*身份证实名认证*/
+.cardBelongBan{background:url(../images/productList/proCardName.png) no-repeat;background-size:7.3rem 3.44rem;}
+.personId{height:0.78rem;margin-bottom:0.3rem;width:96%;box-shadow:none;}
+.cardBelongBan .applyBtn{margin-left:1rem;}
+
+/*手机号码实名认证*/
+.phoNumBelongBan{background:url(../images/productList/proPhoNum.png) no-repeat;background-size:7.3rem 3.44rem;}
+.phoNumBelongBan .applyBtn{margin-left:1rem;}
+.noneMarBot{margin-bottom:0;}
+.phoNameBtn{margin-top:0.2rem;margin-bottom:0.26rem;}
+
+/*银行卡实名校验*/
+.bankCardBelongBan{background:url(../images/productList/proBankCard.png) no-repeat;background-size:7.3rem 3.44rem;}
+.bankCardBelongBan .applyBtn{margin-left:1rem;}
+.detailText b{font-weight:normal;color:#106fb3;margin-bottom:0.1rem;display:block;}
+
+
+/*云短信*/
+.messBelongBan{background:url(../images/productList/proSMSBann.png) no-repeat;background-size:7.3rem 3.44rem;padding-left:1.2rem;}
+.messBelongBan .applyBtn{color:#45a6ec;}
+.selectStyleBox{position:relative;}
+.selArrowBottom{width:0.15rem;height:0.1rem;background:url(../images/public/arrowBottom.png);background-size:0.15rem 0.1rem;position:absolute;top:0.36rem;right:0.52rem;}
+.selAutograph{width:96%;height:0.78rem;margin-bottom:0.3rem;-webkit-appearance: none;}
+.messCon{width:6.9rem;background:#f9f9f9;border:0.02rem solid #e4e4e4;padding:0.2rem;margin-top:0.2rem;font-size:0.28rem;color:#666;}
+.messCon b{font-weight:normal;}
+.messCon span{line-height:0.42rem;}
+.messBelongBan a{float:left;margin-right:0.2rem;}
+
+/*智能问答助手*/
+.intelligentBelongBan{background:url(../images/productList/proIntelligent.png) no-repeat;background-size:7.3rem 3.44rem;}
+.intelligentBelongBan .applyBtn{color:#7a499a;}
+.quesBox{padding-left:0.3rem;}
+textarea.quesText{width:96%;height:1.8rem;}
+.quizTxt{margin-bottom:0.2rem;color:#106fb3;}
+
+/*云计算PaaS*/
+.paasBelongBan{background:url(../images/productList/PaaS.png) no-repeat;background-size:7.3rem 3.44rem;}
+.titLeft{text-align:left;padding-left:0.3rem;}
+.introImgList{width:7.17rem;height:2.76rem;margin:0 auto;display:block;}
+.changeBottom{padding-bottom:0.12rem;}
+
+/*云计算Laas*/
+.laasBelongBan{background:url(../images/productList/LaaS.png) no-repeat;background-size:7.3rem 3.44rem;}
+
+/*定制服务*/
+.customBelongBan{background:url(../images/productList/introCustom.png) no-repeat;background-size:7.3rem 3.44rem;}
+.serviceList{padding:0.3rem 0.2rem;background:#fff;}
+.serviceList li{width:25%;text-align:center;float:left;}
+.serviceCon img{display:block;width:0.88rem;height:0.88rem;margin:0 auto 0.2rem;}
+.serviceCon span{font-size:0.28rem;color:#666; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

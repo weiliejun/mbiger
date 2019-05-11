@@ -1,0 +1,39 @@
+html{}
+body{background:#f9f9f9;}
+h1,h2,h3,h4,h5,h6,ul,p{margin:0;padding:0;}
+a:focus,a:hover,a:active{text-decoration:none;}
+.header_info{width:7.5rem;height:0.88rem;background:#fff;padding:0.22rem 0.32rem 0;position:fixed;top:0;left:0;z-index:100;}
+.head_L{width:25%;float:left;}
+.head_L a{width:1.63rem;height:0.45rem;background: url(../../images/public/zdLogo.png) no-repeat;display:block;background-size:1.63rem 0.45rem;}
+.head_C{width:50%;float:left;font-size:0.32rem;color:#333;text-align:center;padding-top:0.02rem;}
+.head_R{width:25%;float:right;}
+.userIcon{float:left;width:0.44rem;height:0.45rem;background:url(../../images/public/userIcon.png) no-repeat;background-size:0.44rem 0.45rem;margin-left:0.26rem;}
+.menuIcon{float:left;width:0.49rem;height:0.45rem;background:url(../../images/public/menuIcon.png) no-repeat;background-size:0.49rem 0.45rem;margin-left:0.48rem;}
+.occupyPos{width:100%;height:0.88rem;}
+
+/*第二种header样式*/
+.head_L .arrowLeft{width:0.23rem;height:0.44rem;background:url(../../images/public/arrowLeftIcon.png) no-repeat;background-size:0.23rem 0.44rem;}
+.rightTit{font-size:0.28rem;color:#333;float:right;padding-top:0.08rem;}
+.rightTit:hover,.rightTit:active,.rightTit:focus{color:#333;}
+.emptyTag{width:1rem;height:0.4rem;display:block;}
+
+/*公共按钮 640*80*/
+.publicBtn{width:6.4rem;height:0.8rem;background:#106fb3;border-radius:0.36rem;text-align:center;line-height:0.8rem;display:block;color:#fff;margin:0 auto;font-size:0.28rem;}
+.publicBtn:hover,.publicBtn:active,.publicBtn:focus{color:#fff;}
+
+/*错误提示*/
+.errorBox{height:0.4rem;padding-left:0.4rem;padding-top:0.06rem;}
+.errorBox label{font-weight:normal;color:#c01919;margin:0;font-size:0.24rem;}
+.addMarCen{margin-bottom:0.2rem;text-align:center;padding-left:0;}
+
+/*返回信息样式*/
+.feedbackBox{width:100%;background:#fff;padding:0.6rem 0 0.7rem;text-align:center;margin:0.2rem 0 0.5rem;}
+.feedbackImg{width:1.2rem;height:1.2rem;}
+.feedbackTip{font-size:0.32rem;color:#333333;margin-top:0.3rem;}
+.feedCause{font-size:0.28rem;color:#666;padding-top:0.22rem;}
+
+
+
+
+
+

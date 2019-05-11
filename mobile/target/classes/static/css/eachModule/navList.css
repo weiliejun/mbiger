@@ -1,0 +1,24 @@
+.myNavDialog{margin:0;}
+.myNavDialog .modal-content{border-radius:0;border:none;margin-top:12%;}
+.myNavDialog .modal-body{padding:0;}
+.navList{}
+.navList li{width:100%;border-bottom:0.01rem solid #e4e4e4;padding:0 0.3rem;}
+.navList li a{font-size:0.28rem;color:#333;display:block;width:100%;line-height:0.94rem;}
+.navList .pdfLi{padding:0;border-bottom:none;}
+.pdfLi a{padding:0 0.3rem;border-bottom:0.01rem solid #e4e4e4;}
+.pdfInfo{background:#f9f9f9;}
+.closeList{}
+.closeList span{float:left;}
+.closeList i{width:0.32rem;height:0.3rem;background:url(../../images/public/closeIcon.png) no-repeat;margin-top:0.32rem;float:right;background-size:0.32rem 0.3rem;}
+.downDoc{}
+.downDoc span{float:left;}
+.downDoc i{width:0.3rem;height:0.16rem;background:url(../../images/public/arrowIcon.png) no-repeat;margin-top:0.38rem;float:right;background-size:0.3rem 0.16rem;transition:0.5s all ease;}
+
+
+
+
+
+
+
+
+

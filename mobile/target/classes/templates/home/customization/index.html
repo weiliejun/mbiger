@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>众大技术-定制研发</title>
+    <!--当前页面样式-->
+    <link rel="stylesheet" th:href="@{/css/productInfo.css}">
+</head>
+<body>
+    <!-- 头部公共 start -->
+    <div th:replace="/common/header :: commonHeader('navigation')"></div>
+
+    <div class="eachProBan customBelongBan"></div>
+
+    <ul class="serviceList clearfix">
+        <li>
+            <a href="javascript:;" class="serviceCon">
+                <img th:src="@{/images/productList/serviceIcon01.png}" />
+                <span>网站建设</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="serviceCon">
+                <img th:src="@{/images/productList/serviceIcon02.png}" />
+                <span>APP开发</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="serviceCon">
+                <img th:src="@{/images/productList/serviceIcon03.png}" />
+                <span>H5开发</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="serviceCon">
+                <img th:src="@{/images/productList/serviceIcon04.png}" />
+                <span>微信公众号</span>
+            </a>
+        </li>
+    </ul>
+
+
+    <!-- 成功案例 start -->
+    <div th:replace="/common/module :: successCase"></div>
+    <!-- 成功案例 end -->
+
+    <!-- 公共尾部 start -->
+    <div th:replace="/common/footer :: commonFooter"></div>
+    <!-- 公共尾部 end -->
+
+    <!-- 公共JS start -->
+    <div th:include="/common/publicJs"></div>
+    <!-- 公共JS end -->
+    <script type="text/javascript" th:src="@{/js/public/swiper.min.js}"></script>
+    <script>
+        $(document).ready(function(){
+            $(function(){
+                //成功案例 轮播图
+                var swiper = new Swiper('.succCaseBox .swiper-container', {
+                    loop:true,
+                    slidesPerView:3,
+                    observer:true,
+                    observeParents:true,
+                    autoplay:true,
+                    effect: 'coverflow',
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    coverflowEffect: {
+                        rotate: 30,
+                        stretch: 10,
+                        depth: 150,
+                        modifier: 1,
+                        slideShadows : true,
+                    },
+                    /*pagination: {
+                        el: '.swiper-pagination',
+                    },*/
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+.accountBan{width:6.86rem;height:3rem;margin:0.2rem auto;padding:0.7rem 0.4rem 0.4rem 0.3rem;background:url(../images/accountCenter/accountBannBg.png) no-repeat;background-size:6.86rem 3rem;}
+.cardTopBox img{width:0.58rem;height:0.52rem;float:left;}
+.cardTopBox h3{float:left;font-size:0.28rem;color:#fff;line-height:0.52rem;margin-left:0.3rem;}
+.numBox{color:#fff;padding:0.1rem 0 0.2rem 1.2rem;}
+.numBox span{font-size:0.56rem;}
+.numBox b{font-size:0.24rem;font-weight:normal;}
+.rechargeBtn{width:2rem;height:0.6rem;display:block;margin-left:4.1rem;border:0.02rem solid #eee;border-radius:0.3rem;font-size:0.28rem;color:#fff;text-align:center;line-height:0.54rem;}
+.rechargeBtn:hover,.rechargeBtn:active,.rechargeBtn:focus{color:#fff;}
+.accountInfo{background:#fff;padding:0 0.3rem;}
+.accountInfo li{border-bottom:0.02rem solid #e4e4e4;}
+.accountInfo li a{display:block;}
+.accountInfo li span{float:left;font-size:0.28rem;color:#333;line-height:0.94rem;}
+.accountInfo li i{float:right;width:0.14rem;height:0.26rem;background:url(../images/accountCenter/arrowRight.png) no-repeat;background-size:0.14rem 0.26rem;margin-top:0.34rem;}
+.recordConBox{background:#fff;margin-top:0.2rem;padding:0 0.3rem;}
+.recordConBox li{border-bottom:0.02rem solid #eaeaea;}
+.recordTit{float:left;}
+.recordTit p{font-size:0.28rem;color:#333;padding:0.28rem 0 0.24rem;}
+.recordTit span{font-size:0.24rem;color:#ccc;}
+.recordTime{float:right;font-size:0.28rem;color:#666;line-height:1.26rem;font-weight:normal;}
+
+.recTypeBox{background:#fff;margin-top:0.2rem;}
+.recNav{border-bottom:0.02rem solid #e4e4e4;}
+.recNav .navLR{width:48%;float:left;}
+.recNav .navC{width:2%;float:left;}
+.navC i{width:0.02rem;height:0.4rem;background:#e4e4e4;display:block;margin-top:0.2rem;}
+.recNav li a{font-size:0.28rem;color:#666;display:block;text-align:center;padding:0.3rem 0 0.2rem;width:1.6rem;margin:0 auto;}
+.recNav li a.curType{color:#106fb3;border-bottom:0.04rem solid #106fb3;}
+.regTip{font-size:0.28rem;color:#666;padding:0.6rem 0.3rem 0.3rem;}
+.aboutAccNum{background:#f9f9f9;padding:0.36rem 0.3rem 0.1rem;font-size:0.28rem;color:#333;margin:0 0.3rem 0.2rem;}
+.aboutAccNum li{margin-bottom:0.2rem;}
+
+.voucherBox{background:#fff;padding:0 0.3rem;margin-bottom:0.2rem;}
+.vouchTip{font-size:0.28rem;color:#666;padding:0.3rem 0 0.2rem;}
+.vouchTit{font-size:0.24rem;color:#999;line-height:0.4rem;}
+.voucherInfo{background:#fff;}
+.voucherInfo li{font-size:0.28rem;color:#333;border-bottom:0.02rem solid #e4e4e4;}
+.voucherInfo li span{width:20%;float:left;line-height:1.1rem;}
+.voucherInfo li input{width:70%;float:left;height:1.1rem;}
+.voucherInfo li b{float:right;color:#666;font-weight:normal;line-height:1.1rem;}
+.upVoucher{float:left;color:#106fb3;overflow-y:hidden;height:1rem;width:50%;padding-top:0.38rem;position:relative;}
+.upVoucher input{opacity:0;position:absolute;top:0;left:0;}
+.recNumBox{padding-bottom:0.01rem;}
+.recNumBox input{width:93%;height:0.86rem;margin:0 auto;background:#f9f9f9;font-size:0.28rem;}
+.recNumBox .errorBox{padding-top:0.16rem;}
+.chanTit{font-size:0.3rem;color:#333;padding:0.3rem 0 0.2rem 0.3rem;}
+.checkType{background:#fff;padding:0 0.3rem;margin-bottom:0.4rem;}
+.checkType li{border-bottom:0.02rem solid #e4e4e4;}
+.typeBox{display:block;}
+.typeBox p{float:left;font-size:0.28rem;color:#404040;width:80%;height:1.1rem;padding-top:0.4rem;}
+.typeBox i{float:right;width:0.44rem;height:0.44rem;background:url(../images/accountCenter/chIconDef.png) no-repeat;background-size:0.44rem 0.44rem;margin-top:0.36rem;}
+.typeBox i.checkIcon{background:url(../images/accountCenter/chIconCheck.png) no-repeat;background-size:0.44rem 0.44rem;}
+.typeNameWx{background:url(../images/accountCenter/typeIconWx.png) no-repeat 0.1rem center;background-size:0.52rem 0.46rem;padding-left:0.8rem;}
+.typeNameZfb{background:url(../images/accountCenter/typeIconZfb.png) no-repeat 0.1rem center;background-size:0.52rem 0.46rem;padding-left:0.8rem;}
+
+/*账户重置*/
+.accountSet{margin:0.2rem 0 0.6rem;}
+
+/*APPSECRET重置*/
+.asReset{width:100%;background:#fff;padding:0.8rem 0.3rem 0.7rem;margin:0.2rem 0 0.6rem;}
+.asReset h3{font-size:0.36rem;color:#333;}
+.asReset span{font-size:0.3rem;color:#333;display:block;margin:0.2rem 0;}
+.asReset p{font-size:0.24rem;color:#999;line-height:0.4rem;}
+
+
+
+
+
+
+
+
+

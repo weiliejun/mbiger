@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="/common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>用户管理</title>
+    <link rel="Shortcut Icon" href="/favicon.ico" />
+</head>
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row  animated bounceIn">
+        <div class="layui-col-lg12 layui-col-md12 layui-col-sm12 layui-col-xs12">
+            <fieldset class="layui-elem-field layui-field-title site-title">
+                <legend><a name="color-design">用户管理88</a></legend>
+            </fieldset>
+            <div class="layui-btn-group" id="one_group">
+                <button class="layui-btn"  data-type="add"><i class="layui-icon">&#xe61f;</i><cite>增加用户</cite></button>
+                 <button class="layui-btn layui-btn-normal"  data-type="edit"><i class="layui-icon">&#xe642;</i><cite>修改用户</cite></button>
+                <!--  <button class="layui-btn layui-btn-danger"  data-type="del"><i class="layui-icon">&#xe640;</i><cite>删除用户</cite></button> -->
+            </div>
+        </div>
+
+        <div class="layui-col-lg10 layui-col-md10 layui-col-sm12 layui-col-xs12">
+            <div class="user-tables">
+                <table id="userTables" lay-filter="userTables"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="userbar">
+    <a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon">&#xe642;</i>编辑</a>
+    {{#  if(d.status === '0'){ }}
+    <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="disable"><i class="fa fa-ban"></i>&nbsp;禁用</a>
+    {{#  } else { }}
+    <a class="layui-btn layui-btn-warm  layui-btn-xs" lay-event="able"><i class="fa fa-circle-o"></i>&nbsp;置为可用</a>
+    {{#  } }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</a>
+</script>
+<script type="text/html" id="img">
+    {{#  if(d.img === undefined){ }}
+    未知
+    {{#  } else { }}
+    <img id="img" alt="" src="/oneManage{{d.img}}" width="30px" height="30px" />
+    {{#  } }}
+</script>
+<script type="text/html" id="status">
+    {{#  if(d.status === undefined){ }}
+    未知
+    {{#  } else { }}
+    {{#  if(d.status === '0'){ }}
+    可用
+    {{#  } else { }}
+    禁用
+    {{#  } }}
+    {{#  } }}
+</script>
+
+<script type="text/javascript">
+    var path = "/oneManage";
+    layui.use(['layer', 'form', 'table'], function() {
+        var $ = layui.$,
+            layer = layui.layer,
+            form = layui.form,
+            table = layui.table;
+
+        var tableIns = table.render({
+            elem: '#userTables',
+            id: 'userTables',
+            height : 660,
+            width: 1650,
+            limit : 20,
+            limits : [10,15,20,25],
+            cols: [
+                [{
+                    checkbox: true,
+                    width: 60,
+                    fixed: true
+                }, {
+                    field: 'id',
+                    width: 80,
+                    title: 'ID',
+                    sort: true,
+                    // fixed: true
+                }, {
+                    field: 'img',
+                    width: 150,
+                    height: 220,
+                    title: '头像',
+                    align: 'center',
+                    templet: '#img'
+                },{
+                    field: 'loginName',
+                    width: 220,
+                    title: '用户名',
+                    align: 'center',
+                },{
+                    field: 'name',
+                    width: 220,
+                    title: '真实姓名',
+                    align: 'center',
+                }, {
+                    field: 'email',
+                    width: 255,
+                    title: '邮箱',
+                    align: 'center',
+                }, {
+                    field: 'mobile',
+                    width: 200,
+                    title: '手机号',
+                    align: 'center',
+                }, {
+                    field: 'status',
+                    width: 150,
+                    title: '状态',
+                    align: 'center',
+                    templet: '#status'
+                },/* {
+				field: 'lastip',
+				width: 150,
+				title: '最后一次登录ip',
+				align: 'center',
+			}, {
+				field: 'lasttime',
+				width: 150,
+				title: '上一次登录时间',
+				align: 'center',
+			}, */{
+                    title: '常用操作',
+                    width: 280,
+                    align: 'center',
+                    toolbar: '#userbar',
+                    fixed:"right"
+                }]
+
+            ],
+            url: path + '/user/data.do',
+            page: true,
+            even: true,
+
+        });
+
+        //监听工具条
+        table.on('tool(userTables)', function(obj) {
+            var data = obj.data;
+            if (obj.event === 'edit') {
+                var index = layer.open({
+                    title: "用户信息修改",
+                    type: 2,
+                    skin:'',
+                    offset: ['85px', '530px'],
+                    area: ['540px', '520px'],
+                    content: path + "/user/form.do?id="+data.id,
+                });
+
+                //layer.alert('编辑行：<br>' + JSON.stringify(data))
+            }else if (obj.event === 'shouquan') {
+                layer.alert('授权行：<br>' + JSON.stringify(data))
+            }else if (obj.event === 'disable') {
+                layer.confirm('真的禁用用户么', function(index) {
+                    var ajaxReturnData;
+                    $.ajax({
+                        url: path + '/user/setUse.do',
+                        type: 'post',
+                        async: false,
+                        data: {id:data.id},
+                        success: function (data) {
+                            ajaxReturnData = data;
+                        }
+                    });
+                    //删除结果
+                    if (ajaxReturnData == '0') {
+                        table.reload('userTables');
+                        layer.msg('操作成功', {icon: 1});
+                    } else {
+                        layer.msg('操作失败', {icon: 5});
+                    }
+
+                    layer.close(index);
+
+                });
+            }else if (obj.event === 'able') {
+                layer.confirm('真的将该用户置为可用么', function(index) {
+                    var ajaxReturnData;
+                    $.ajax({
+                        url: path + '/user/setUse.do',
+                        type: 'post',
+                        async: false,
+                        data: {id:data.id},
+                        success: function (data) {
+                            ajaxReturnData = data;
+                        }
+                    });
+                    //删除结果
+                    if (ajaxReturnData == '0') {
+                        table.reload('userTables');
+                        layer.msg('操作成功', {icon: 1});
+                    } else {
+                        layer.msg('操作失败', {icon: 5});
+                    }
+
+                    layer.close(index);
+
+                });
+            }else if (obj.event === 'del') {
+                layer.confirm('真的删除该用户么？', function(index) {
+                    var ajaxReturnData;
+                    $.ajax({
+                        url: path + '/user/delete.do',
+                        type: 'post',
+                        async: false,
+                        data: {id:data.id},
+                        success: function (data) {
+                            ajaxReturnData = data;
+                        }
+                    });
+                    //删除结果
+                    if (ajaxReturnData == '0') {
+                        table.reload('userTables');
+                        layer.msg('删除成功', {icon: 1});
+                    } else {
+                        layer.msg('删除失败', {icon: 5});
+                    }
+
+                    layer.close(index);
+
+
+                });
+            }
+        });
+
+        $('#one_group .layui-btn').on('click',function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        var active = {
+            add:function(){
+                var index = layer.open({
+                    title: "用户编辑",
+                    type: 2,
+                    skin:'',
+                    offset: ['85px', '530px'],
+                    area: ['540px', '520px'],
+                    content: "/sysmanager/add",
+                });
+            },
+            edit:function(){
+
+
+            },
+            del:function(){
+
+            }
+
+        };
+    });
+</script>
+</body>
+</html>

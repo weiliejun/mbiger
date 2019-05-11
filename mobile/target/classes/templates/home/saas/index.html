@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>众大技术-SaaS</title>
+    <!--当前页面样式-->
+    <link rel="stylesheet" th:href="@{/css/productInfo.css}">
+</head>
+<body>
+    <!-- 头部公共 start -->
+    <div th:replace="/common/header :: commonHeader('navigation')"></div>
+
+    <div class="proBanner">
+        <img th:src="@{/images/productList/bannSaaS.png}" />
+    </div>
+
+    <ul class="everyCloud">
+        <li>
+            <h3 class="cloudName clearfix"><span>云查询</span><i></i></h3>
+            <div class="cloudList clearfix">
+                <a href="javascript:;" class="cloCor1">全国天气预报查询</a>
+                <a href="javascript:;" class="cloCor2">手机号码归属地查询</a>
+                <a href="javascript:;" class="cloCor3">全球IP地址归属地查询</a>
+                <a href="javascript:;" class="cloCor4">驾驶公开题库查询</a>
+                <a href="javascript:;" class="cloCor5">全球物流快递查询</a>
+            </div>
+        </li>
+        <li class="defHide">
+            <h3 class="cloudName clearfix"><span>云短信</span><i></i></h3>
+            <div class="cloudList clearfix listAddW">
+                <a href="javascript:;" class="cloCor2">云短信</a>
+            </div>
+        </li>
+        <li class="defHide">
+            <h3 class="cloudName clearfix"><span>云认证</span><i></i></h3>
+            <div class="cloudList clearfix listAddW">
+                <a href="javascript:;" class="cloCor2">身份证实名认证</a>
+                <a href="javascript:;" class="cloCor4">银行卡实名校验</a>
+                <a href="javascript:;" class="cloCor5">手机号码实名认证</a>
+            </div>
+        </li>
+        <li class="defHide">
+            <h3 class="cloudName clearfix"><span>人工智能</span><i></i></h3>
+            <div class="cloudList clearfix listAddW">
+                <a href="javascript:;" class="cloCor2">智能客服</a>
+            </div>
+        </li>
+    </ul>
+
+    <!-- 公共尾部 start -->
+    <div th:replace="/common/footer :: commonFooter"></div>
+    <!-- 公共尾部 end -->
+
+    <!-- 公共JS start -->
+    <div th:include="/common/publicJs"></div>
+    <!-- 公共JS end -->
+    <script>
+        $(document).ready(function(){
+            $(function(){
+                //列表显隐
+                $('.cloudName').click(function(){
+                    if($(this).siblings('.cloudList').is(":visible")){
+                        $(this).siblings('.cloudList').slideUp();
+                        $(this).find('i').css("transform","rotate(180deg)");
+                    }else{
+                        $(this).siblings('.cloudList').slideDown();
+                        $(this).find('i').css("transform","rotate(0deg)");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

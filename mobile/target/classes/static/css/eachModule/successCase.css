@@ -1,0 +1,28 @@
+.indexMod{width:7.5rem;background:#fff;margin-bottom:0.2rem;}
+.modTit{line-height:0.9rem;border-bottom:0.02rem solid #e4e4e4;text-align:center;color:#333;font-size:0.36rem;}
+.succCaseBox{padding:0.3rem 0.2rem;}
+.succCaseBox .swiper-container {
+    width: 100%;
+}
+.succCaseBox .swiper-slide {
+    background-size: cover;
+    width: 80%;
+    height: 2.72rem;
+}
+.succCaseBox .swiper-slide img{
+    width:100%;
+    height:100%;
+}
+
+/*标题在左*/
+.titLeft{padding-left:0.3rem;text-align:left;}
+
+
+
+
+
+
+
+
+
+

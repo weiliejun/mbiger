@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!--head start-->
+<div th:fragment="commonHeader(channel)">
+    <header th:if="${channel eq 'register'}" class="header_info clearfix">
+        <h1 class="head_L"><a href="javascript:;" class="arrowLeft"></a></h1>
+        <h3 class="head_C">注册</h3>
+        <div class="head_R clearfix"><a th:href="@{/login}" class="rightTit">登录</a></div>
+    </header>
+    <header th:if="${channel eq 'notNavigation'}" class="header_info clearfix">
+        <h1 class="head_L"><a href="javascript:;" class="arrowLeft"></a></h1>
+        <h3 class="head_C" th:text="${headText}"></h3>
+        <div class="head_R clearfix"><span class="rightTit"></span></div>
+    </header>
+    <header th:if="${channel eq 'login'}" class="header_info clearfix">
+        <h1 class="head_L"><a href="javascript:;" class="arrowLeft"></a></h1>
+        <h3 class="head_C">登录</h3>
+        <div class="head_R clearfix"><a th:href="@{/register/index}" class="rightTit">免费注册</a></div>
+    </header>
+    <header th:if="${channel eq 'navigation'}" class="header_info clearfix">
+        <h1 class="head_L"><a href="javascript:;"></a></h1>
+        <h3 class="head_C" th:text="${headText}"></h3>
+        <div class="head_R clearfix">
+            <a th:href="@{/account/index}" class="userIcon"></a>
+            <a class="menuIcon" data-toggle="modal" data-target="#myNav"></a>
+        </div>
+    </header>
+    <div class="occupyPos"></div>
+
+    <!--导航部分 start-->
+    <div  th:if="${channel eq 'navigation'}" class="modal fade" id="myNav" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <link rel="stylesheet" th:href="@{/css/eachModule/navList.css}">
+        <div class="modal-dialog myNavDialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <ul class="navList">
+                        <li>
+                            <a th:href="@{/}" class="closeList clearfix">
+                                <span>首页</span>
+                                <i data-dismiss="modal"></i>
+                            </a>
+                        </li>
+                        <li><a th:href="@{/saas}">SaaS</a></li>
+                        <li><a th:href="@{/paas}">PaaS</a></li>
+                        <li><a th:href="@{/iaas}">LaaS</a></li>
+                        <li><a th:href="@{/customization}">定制开发</a></li>
+                        <li class="pdfLi">
+                            <a href="javascript:;" class="downDoc clearfix">
+                                <span>文档下载</span>
+                                <i></i>
+                            </a>
+                            <a href="javascript:;" class="pdfInfo">PDF文件</a>
+                        </li>
+                        <li><a href="javascript:;">关于我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--导航部分 end-->
+</div>
+<!--head end-->
+</html>

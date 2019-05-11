@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<style type="text/css">
+    /*提示框内容 start*/
+    .applyApiLog .modal-header{background:#f9f9f9;border-radius:0.08rem;}
+    .applyApiLog .close{font-size:0.66rem;color:#999;opacity:1;font-weight:normal;margin-top:-0.14rem;}
+    .applyApiLog .modal-title{font-size:0.3rem;color:#333;}
+    .applyApiLog .modal-content{width:5.4rem;margin:45% auto 0;}
+    .applyMCon{text-align:center;font-size:0.28rem;color:#666;}
+    .applyMCon p{margin-bottom:0.2rem;}
+    .applyApiLog .modal-footer{margin-top:0.1rem;padding:0;}
+    .applyMBtn{}
+    .applyMBtn a{width:50%;float:left;text-align:center;font-size:0.28rem;padding:0.3rem 0;}
+    .appCancelBtn{color:#999;border-right:0.02rem solid #e4e4e4;}
+    .appCancelBtn:hover,.appCancelBtn:active,.appCancelBtn:focus{color:#999;}
+    .appSureBtn{color:#106fb3;}
+    .appSureBtn:hover,.appSureBtn:active,.appSureBtn:focus{color:#106fb3;}
+    .cityBtnBox{width:100%;}
+    .cityBtnBox .appSureBtn{display: block;text-align:center;font-size:0.28rem;padding:0.3rem 0;}
+    .applyMCon .cityTxt{margin:0.2rem 0 0;}
+    /*APPSECRET内容*/
+    .appSecCon{ text-align: center;font-size: 0.24rem; color: #666;}
+    .appSecCon p{margin-bottom:0.2rem;}
+    /*提示框内容 end*/
+</style>
+
+<!--①底部两个按钮的提示框 start-->
+<div class="modal fade" id="applyApiM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog applyApiLog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">在线申请免费API</h4>
+            </div>
+            <div class="modal-body">
+                <div class="applyMCon">
+                    <p>您的联系电话13688886666</p>
+                    <span>提交申请后我们会尽快联系您</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="applyMBtn">
+                    <a href="javascript:;" data-dismiss="modal" class="appCancelBtn">取消</a>
+                    <a href="javascript:;" class="appSureBtn">确认</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--①底部两个按钮的提示框 end-->
+
+<!--②底部一个按钮的提示框 start-->
+<div class="modal fade" id="tipModalGlobal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog applyApiLog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <div class="applyMCon">
+                    <p id="tipModalGlobalInfo" class="cityTxt">系统繁忙，请稍后重试</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="cityBtnBox">
+                    <a id="confirmButton"  href="javascript:GlobalPrompt.close();" class="appSureBtn">确定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--②底部一个按钮的提示框 end-->
+
+<script type="text/javascript">
+
+    var GlobalPrompt = {};
+    /**
+     * 弹窗显示
+     * msg：提示内容
+     */
+    GlobalPrompt.prompt = function(msg){
+        if(msg){
+            $("#tipModalGlobalInfo").html(msg);
+        }
+        $("#tipModalGlobal").modal('show');
+    };
+    /**
+     * 弹窗显示
+     * msg：提示内容
+     * closeProcess: 弹窗关闭时的处理
+     */
+    GlobalPrompt.prompt = function(msg, closeProcess){
+        if(msg){
+            $("#tipModalGlobalInfo").html(msg);
+        }
+        if (closeProcess) {
+            //弹窗关闭时的处理
+            GlobalPrompt.closeProcess = closeProcess;
+        }
+        $("#tipModalGlobal").modal('show');
+    };
+    /**
+     * 弹窗关闭时的处理
+     */
+    GlobalPrompt.closeProcess = function () {};
+    /**
+     * 弹窗关闭
+     */
+    GlobalPrompt.close = function(){
+        $("#confirmButton").addClass("aDisabledBtn");
+        GlobalPrompt.closeProcess();
+        $("#confirmButton").removeClass("aDisabledBtn");
+        $("#tipModalGlobal").modal('hide');
+    }
+</script>

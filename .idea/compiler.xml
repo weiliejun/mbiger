@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="common" />
+        <module name="cli" />
+        <module name="mobile" />
+        <module name="pc" />
+        <module name="admin" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="admin" target="6" />
+      <module name="cli" target="1.5" />
+      <module name="common" target="1.8" />
+      <module name="mbiger" target="1.5" />
+      <module name="mobile" target="1.5" />
+      <module name="pc" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common" options="-verbose -bootclasspath &quot;C:/Program Files/Java/jdk1.8.0_131/jre/lib/rt.jar;C:/Program Files/Java/jdk1.8.0_131/jre/lib/jce.jar&quot;" />
+    </option>
+  </component>
+</project>

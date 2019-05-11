@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>众大技术-账户首页</title>
+    <!--当前页面样式-->
+    <link rel="stylesheet" th:href="@{/css/accountCenter.css}">
+</head>
+<body>
+    <!-- 头部公共 start -->
+    <div th:replace="/common/header :: commonHeader('navigation')"></div>
+    <div class="accountBan">
+        <div class="cardTopBox clearfix">
+            <img th:src="@{/images/accountCenter/accountLogo.png}" />
+            <h3>账户余额</h3>
+        </div>
+        <div class="numBox">
+            <span th:text="${userAccountBalance}">0</span> <b>元</b>
+        </div>
+        <a th:href="@{/account/topUp}" class="rechargeBtn">充值</a>
+    </div>
+    <ul class="accountInfo">
+        <li>
+            <a href="javascript:;" class="clearfix">
+                <span>常用服务</span><i></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="clearfix">
+                <span>系统消息</span><i></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="clearfix">
+                <span>充值记录</span><i></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="clearfix">
+                <span>消费记录</span><i></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="clearfix">
+                <span>账户设置</span><i></i>
+            </a>
+        </li>
+    </ul>
+</body>
+<!-- 公共JS start -->
+<div th:include="/common/publicJs :: onloadJS"></div>
+<!-- 公共JS start -->
+<script>
+    $(document).ready(function(){
+
+    });
+</script>
+</html>

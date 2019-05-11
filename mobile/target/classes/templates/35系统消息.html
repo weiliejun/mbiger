@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>众大技术</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!-- 公共样式 -->
+    <link rel="stylesheet" href="assets/css/public/reset.css">
+    <link rel="stylesheet" href="assets/css/public/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/public/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/public/publicHead.css">
+    <link rel="stylesheet" href="assets/css/public/publicFoot.css">
+    <!--当前页面样式-->
+    <link rel="stylesheet" href="assets/css/accountCenter.css">
+</head>
+<body>
+    <header class="header_info clearfix">
+        <h1 class="head_L"><a href="javascript:;" class="arrowLeft"></a></h1>
+        <h3 class="head_C">系统消息</h3>
+        <div class="head_R clearfix"><span class="rightTit"></span></div>
+    </header>
+    <div class="occupyPos"></div>
+
+    <div class="recTypeBox">
+        <ul class="recNav clearfix">
+            <li class="navLR"><a href="javascript:;" class="curType">个人消息</a></li>
+            <li class="navC"><i></i></li>
+            <li class="navLR"><a href="javascript:;" class="">平台公告</a></li>
+        </ul>
+    </div>
+
+    <ul class="recordConBox">
+        <li class="clearfix">
+            <div class="recordTit"><p>修改密码</p><span>忘记密码</span></div>
+            <b class="recordTime">2016-06-09 13:00:00</b>
+        </li>
+        <li class="clearfix">
+            <div class="recordTit"><p>修改密码</p><span>忘记密码</span></div>
+            <b class="recordTime">2016-06-09 13:00:00</b>
+        </li>
+        <li class="clearfix">
+            <div class="recordTit"><p>修改密码</p><span>忘记密码</span></div>
+            <b class="recordTime">2016-06-09 13:00:00</b>
+        </li>
+    </ul>
+
+    <script type="text/javascript" src="assets/js/public/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/public/fontsizeset.js"></script>
+    <script type="text/javascript" src="assets/js/public/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/public/swiper.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.checkType a').click(function(){
+                $(this).find('i').addClass('checkIcon');
+                $(this).parent().siblings().find('i').removeClass('checkIcon');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:fragment="onloadJS">
+    <!-- 公共JS start -->
+    <script type="text/javascript" th:src="@{/js/public/jquery-1.10.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/public/public.js}"></script>
+    <script type="text/javascript" th:src="@{/js/public/fontsizeset.js}"></script>
+    <script type="text/javascript" th:src="@{/js/public/bootstrap.min.js}"></script>
+
+
+    <!-- 公共插件引用 start -->
+    <script th:replace="@{/common/plugins/form}"></script>
+    <!-- 公共插件引用 end -->
+    <script type="text/javascript" th:inline="javascript">
+        var PageContext = {
+            contextPath : [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]]
+        };
+    </script>
+</div>
+</html>

@@ -1,0 +1,36 @@
+spring:
+    application:
+        name: x-service
+    datasource:
+        master:
+            jdbcUrl: jdbc:mysql://172.16.10.22:63306/x?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+            username: moer_user
+            password: moerJR6k7h
+            driverClassName: com.mysql.jdbc.Driver
+            max-active: 3000
+            max-idle: 100
+            max-wait: 3000
+            test-on-borrow: true
+            time-between-eviction-runs-millis: 30000
+            min-evictable-idle-time-millis: 30000
+logging:
+    level:
+        com.x.*: debug
+    #path: C\:\\Users\\zwj\\Desktop
+    path: /data/logs/x
+    file: x.log
+    config: classpath:logback-spring.xml
+
+x:
+    redis:
+        common: 
+            maxIdle: 400
+            maxActive: 3000
+            timeBetweenEvictionRunsMillis: 30000
+            minEvictableIdleTimeMillis: 30000
+            testOnBorrow: true
+            timeout: 2
+        master:
+            database: 0
+            host: 172.16.10.22
+            port: 6379

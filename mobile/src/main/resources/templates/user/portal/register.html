@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>众大技术-注册</title>
+    <!--当前页面样式-->
+    <link rel="stylesheet" th:href="@{/css/login_register.css}">
+</head>
+<body>
+    <!-- 头部公共 start -->
+    <div th:replace="/common/header :: commonHeader('register')"></div>
+    <!-- 头部公共 end-->
+    <form id="registerForm" autocomplete="off">
+        <ul class="userInfo">
+            <li class="clearfix">
+                <span class="userTit">用户名</span>
+                <input id="nickName" name="nickName" type="text" class="longText" placeholder="请输入用户名（8-16位字母数字组合）">
+            </li>
+            <li class="clearfix">
+                <span class="userTit">密码</span>
+                <input id="password" name="password" type="password" class="longText" placeholder="请输入密码（8-16位字母数字组合）">
+            </li>
+            <li class="clearfix">
+                <span class="userTit">手机号</span>
+                <input id="mobile" name="mobile" type="text" class="longText" placeholder="请输入手机号">
+            </li>
+            <li class="clearfix">
+                <span class="userTit">验证码</span>
+                <input id="validateCode" name="validateCode" type="text" class="pwdText shortText" placeholder="请输入验证码">
+                <p class="rightBox"><img class="verifyCodeImage" alt="" style="display: none;"></p>
+            </li>
+            <li class="clearfix">
+                <span class="userTit">短信验证码</span>
+                <input id="remoteValidateCode" name="remoteValidateCode" type="text" class="pwdText shortText" placeholder="请输入短信验证码">
+                <p class="rightBox"><a id="sendremotecodebutton" href="javascript:;" class="getYzm">获取验证码</a></p>
+            </li>
+        </ul>
+        <div class="errorBox addMarCen"><label id="validatecode_label"></label></div>
+        <div class="readProtocol clearfix">
+            <input id="protocol" name="protocol"  type="checkbox">
+            <label for="protocol">我已阅读并同意</label>
+            <a href="javascript:;">《众大网站服务协议》</a>
+        </div>
+    </form>
+    <a id="registerBtn" href="javascript:;" class="publicBtn">立即注册</a>
+
+
+    <!-- 弹框 start-->
+    <div th:replace="/common/prompt"></div>
+    <!-- 弹框 end-->
+
+    <!-- 公共JS start -->
+    <div th:include="/common/publicJs :: onloadJS"></div>
+    <!-- 公共JS start -->
+    <!--  发送短信验证码 图形验证码  -->
+    <script type="text/javascript" th:src="@{/js/public/codeValidate.js}"></script>
+    <script>
+        //注册表单校验
+        var registerFormValidate = null;
+        $(function() {
+            //加载图形验证码
+            loadVerifyCodeImage();
+            registerFormValidate = $('#registerForm').validate({
+                onfocusout:false,
+                onkeyup:false,
+                focusCleanup:true,
+                rules: {
+                    nickName: {
+                        required: true,
+                        minlength: 8,
+                        maxlength: 16,
+                        nickName: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 8,
+                        maxlength: 16,
+                        isPassWord: true,
+                        pwCheck: true
+                    },
+                    mobile : {
+                        required : true,
+                        isMobile : true
+                    },
+                    validateCode : {
+                        required : true,
+                        minlength : 4,
+                        maxlength : 4
+                    },
+                    remoteValidateCode : {
+                        required : true,
+                        minlength : 6,
+                        maxlength : 6
+                    },
+                    protocol : {
+                        required : true
+                    }
+                },
+                messages: {
+                    nickName: {
+                        required: " 请输入用户名",
+                        minlength: " 长度只能在8-16个字符之间",
+                        maxlength: " 长度只能在8-16个字符之间",
+                        nickName:  " 仅支持字母、数字、下划线组合"
+                    },
+                    password: {
+                        required: " 请输入密码",
+                        minlength: " 长度在8-16个字符之间",
+                        maxlength: " 长度在8-16个字符之间",
+                        isPassWord: " 长度在8-16个字符之间",
+                        pwCheck: " 请输入字母、数字和符号组合！"
+                    },
+                    mobile : {
+                        required : " 请输入手机号码",
+                        isMobile : " 手机号码格式不正确"
+                    },
+                    validateCode: {
+                        required: " 请输入验证码",
+                        minlength: " 验证码错误",
+                        maxlength: " 验证码错误"
+                    },
+                    remoteValidateCode: {
+                        required: " 请输入短信验证码",
+                        minlength: " 短信验证码错误",
+                        maxlength: " 短信验证码错误"
+                    },
+                    protocol : {
+                        required : " 请仔细阅读网站协议"
+                    },
+                },
+                errorContainer: "#validatecode_label",
+                errorLabelContainer: $("#validatecode_label"),
+                showErrors:function(errorMap,errorList) {
+                    $('#validatecode_label').html('');
+                    this.defaultShowErrors();
+                    $('#validatecode_label label:hidden').remove()//删除所有隐藏的label
+                    $('#validatecode_label label:eq(0)').nextAll().remove()//第一个label下所有跟随的同胞级label删除
+                }
+            });
+
+            //自定义表单校验顺序
+            function myFormValidate(){
+                var flag = false;
+                flag =  registerFormValidate.element($("#nickName"));
+                if(!flag) return flag;
+                flag =  registerFormValidate.element($("#password"));
+                if(!flag) return flag;
+                flag =  registerFormValidate.element($("#protocol"));
+                if(!flag) return flag;
+                flag =  registerFormValidate.element($("#mobile"));
+                if(!flag) return flag;
+                flag =  registerFormValidate.element($("#validateCode"));
+                if(!flag) return flag;
+                flag =  registerFormValidate.element($("#remoteValidateCode"));
+                if(!flag) return flag;
+                return flag;
+            }
+
+            //注册操作（对应的flag返回值 在 ResultCode.java 中定义）
+            $('#registerBtn').click(function(){
+                if(myFormValidate()){
+                    AJAX.post(PageContext.contextPath+'/register/submit',
+                        $("#registerForm").serialize(),
+                        function(data) {
+                            var message = data.msg;
+                            if (data.flag == '00000') {
+                                GlobalPrompt.prompt("注册成功,请点击确定登录",function () {
+                                    location.href = PageContext.contextPath +"/login" ;
+                                });
+                            } else {
+                                var forName = '';
+                                if (flag == '10001') {
+                                    forName = 'nickName';
+                                }
+                                if (flag == '10002') {
+                                    forName = 'mobile';
+                                }
+                                if (flag == '10003') {
+                                    forName = 'verifyCode';
+                                }
+                                if (flag == '10004' || flag == '10005' ) {
+                                    forName = 'remoteValidateCode';
+                                }
+                                var errorLabel = '<label for="' + forName + '" class="error">' + message + '</label>';
+                                $('#validatecode_label').html(errorLabel).show();
+                                loadVerifyCodeImage();
+                            }
+                        }
+                    );
+                }
+            });
+
+            /**
+             * 发送短信时校验
+             * */
+            function sendRemoteCodeFormValidate(){
+                var flag = false;
+                flag =  registerFormValidate.element($("#nickName"));
+                if(!flag) return flag;
+                flag =  registerFormValidate.element($("#password"));
+                if(!flag) return flag;
+                flag =  registerFormValidate.element($("#mobile"));
+                if(!flag) return flag;
+                flag =  registerFormValidate.element($("#validateCode"));
+                if(!flag) return flag;
+                return flag;
+            }
+
+            //********************  发送短信验证码 start  ******************************************//
+            $("#sendremotecodebutton").click(function(){
+                if(sendRemoteCodeFormValidate()){
+                    AJAX.post(PageContext.contextPath+"/mobile/smscodeSend",
+                        {
+                            "nickName":$('#nickName').val(),
+                            "validateCode":$('#validateCode').val(),
+                            "mobile": $('#mobile').val(),
+                            "busiType": "register"
+                        },
+                        function(data) {
+                            var message = data.msg;
+                            if (data.flag == 'true') {
+                                //调用公共的倒计时方法
+                                remoteCodeCountDown("sendremotecodebutton");
+                                $('#validatecode_label').html(message).show();
+                            } else {
+                                $("#sendremotecodebutton").removeClass("aDisabledBtn");
+                                var forName = '';
+                                if (flag == '10001') {
+                                    forName = 'nickName';
+                                }
+                                if (flag == '10002') {
+                                    forName = 'mobile';
+                                }
+                                if (flag == '10003') {
+                                    forName = 'verifyCode';
+                                }
+                                var errorLabel = '<label for="' + forName + '" class="error">' + message + '</label>';
+                                $('#validatecode_label').html(errorLabel).show();
+                                loadVerifyCodeImage();
+                            }
+                        }
+                    );
+                }
+            });
+            //********************  发送短信验证码  end  ******************************************//
+
+        });
+    </script>
+</body>
+</html>

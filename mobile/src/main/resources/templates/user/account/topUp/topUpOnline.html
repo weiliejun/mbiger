@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>众大技术-在线充值</title>
+    <!--当前页面样式-->
+    <link rel="stylesheet" th:href="@{/css/accountCenter.css}">
+</head>
+<body>
+    <!-- 头部公共 start -->
+    <div th:replace="/common/header :: commonHeader('notNavigation')"></div>
+
+    <div class="recTypeBox">
+        <ul class="recNav clearfix">
+            <li class="navLR"><a href="javascript:;">在线充值</a></li>
+            <li class="navC"><i></i></li>
+            <li class="navLR"><a href="javascript:;" class="curType">线下充值</a></li>
+        </ul>
+        <p class="regTip">请通过网银转账或银行汇款，汇款账号如下：</p>
+        <ul class="aboutAccNum">
+            <li><p>开户名称：北京众大技术科技公司</p></li>
+            <li><p>开户银行：招商银行（北京方庄支行）</p></li>
+            <li><p>银行卡号：6214 8641 7370 4417</p></li>
+        </ul>
+    </div>
+
+    <div class="voucherBox">
+        <p class="vouchTip">提交转账凭证：</p>
+        <span class="vouchTit">注：转账成功后请提交转账凭证或通过客服联系我们，正常情况下3个工作日内到账</span>
+        <ul class="voucherInfo">
+            <li class="clearfix">
+                <span>联系手机</span>
+                <input type="text" class="" placeholder="请输入手机号码" />
+            </li>
+            <li class="clearfix">
+                <span>转账金额</span>
+                <input type="text" class="" placeholder="请输入转账金额" />
+                <b>元</b>
+            </li>
+            <li class="clearfix">
+                <span>上传凭证</span>
+                <a href="javascript:;" class="upVoucher">上传转账凭证<input type="file"></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="errorBox addMarCen"><label for="">请输入...</label></div>
+
+    <a href="javascript:;" class="publicBtn">提交</a>
+
+    <!-- 公共JS start -->
+    <div th:include="/common/publicJs"></div>
+    <!-- 公共JS end -->
+    <script>
+        $(document).ready(function(){
+
+        });
+    </script>
+</body>
+</html>

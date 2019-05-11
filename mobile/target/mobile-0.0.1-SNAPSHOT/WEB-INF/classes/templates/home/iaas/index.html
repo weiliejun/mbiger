@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
+    <title>众大技术-IaaS</title>
+    <!--当前页面样式-->
+    <link rel="stylesheet" th:href="@{/css/productInfo.css}">
+</head>
+<body>
+    <!-- 头部公共 start -->
+    <div th:replace="/common/header :: commonHeader('navigation')"></div>
+
+    <div class="eachProBan laasBelongBan"></div>
+
+    <div class="proDetailsCon">
+        <h3 class="detailTit titLeft">云计算虚拟化管理平台</h3>
+        <div class="detailText changeBottom">
+            <p>众大云计算虚拟化管理平台是高度模块化、采用公开标准协议的IaaS管理系统, 其目标是帮助企业建设一个符合标准的、开放的、实用的、可演进的私有/公共云平台。通过把不同的硬件、不同的系统、不同的环境等无法共享的跨平台资源统一到一个资源池来调度使用，它具有超大规模、虚拟化、可靠安全、动态易扩展等特点。 系统界面采用B/S模式为用户提供人机交互；系统用户角色分为管理员和普通用户，管理员拥有针对整个平台的管理权限，普通用户仅赋予所属虚拟机管理及自身帐户管理权限。</p>
+        </div>
+        <img th:src="@{/images/productList/introVirtual.png}" class="introImgList" />
+    </div>
+    <div class="proDetailsCon">
+        <h3 class="detailTit titLeft">虚拟桌面云</h3>
+        <div class="detailText changeBottom">
+            <p>众大虚拟桌面云利用云计算虚拟化管理平台将数据中心的计算和存储资源进行合理分配，并集成云终端机实现桌面云系统。主要应用场景包括：中小微企业、校园等日常办公；营业厅、办事处、服务窗口；公司前后台相关部门、企业线下门店等。所有的升级工作和管理维护工作均在私有数据中心完成。通过使用桌面云，在保障信息安全的基础上，能节约巨大的运营成本，获得的收益是显而易见的。</p>
+        </div>
+        <img th:src="@{/images/productList/introDeskTop.png}" class="introImgList" />
+    </div>
+
+    <!-- 公共尾部 start -->
+    <div th:replace="/common/footer :: commonFooter"></div>
+    <!-- 公共尾部 end -->
+
+    <!-- 公共JS start -->
+    <div th:include="/common/publicJs"></div>
+    <!-- 公共JS end -->
+    <script>
+        $(document).ready(function(){
+
+        });
+    </script>
+</body>
+</html>

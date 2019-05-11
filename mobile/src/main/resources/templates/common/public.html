@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="commonStyle(title, links, styles)">
+    <title th:replace="${title}">众大技术</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <!-- 标题/收藏夹 logo -->
+    <link rel="shortcut icon" th:href="@{/images/public/favicon.ico}"/>
+
+    <!-- 公共CSS start -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/public/reset.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/public/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/public/swiper.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/public/publicHead.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/public/publicFoot.css}">
+    <!-- 公共CSS end -->
+
+    <!--/* Per-page placeholder for additional links */-->
+    <th:block th:replace="${links}" />
+    <!--/* Per-page placeholder for additional styles */-->
+    <th:block th:replace="${styles}" />
+</head>
+</html>

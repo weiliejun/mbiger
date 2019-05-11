@@ -1,0 +1,28 @@
+.userInfo{background:#fff;padding:0 0.3rem;margin:0.2rem 0 0.2rem;}
+.userTit{font-size:0.28rem;color:#333;float:left;width:23%;color:#333;line-height:1.1rem;}
+.userInfo li{border-bottom:0.02rem solid #e4e4e4;}
+.userInfo li input[type=text],.userInfo li input[type=password]{font-size:0.28rem;color:#333;height:1.1rem;float:left;}
+.longText{width:77%;}
+.shortText{width:53%;}
+.rightBox{border-left:0.02rem solid #ddd;width:24%;float:left;height:0.4rem;margin-top:0.36rem;text-align:center;}
+.rightBox img{width:1.6rem;height:0.6rem;margin-top:-0.1rem;}
+.rightBox i{width:0.6rem;height:0.6rem;background:url(../images/zdjs/logCloseIcon.png) no-repeat center 0.14rem;background-size:0.32rem 0.16rem;display:block;margin-left:0.6rem;}
+.rightBox .openEye{background:url(../images/zdjs/logOpenIcon.png) no-repeat center 0.14rem;}
+.logMsgBox{margin-bottom:0.3rem;padding-right:0.26rem;}
+.forgetTit{font-size:0.24rem;color:#106fb3;}
+.logMsgBox .errorBox{line-height:1;}
+
+.rightBox b{width:1.1rem;height:0.4rem;background:url(../images/zdjs/yzmIcon.png) no-repeat;display:block;background-size:1.1rem 0.4rem;margin-left:0.26rem;}
+.getYzm{font-size:0.26rem;color:#106fb3;line-height:0.4rem;}
+
+.readProtocol{font-size:0.24rem;padding:0 0 0.3rem 0.6rem;}
+.readProtocol input{float:left;-webkit-appearance: none;width:0.24rem;height:0.24rem;border:0.02rem solid #106fb3;margin-top:-0.01rem;}
+.readProtocol input:focus{outline:none;}
+.readProtocol input:checked{background: url(../images/zdjs/checkedIcon.png) no-repeat center;background-size:0.24rem 0.24rem;}
+.readProtocol label{float:left;color:#999;margin-left:0.1rem;font-weight:normal;}
+.readProtocol a{float:left;color:#106fb3;}
+
+/*修改手机号码*/
+.originalNum{font-size:0.28rem;color:#999;padding:0.4rem 0.3rem 0.2rem;}
+.contactTip{font-size:0.24rem;color:#666;padding-left:0.66rem;padding-top:0.2rem;}
+.contactTip a{color:#106fb3;}
