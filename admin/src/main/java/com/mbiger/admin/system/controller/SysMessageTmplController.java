@@ -29,36 +29,36 @@ public class SysMessageTmplController extends AbstractBaseController {
     private SysMessageTmplService sysMessageTmplService;
 
     @RequestMapping(value = "/sysMessageTmpl/list", method = RequestMethod.GET)
-    public String list () {
+    public String list() {
         return "/system/sysMessageTmpl/list";
     }
 
     @RequestMapping(value = "/sysMessageTmpl/list", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> listSysMessageTmpls (HttpServletRequest request) {
+    public Map<String, Object> listSysMessageTmpls(HttpServletRequest request) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        Map<String,Object> requestParams = formQueryRemenber(request);
+        Map<String, Object> requestParams = formQueryRemenber(request);
         PageHelper.startPage(Integer.parseInt(requestParams.get("currentPage").toString()),
                 Integer.parseInt(requestParams.get("pageSize").toString()));
         final Map<String, Object> params = getQureyParams(requestParams);
         Page<SysMessageTmpl> results = (Page<SysMessageTmpl>) sysMessageTmplService.listSysMessageTmplsByParam(params);
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");
-        resultMap.put("count",String.valueOf(results.getTotal()));
-        resultMap.put("data",results.getResult());
+        resultMap.put("count", String.valueOf(results.getTotal()));
+        resultMap.put("data", results.getResult());
         return resultMap;
     }
 
     @RequestMapping("/sysMessageTmpl/toAdd")
-    public String addIndex () {
+    public String addIndex() {
         return "/system/sysMessageTmpl/add";
     }
 
     @RequestMapping("/sysMessageTmpl/addOrUpdate")
     @ResponseBody
-    public Map<String, Object> addOrUpdate (SysMessageTmpl sysMessageTmpl) {
+    public Map<String, Object> addOrUpdate(SysMessageTmpl sysMessageTmpl) {
         Map<String, Object> resultMap = new HashMap<String, Object>();
-        String msg ;
+        String msg;
 
         if (sysMessageTmpl.getId() == null) {
             // 新增
@@ -90,7 +90,7 @@ public class SysMessageTmplController extends AbstractBaseController {
 
     @RequestMapping(value = "/sysMessageTmpl/{operateType}")
     @ResponseBody
-    public Map<String, Object> operate (@PathVariable String operateType, Integer id) {
+    public Map<String, Object> operate(@PathVariable String operateType, Integer id) {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         String msg = "成功";
         SysMessageTmpl sysMessageTmpl = sysMessageTmplService.getSysMessageTmplById(id);

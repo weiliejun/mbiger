@@ -2,7 +2,10 @@ package com.mbiger.common.util;
 
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.Hashtable;
 
 /**
  * @Description 日期工具类
@@ -12,14 +15,14 @@ public class DateHelper {
     public static final String DATE_FORMAT_YMDHMS = "YYYY-MM-DD HH24:MI:SS";
 
 
-
     /**
      * 将[日期型] 数据转换成 [日期格式] 的字符串
+     *
      * @param formatStr
      * @param date
      * @return 格式化后的字符串
      */
-    public static String getFormatDate(Date date,String formatStr) {
+    public static String getFormatDate(Date date, String formatStr) {
         SimpleDateFormat sdf = new SimpleDateFormat(formatStr);
         return sdf.format(date);
     }
@@ -27,6 +30,7 @@ public class DateHelper {
 
     /**
      * 获取当前系统时间
+     *
      * @return 格式化后的字符串
      */
     public static String getCurrentDate() {
@@ -35,6 +39,7 @@ public class DateHelper {
 
     /**
      * 将日期型数据转换成 YYYY-MM-DD 格式的字符串
+     *
      * @param d
      * @return 格式化后的字符串
      */
@@ -44,6 +49,7 @@ public class DateHelper {
 
     /**
      * 将[日期型] 数据转换成 [日期格式] 的字符串
+     *
      * @param date
      * @return 格式化后的字符串
      */
@@ -53,7 +59,8 @@ public class DateHelper {
 
     /**
      * 获取输入格式的日期字符串，字符串遵循Oracle格式
-     * @param d -日期
+     *
+     * @param d      -日期
      * @param format -指定日期格式，格式的写法为Oracle格式
      * @return 按指定的日期格式转换后的日期字符串
      */
@@ -148,8 +155,9 @@ public class DateHelper {
 
     /**
      * 将指定格式的字符串转换为日期型
-     * @param strDate   -日期
-     * @param oracleFormat  -oracle型日期格式
+     *
+     * @param strDate      -日期
+     * @param oracleFormat -oracle型日期格式
      * @return 转换得到的日期
      */
     public static Date stringToDate(String strDate, String oracleFormat) {
@@ -244,21 +252,22 @@ public class DateHelper {
 
     /**
      * String 类型时间 取得天数差
+     *
      * @param smallDate 较小的时间 yyyy-MM-dd
-     * @param bigDate  较大的时间  yyyy-MM-dd
+     * @param bigDate   较大的时间  yyyy-MM-dd
      * @return 相差天数
      */
-    public static int daysBetween(String smallDate,String bigDate){
+    public static int daysBetween(String smallDate, String bigDate) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         long between_days = 0;
-        try{
+        try {
             cal.setTime(sdf.parse(smallDate));
             long time1 = cal.getTimeInMillis();
             cal.setTime(sdf.parse(bigDate));
             long time2 = cal.getTimeInMillis();
-            between_days=(time2-time1)/(1000*3600*24);
-        }catch (Exception e) {
+            between_days = (time2 - time1) / (1000 * 3600 * 24);
+        } catch (Exception e) {
             e.printStackTrace();
             return -1;
         }
@@ -266,7 +275,8 @@ public class DateHelper {
     }
 
     /**
-     *  验证：短信验证码10分钟有效期
+     * 验证：短信验证码10分钟有效期
+     *
      * @param sysCreateTime:yyyy-MM-dd HH:mm:ss
      * @returntrue: 未过期， false: 已过期
      */
@@ -292,9 +302,9 @@ public class DateHelper {
         long nowTime = System.currentTimeMillis();
         String dateStr = getYMDFormatDate(new Date());
         String dayEndStr = dateStr + " 23:59:59";
-        Date dayEnd = stringToDate(dayEndStr,DATE_FORMAT_YMDHMS);
+        Date dayEnd = stringToDate(dayEndStr, DATE_FORMAT_YMDHMS);
         long dayEndTime = dayEnd.getTime();
         return (dayEndTime - nowTime) / 1000 + 1;
     }
-	
+
 }

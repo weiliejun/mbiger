@@ -32,36 +32,36 @@ public class SessionInterceptor implements HandlerInterceptor {
 
         Subject subject = SecurityUtils.getSubject();
         //判断用户是通过记住我功能自动登录,此时session失效
-        if(!subject.isAuthenticated() && subject.isRemembered()){
+        if (!subject.isAuthenticated() && subject.isRemembered()) {
             try {
-                SysManager sysManager  = (SysManager)subject.getPrincipal();
+                SysManager sysManager = (SysManager) subject.getPrincipal();
                 //密码验证
-                UsernamePasswordToken token = new UsernamePasswordToken(sysManager.getCode(), sysManager.getPassword(),true);
+                UsernamePasswordToken token = new UsernamePasswordToken(sysManager.getCode(), sysManager.getPassword(), true);
                 //把当前用户放入session
                 subject.login(token);
                 //登录成功处理
-                if(subject != null && subject.isAuthenticated()){
+                if (subject != null && subject.isAuthenticated()) {
                     sysManagerService.loginSuccessInit();
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 //自动登录失败,跳转到登录页面
-                response.sendRedirect(request.getContextPath()+"/portal/login");
+                response.sendRedirect(request.getContextPath() + "/portal/login");
                 return false;
             }
-            if(!subject.isAuthenticated()){
+            if (!subject.isAuthenticated()) {
                 //自动登录失败,跳转到登录页面
-                response.sendRedirect(request.getContextPath()+"/portal/login");
+                response.sendRedirect(request.getContextPath() + "/portal/login");
                 return false;
             }
         }
         return true;
     }
- 
+
 
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) {
     }
- 
 
-    public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e)  {
+
+    public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
     }
 }

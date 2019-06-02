@@ -18,9 +18,9 @@
     <!-- 公共CSS end -->
 
 
-    <th:block th:replace="${links}" />
+    <th:block th:replace="${links}"/>
 
-    <th:block th:replace="${styles}" />
+    <th:block th:replace="${styles}"/>
 
 
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
@@ -52,6 +52,7 @@
             "bodyTab" : "/js/bodyTab"
         });
 
+
     </script>
     <!-- 公共JS end -->
 
@@ -62,11 +63,11 @@
         {{#
         var date;
         if(d.createTime){
-            date = new Date(d.createTime);
-            return date.Format("yyyy-MM-dd hh:mm:ss");
+        date = new Date(d.createTime);
+        return date.Format("yyyy-MM-dd hh:mm:ss");
         }else if(d.CREATE_TIME){
-            date = new Date(d.CREATE_TIME);
-            return date.Format("yyyy-MM-dd hh:mm:ss");
+        date = new Date(d.CREATE_TIME);
+        return date.Format("yyyy-MM-dd hh:mm:ss");
         }
         }}
     </script>

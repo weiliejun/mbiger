@@ -10,26 +10,26 @@ import java.util.Map;
 @Repository
 public class UserWebsiteBulletinReadDao extends AbstractBaseDao {
 
-    public void addUserWebsiteBulletinRead(UserWebsiteBulletinRead userWebsiteBulletinRead){
-            insert("userWebsiteBulletinRead.insertUserWebsiteBulletinRead",userWebsiteBulletinRead);
+    public void addUserWebsiteBulletinRead(UserWebsiteBulletinRead userWebsiteBulletinRead) {
+        insert("userWebsiteBulletinRead.insertUserWebsiteBulletinRead", userWebsiteBulletinRead);
     }
 
-    public UserWebsiteBulletinRead getUserWebsiteBulletinReadById(Integer id){
-        return  (UserWebsiteBulletinRead)queryForObject("userWebsiteBulletinRead.selectUserWebsiteBulletinReadById",id);
+    public UserWebsiteBulletinRead getUserWebsiteBulletinReadById(Integer id) {
+        return (UserWebsiteBulletinRead) queryForObject("userWebsiteBulletinRead.selectUserWebsiteBulletinReadById", id);
     }
 
-    public UserWebsiteBulletinRead getUserWebsiteBulletinReadByBulletinId(Integer bulletinId,Integer userId){
-        Map<String,Integer>  params = new HashMap<String,Integer>();
-        params.put("bulletinId",bulletinId);
-        params.put("userId",userId);
-        return  (UserWebsiteBulletinRead)queryForObject("userWebsiteBulletinRead.selectUserWebsiteBulletinReadByBulletinId",params);
+    public UserWebsiteBulletinRead getUserWebsiteBulletinReadByBulletinId(Integer bulletinId, Integer userId) {
+        Map<String, Integer> params = new HashMap<String, Integer>();
+        params.put("bulletinId", bulletinId);
+        params.put("userId", userId);
+        return (UserWebsiteBulletinRead) queryForObject("userWebsiteBulletinRead.selectUserWebsiteBulletinReadByBulletinId", params);
     }
 
-    public void updateUserWebsiteBulletinRead(UserWebsiteBulletinRead userWebsiteBulletinRead){
-        update("userWebsiteBulletinRead.updateUserWebsiteBulletinRead",userWebsiteBulletinRead);
+    public void updateUserWebsiteBulletinRead(UserWebsiteBulletinRead userWebsiteBulletinRead) {
+        update("userWebsiteBulletinRead.updateUserWebsiteBulletinRead", userWebsiteBulletinRead);
     }
 
-    public int countUserWebsiteBulletinReadByParam(Map<String,Object> param){
-        return (int)queryForObject("userWebsiteBulletinRead.countUserWebsiteBulletinReadByParam",param);
+    public int countUserWebsiteBulletinReadByParam(Map<String, Object> param) {
+        return (int) queryForObject("userWebsiteBulletinRead.countUserWebsiteBulletinReadByParam", param);
     }
 }

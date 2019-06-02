@@ -1,14 +1,14 @@
 server:
-    port: 83
-    servlet:
-        context-path: /
+  port: 83
+  servlet:
+    context-path: /
 logging:
-    level:
-        com.x.*: debug
-    #path: C\:\\Users\\zwj\\Desktop
-    path: /data/logs/x
-    file: x.log
-    config: classpath:logback-spring.xml
+  level:
+    com.x.*: debug
+  #path: C\:\\Users\\zwj\\Desktop
+  path: /data/logs/x
+  file: x.log
+  config: classpath:logback-spring.xml
 
 
 

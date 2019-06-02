@@ -13,7 +13,7 @@ public interface UserSmsTemplateApplicationService {
 
     void updateUserSmsTemplateApplication(UserSmsTemplateApplication userSmsTemplateApplication);
 
-    List<UserSmsTemplateApplication> listUserSmsTemplateApplicationsByParams(Map<String,Object> params);
+    List<UserSmsTemplateApplication> listUserSmsTemplateApplicationsByParams(Map<String, Object> params);
 
-    int countUserSmsTemplateApplicationsByParams(Map<String,Object> params);
+    int countUserSmsTemplateApplicationsByParams(Map<String, Object> params);
 }

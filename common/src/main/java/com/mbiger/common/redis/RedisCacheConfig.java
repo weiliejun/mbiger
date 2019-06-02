@@ -29,12 +29,13 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
     }
 
     /**
-     *  设置 redis 数据默认过期时间
-     *  设置@cacheable 序列化方式
+     * 设置 redis 数据默认过期时间
+     * 设置@cacheable 序列化方式
+     *
      * @return
      */
     @Bean
-    public RedisCacheConfiguration redisCacheConfiguration(){
+    public RedisCacheConfiguration redisCacheConfiguration() {
         FastJsonRedisSerializer<Object> fastJsonRedisSerializer = new FastJsonRedisSerializer<>(Object.class);
         RedisCacheConfiguration configuration = RedisCacheConfiguration.defaultCacheConfig();
         configuration = configuration

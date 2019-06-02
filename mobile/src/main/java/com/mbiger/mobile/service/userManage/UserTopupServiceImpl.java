@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service("userTopupService")
-public class UserTopupServiceImpl  implements UserTopupService {
+public class UserTopupServiceImpl implements UserTopupService {
 
     @Autowired
     private UserTopupDao userTopupDao;
@@ -40,7 +40,7 @@ public class UserTopupServiceImpl  implements UserTopupService {
         return userTopupDao.listUserTopupsByParams(params);
     }
 
-    public BigDecimal countUserTopupTotalAmount (Integer userId) {
+    public BigDecimal countUserTopupTotalAmount(Integer userId) {
         return userTopupDao.countUserTopupTotalAmount(userId);
     }
 
@@ -62,7 +62,7 @@ public class UserTopupServiceImpl  implements UserTopupService {
         }
         String filename = transferFile.getOriginalFilename();
         String prefix = filename.substring(filename.lastIndexOf(".") + 1); // 文件后缀
-        String tempFileName = RandomUtil.getSerialNumber() +  "." + prefix; // 生成文件名字
+        String tempFileName = RandomUtil.getSerialNumber() + "." + prefix; // 生成文件名字
         // 创建文件
         File tmpFile = new File(filePath + tempFileName);
         transferFile.transferTo(tmpFile);

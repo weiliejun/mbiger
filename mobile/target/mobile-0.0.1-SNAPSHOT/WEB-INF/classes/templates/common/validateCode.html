@@ -14,6 +14,7 @@
     .patternInput a img{width:120px;height:30px;}
     .patternBtn{width: 116px;height: 40px;background: #106fb3;color: #fff;font-size: 16px;line-height: 40px;text-align: center;border-radius: 6px;display:block;margin:0px auto 20px;}
     .patternBtn:hover,.patternBtn:focus{text-decoration:none;color:#fff;}
+
 </style>
 <div class="patternPos">
     <div class="patternCon">
@@ -27,8 +28,10 @@
                 <div class="patternInfo">
                     <div class="patternInput clearfix">
                         <span>验证码：</span>
-                        <input id="validateCode" name="validateCode" type="text" class="form-control pattYzm" placeholder="请输入图形验证码" />
-                        <a href="javascript:;" onclick="loadVerifyCodeImage()"><img class="verifyCodeImage" alt="" style="display: none;"></a>
+                        <input id="validateCode" name="validateCode" type="text" class="form-control pattYzm"
+                               placeholder="请输入图形验证码"/>
+                        <a href="javascript:;" onclick="loadVerifyCodeImage()"><img class="verifyCodeImage" alt=""
+                                                                                    style="display: none;"></a>
                     </div>
                     <div class="bsErrorBox">
                         <label id="validateCodeError" for="validateCode" class="error" style="display: none;"></label>
@@ -136,4 +139,5 @@
         $("#promptSubmit").removeClass("aDisabledBtn");
         $("#promptSubmit").removeClass("enterEvent");
     };
+
 </script>

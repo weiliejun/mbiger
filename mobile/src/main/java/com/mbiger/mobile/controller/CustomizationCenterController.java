@@ -1,8 +1,8 @@
 package com.mbiger.mobile.controller;
 
 import com.mbiger.common.model.serviceinfo.bean.ServiceInfo;
-import com.mbiger.mobile.web.base.AbstractBaseController;
 import com.mbiger.mobile.service.mbigerServiceManage.MbigerService;
+import com.mbiger.mobile.web.base.AbstractBaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,9 +25,9 @@ public class CustomizationCenterController extends AbstractBaseController {
     private MbigerService mbigerService;
 
     @RequestMapping("/customizationCenter/{serviceType}")
-    public String customizationCenterIndex(HttpServletRequest request , Model model, @PathVariable String serviceType ){
+    public String customizationCenterIndex(HttpServletRequest request, Model model, @PathVariable String serviceType) {
         // 查询  服务信息
-        ServiceInfo serviceInfo =  mbigerService.getServiceInfoByCode(serviceType);
+        ServiceInfo serviceInfo = mbigerService.getServiceInfoByCode(serviceType);
 
         model.addAttribute("serviceInfo", serviceInfo);
         model.addAttribute("serviceType", serviceType);

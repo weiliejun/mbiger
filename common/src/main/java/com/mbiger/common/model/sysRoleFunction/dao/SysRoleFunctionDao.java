@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class SysRoleFunctionDao  extends AbstractBaseDao {
+public class SysRoleFunctionDao extends AbstractBaseDao {
 
     public void addSysRoleFunction(SysRoleFunction sysRoleFunction) {
         insert("sysRoleFunction.addSysRoleFunction", sysRoleFunction);
@@ -28,6 +28,7 @@ public class SysRoleFunctionDao  extends AbstractBaseDao {
     public SysRoleFunction getSysRoleFunctionById(Integer id) {
         return (SysRoleFunction) queryForObject("sysRoleFunction.getSysRoleFunctionById", id);
     }
+
     public List<String> listFunctionCodeByRoleId(Integer roleId) {
         return (List<String>) queryForList("sysRoleFunction.listFunctionCodeByRoleId", roleId);
     }

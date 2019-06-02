@@ -13,46 +13,50 @@ import javax.annotation.Resource;
 @Repository
 public class BaseDaoImpl implements BaseDao {
 
-	@Resource(name="RedisProxy")
+    @Resource(name = "RedisProxy")
 
-	private RedisProxy proxy;
-	
-	public BaseDaoImpl()
-	{
-	}
-	
-	public StringRedisTemplate getStringRedisTemplate(RedisCommand command) {
-		return proxy.getStringRedisTemplate(command);
-	}
-	
-	public RedisTemplate getRedisTemplate(RedisCommand command) {
-		return proxy.getRedisTemplate(command);
-	}
-	public RedisTemplate getMasterRedisTemplate(){
-		return proxy.getMasterRedisTemplate();
-	}
-	public StringRedisTemplate getMasterStringRedisTemplate(){
-		return proxy.getMasterStringRedisTemplate();
-	}
-	/**
-	 * 查找KEY
-	 * @param key
-	 * @return
-	 */
-	public String findKey(String key) {  
-        return getStringRedisTemplate(RedisCommand.GET).opsForValue().get(key);  
-    }  
+    private RedisProxy proxy;
 
-	
-	/**
-	 * 获取
-	 * @param key
-	 * @return
-	 */
-	protected long  getIncrement(String key){  
-        RedisAtomicLong entityIdCounter=new RedisAtomicLong(key, getStringRedisTemplate(RedisCommand.INCR).getConnectionFactory());  
-        return entityIdCounter.incrementAndGet();  
-    }  
+    public BaseDaoImpl() {
+    }
+
+    public StringRedisTemplate getStringRedisTemplate(RedisCommand command) {
+        return proxy.getStringRedisTemplate(command);
+    }
+
+    public RedisTemplate getRedisTemplate(RedisCommand command) {
+        return proxy.getRedisTemplate(command);
+    }
+
+    public RedisTemplate getMasterRedisTemplate() {
+        return proxy.getMasterRedisTemplate();
+    }
+
+    public StringRedisTemplate getMasterStringRedisTemplate() {
+        return proxy.getMasterStringRedisTemplate();
+    }
+
+    /**
+     * 查找KEY
+     *
+     * @param key
+     * @return
+     */
+    public String findKey(String key) {
+        return getStringRedisTemplate(RedisCommand.GET).opsForValue().get(key);
+    }
+
+
+    /**
+     * 获取
+     *
+     * @param key
+     * @return
+     */
+    protected long getIncrement(String key) {
+        RedisAtomicLong entityIdCounter = new RedisAtomicLong(key, getStringRedisTemplate(RedisCommand.INCR).getConnectionFactory());
+        return entityIdCounter.incrementAndGet();
+    }
 //	/**
 //	 * 操作SET
 //	 * @param key

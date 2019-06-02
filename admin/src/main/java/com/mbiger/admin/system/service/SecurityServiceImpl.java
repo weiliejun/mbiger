@@ -101,9 +101,9 @@ public class SecurityServiceImpl implements SecurityService {
     @Transactional
     public void grantRoleRights(Integer roleId, String[] functionCodes, SysManager manager) {
         sysRoleFunctionDao.deleteSysRoleFunctionByRoleId(roleId);
-        if(functionCodes != null){
+        if (functionCodes != null) {
             SysRoleFunction sysRoleFunction = null;
-            for(String functionCode:functionCodes){
+            for (String functionCode : functionCodes) {
                 if (!"".equals(functionCode)) {
                     sysRoleFunction = new SysRoleFunction();
                     sysRoleFunction.setCreatorId(manager.getId());
@@ -143,7 +143,7 @@ public class SecurityServiceImpl implements SecurityService {
 
 
     public List<SysFunction> listSysFunctionByManagerIdAndParentCode(Integer managerId, String parentCode) {
-        return sysFunctionDao.listSysFunctionByManagerId(managerId,parentCode);
+        return sysFunctionDao.listSysFunctionByManagerId(managerId, parentCode);
     }
 
     public List<SysManagerRole> listSysManagerRoleByManagerId(Integer managerId) {
@@ -151,11 +151,11 @@ public class SecurityServiceImpl implements SecurityService {
     }
 
     @Transactional
-    public void grantSysManagerRoles(Integer[] roleIds, Integer managerId,SysManager manager) {
+    public void grantSysManagerRoles(Integer[] roleIds, Integer managerId, SysManager manager) {
         sysManagerRoleDao.deleteSysManagerRoleByManagerId(managerId);
-        if(roleIds != null){
+        if (roleIds != null) {
             SysManagerRole sysManagerRole = null;
-            for(Integer roleId:roleIds){
+            for (Integer roleId : roleIds) {
                 sysManagerRole = new SysManagerRole();
                 sysManagerRole.setManagerId(managerId);
                 sysManagerRole.setRoleId(roleId);
@@ -172,11 +172,11 @@ public class SecurityServiceImpl implements SecurityService {
      * @auther: zhangkele
      * @UpadteDate: 2019/3/12 10:43
      */
-    private void cascadeDeleteSysFunctionByCode(String functionCode){
+    private void cascadeDeleteSysFunctionByCode(String functionCode) {
         Integer count = sysFunctionDao.countSysFunctionsByParentCode(functionCode);
-        if(count > 0){
+        if (count > 0) {
             List<SysFunction> list = sysFunctionDao.listSysFunctionsByParentCode(functionCode);
-            for(SysFunction sysFunction:list){
+            for (SysFunction sysFunction : list) {
                 cascadeDeleteSysFunctionByCode(sysFunction.getCode());
             }
         }

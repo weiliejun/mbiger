@@ -12,19 +12,22 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">类型名称</label>
                         <div class="layui-input-block">
-                            <input id="serviceName" type="text" name="serviceName" placeholder="请输入类型名称" autocomplete="off" class="layui-input" th:value="${serviceName}" />
+                            <input id="serviceName" type="text" name="serviceName" placeholder="请输入类型名称"
+                                   autocomplete="off" class="layui-input" th:value="${serviceName}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">类型编号</label>
                         <div class="layui-input-block">
-                            <input id="serviceCode" type="text" name="serviceCode" placeholder="请输入类型编号" autocomplete="off" class="layui-input" th:value="${serviceCode}" />
+                            <input id="serviceCode" type="text" name="serviceCode" placeholder="请输入类型编号"
+                                   autocomplete="off" class="layui-input" th:value="${serviceCode}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">服务模块</label>
                         <div class="layui-input-block">
-                            <itech:code property="serviceModule" parentCode="cloudComputingType" type="select" th:defaultValue="${serviceModule}"/>
+                            <itech:code property="serviceModule" parentCode="cloudComputingType" type="select"
+                                        th:defaultValue="${serviceModule}"/>
                         </div>
                     </div>
                     <div class="layui-inline">

@@ -16,6 +16,7 @@ public class TestCli implements CommandLineRunner {
     public void run(String... strings) throws Exception {
 
     }
+
     public static void main(String[] args) {
         new SpringApplicationBuilder(TestCli.class).web(WebApplicationType.NONE).run();
     }

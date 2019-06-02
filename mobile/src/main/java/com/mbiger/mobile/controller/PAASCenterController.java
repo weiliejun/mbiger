@@ -1,8 +1,8 @@
 package com.mbiger.mobile.controller;
 
 import com.mbiger.common.model.serviceinfo.bean.ServiceInfo;
-import com.mbiger.mobile.web.base.AbstractBaseController;
 import com.mbiger.mobile.service.mbigerServiceManage.MbigerService;
+import com.mbiger.mobile.web.base.AbstractBaseController;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,16 +32,15 @@ public class PAASCenterController extends AbstractBaseController {
      * @auther: FENG.yanmin
      * @UpadteDate: 2019/1/28 16:15
      */
-    @RequestMapping(value={"/paasCenter/{serviceType}"})
-    public String paasCenterIndex(HttpServletRequest request , Model model, @PathVariable String serviceType ){
+    @RequestMapping(value = {"/paasCenter/{serviceType}"})
+    public String paasCenterIndex(HttpServletRequest request, Model model, @PathVariable String serviceType) {
         // 查询 oa 服务信息
-        ServiceInfo serviceInfo =  mbigerService.getServiceInfoByCode(serviceType );
+        ServiceInfo serviceInfo = mbigerService.getServiceInfoByCode(serviceType);
 
         model.addAttribute("serviceInfo", serviceInfo);
         model.addAttribute("serviceType", serviceType);
         return "userAccount/paasCenter/applyforUsing";
     }
-
 
 
 }

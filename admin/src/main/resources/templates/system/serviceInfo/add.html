@@ -25,32 +25,36 @@
     .layui-form .layui-input-block input, .layui-form .layui-input-block textarea {
         color: #aaaaaa;
     }
+
 </style>
 <body>
 <div class="layui-fluid">
     <fieldset class="layui-elem-field layui-field-title site-title">
         <!--<legend><a name="methodRender">用户编辑</a></legend>-->
     </fieldset>
-    <form class="layui-form" autocomplete="off" >
+    <form class="layui-form" autocomplete="off">
         <input id="id" type="hidden" name="id"/>
         <div class="layui-form-item">
             <label class="layui-form-label">服务编号</label>
             <div class="layui-input-block">
-                <input id="serviceCode" type="text" name="serviceCode" value="" class="layui-input linksName" lay-verify="required"
+                <input id="serviceCode" type="text" name="serviceCode" value="" class="layui-input linksName"
+                       lay-verify="required"
                        placeholder="请服务编号">
             </div>
         </div>
-        <div class="layui-form-item" >
+        <div class="layui-form-item">
             <label class="layui-form-label">服务名称</label>
             <div class="layui-input-block">
-                <input id="serviceName" type="text" name="serviceName" value="" class="layui-input" lay-verify="required" placeholder="请输入服务名称" disabled>
+                <input id="serviceName" type="text" name="serviceName" value="" class="layui-input"
+                       lay-verify="required" placeholder="请输入服务名称" disabled>
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">服务模块</label>
             <div class="layui-input-block">
-                <itech:code property="serviceModule" parentCode="cloudComputingType" type="select" lay-verify="required"/>
+                <itech:code property="serviceModule" parentCode="cloudComputingType" type="select"
+                            lay-verify="required"/>
             </div>
         </div>
 
@@ -65,21 +69,23 @@
         <div class="layui-form-item">
             <label class="layui-form-label">服务简介</label>
             <div class="layui-input-block">
-             <textarea  id="serviceBrif" type="text" name="serviceBrif" value="" class="layui-input " lay-verify="required" placeholder="请输入服务简介">
+             <textarea id="serviceBrif" type="text" name="serviceBrif" value="" class="layui-input "
+                       lay-verify="required" placeholder="请输入服务简介">
              </textarea>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">服务描述</label>
             <div class="layui-input-block">
-             <textarea  id="serviceDesc" type="text" name="serviceDesc" value="" class="layui-input " placeholder="请输入服务描述">
+             <textarea id="serviceDesc" type="text" name="serviceDesc" value="" class="layui-input "
+                       placeholder="请输入服务描述">
              </textarea>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">文档链接</label>
             <div class="layui-input-block">
-             <textarea  id="docLink" type="text" name="docLink" value="" class="layui-input "  placeholder="文档链接">
+             <textarea id="docLink" type="text" name="docLink" value="" class="layui-input " placeholder="文档链接">
              </textarea>
             </div>
         </div>

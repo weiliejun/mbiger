@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service("userTopupService")
-public class UserTopupServiceImpl  implements UserTopupService {
+public class UserTopupServiceImpl implements UserTopupService {
 
     @Autowired
     private UserTopupDao userTopupDao;
@@ -40,7 +40,7 @@ public class UserTopupServiceImpl  implements UserTopupService {
         return userTopupDao.listUserTopupsByParams(params);
     }
 
-    public Map<String, Object> updateTopUpStatus (Integer userTopUpId) {
+    public Map<String, Object> updateTopUpStatus(Integer userTopUpId) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         UserTopup userTopup = userTopupDao.getUserTopupById(userTopUpId);
         if (userTopup == null) {

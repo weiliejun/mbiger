@@ -102,7 +102,7 @@ public class RedisUtil {
      * redis的key键规则定义
      *
      * @param redisEnum 枚举对象
-     * @param args   参数..
+     * @param args      参数..
      * @return key
      */
     public static String keyBuilder(RedisEnum redisEnum, String... args) {

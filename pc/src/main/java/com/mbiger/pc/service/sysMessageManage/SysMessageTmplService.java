@@ -16,10 +16,11 @@ public interface SysMessageTmplService {
 
     /**
      * cyp
+     *
      * @param busiType
      * @param type
      * @param values
      * @return 数据库获取模板
      */
-     Map<String, String> tmplAssignment(String busiType, String type, Map<String, String> values) ;
+    Map<String, String> tmplAssignment(String busiType, String type, Map<String, String> values);
 }

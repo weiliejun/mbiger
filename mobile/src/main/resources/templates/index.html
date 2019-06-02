@@ -6,77 +6,77 @@
     <link rel="stylesheet" th:href="@{/css/zdIndex.css}">
 </head>
 <body>
-    <!-- 头部公共 start -->
-    <div th:replace="/common/header :: commonHeader('navigation')"></div>
+<!-- 头部公共 start -->
+<div th:replace="/common/header :: commonHeader('navigation')"></div>
 
-    <div class="bannerBox">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><a href="javascript:;"><img th:src="@{/images/zdjs/banner1.png}" /></a></div>
-                <div class="swiper-slide"><a href="javascript:;"><img th:src="@{/images/zdjs/banner2.png}" /></a></div>
-                <div class="swiper-slide"><a href="javascript:;"><img th:src="@{/images/zdjs/banner3.png}" /></a></div>
-                <div class="swiper-slide"><a href="javascript:;"><img th:src="@{/images/zdjs/banner4.png}" /></a></div>
-            </div>
-            <!-- 如果需要分页器 -->
-            <div class="swiper-pagination"></div>
+<div class="bannerBox">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><a href="javascript:;"><img th:src="@{/images/zdjs/banner1.png}"/></a></div>
+            <div class="swiper-slide"><a href="javascript:;"><img th:src="@{/images/zdjs/banner2.png}"/></a></div>
+            <div class="swiper-slide"><a href="javascript:;"><img th:src="@{/images/zdjs/banner3.png}"/></a></div>
+            <div class="swiper-slide"><a href="javascript:;"><img th:src="@{/images/zdjs/banner4.png}"/></a></div>
         </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
     </div>
+</div>
 
-    <div th:if="${loginFlag == false}" class="tipRegBox clearfix">
-        <p class="tipRegText">现在注册，免费体验多款云产品</p>
-        <a th:href="@{/register/index}" class="freeRegBtn">免费注册</a>
-    </div>
+<div th:if="${loginFlag == false}" class="tipRegBox clearfix">
+    <p class="tipRegText">现在注册，免费体验多款云产品</p>
+    <a th:href="@{/register/index}" class="freeRegBtn">免费注册</a>
+</div>
 
-    <div class="indexMod">
-        <h3 class="modTit">我们的云产品</h3>
-        <ul class="cloudProList clearfix">
-            <li>
-                <a href="javascript:;" class="cloSa">
-                    <span class="cloName">SaaS</span>
-                    <p class="cloIntro">完整的可直接使用的应用程序</p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:;" class="cloPa">
-                    <span class="cloName">PaaS</span>
-                    <p class="cloIntro">提供各种开发或分发应用的解决方案</p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:;" class="cloLa">
-                    <span class="cloName">LaaS</span>
-                    <p class="cloIntro">完善的计算机基础设施用户能够部署和运行任意软件</p>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:;" class="cloCus">
-                    <span class="cloName">定制研发</span>
-                    <p class="cloIntro">整体解决方案，专业定制、专注研发</p>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="indexMod">
-        <h3 class="modTit">项目流程</h3>
-        <p class="proFlow">
-            <img th:src="@{/images/zdjs/proFlow.png}" />
-        </p>
-    </div>
+<div class="indexMod">
+    <h3 class="modTit">我们的云产品</h3>
+    <ul class="cloudProList clearfix">
+        <li>
+            <a href="javascript:;" class="cloSa">
+                <span class="cloName">SaaS</span>
+                <p class="cloIntro">完整的可直接使用的应用程序</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="cloPa">
+                <span class="cloName">PaaS</span>
+                <p class="cloIntro">提供各种开发或分发应用的解决方案</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="cloLa">
+                <span class="cloName">LaaS</span>
+                <p class="cloIntro">完善的计算机基础设施用户能够部署和运行任意软件</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="cloCus">
+                <span class="cloName">定制研发</span>
+                <p class="cloIntro">整体解决方案，专业定制、专注研发</p>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="indexMod">
+    <h3 class="modTit">项目流程</h3>
+    <p class="proFlow">
+        <img th:src="@{/images/zdjs/proFlow.png}"/>
+    </p>
+</div>
 
-    <!-- 成功案例 start -->
-    <div th:replace="/common/module :: successCase"></div>
-    <!-- 成功案例 end -->
+<!-- 成功案例 start -->
+<div th:replace="/common/module :: successCase"></div>
+<!-- 成功案例 end -->
 
-    <!-- 公共尾部 start -->
-    <div th:replace="/common/footer :: commonFooter"></div>
-    <!-- 公共尾部 end -->
+<!-- 公共尾部 start -->
+<div th:replace="/common/footer :: commonFooter"></div>
+<!-- 公共尾部 end -->
 
-    <!-- 公共JS start -->
-    <div th:include="/common/publicJs :: onloadJS"></div>
-    <!-- 公共JS start -->
+<!-- 公共JS start -->
+<div th:include="/common/publicJs :: onloadJS"></div>
+<!-- 公共JS start -->
 
-    <script type="text/javascript" th:src="@{/js/public/swiper.min.js}"></script>
-    <script>
+<script type="text/javascript" th:src="@{/js/public/swiper.min.js}"></script>
+<script>
         $(document).ready(function(){
             $(function(){
                 //banner 轮播图
@@ -127,6 +127,7 @@
                 });
             });
         });
-    </script>
+
+</script>
 </body>
 </html>

@@ -12,14 +12,14 @@ import java.util.Map;
 public class WebsiteBulletinServiceImpl implements WebsiteBulletinService {
 
     @Autowired
-    private WebsiteBulletinDao  websiteBulletinDao;
+    private WebsiteBulletinDao websiteBulletinDao;
 
     public void addWebsiteBulletin(WebsiteBulletin websiteBulletin) {
         websiteBulletinDao.addWebsiteBulletin(websiteBulletin);
     }
 
     public WebsiteBulletin getWebsiteBulletinById(Integer id) {
-        return  websiteBulletinDao.getWebsiteBulletinById(id);
+        return websiteBulletinDao.getWebsiteBulletinById(id);
     }
 
     public void updateWebsiteBulletin(WebsiteBulletin websiteBulletin) {
@@ -30,7 +30,7 @@ public class WebsiteBulletinServiceImpl implements WebsiteBulletinService {
         return websiteBulletinDao.countWebsiteBulletinsByParams(params);
     }
 
-    public List<Map<String,Object>> listWebsiteBulletinsByParams(Map<String,Object> params){
+    public List<Map<String, Object>> listWebsiteBulletinsByParams(Map<String, Object> params) {
         return websiteBulletinDao.listWebsiteBulletinsByParams(params);
     }
 }

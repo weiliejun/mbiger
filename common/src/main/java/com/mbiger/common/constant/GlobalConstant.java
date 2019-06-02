@@ -1,11 +1,7 @@
 package com.mbiger.common.constant;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- *系统全局常量
+ * 系统全局常量
  */
 public class GlobalConstant {
     //状态有效

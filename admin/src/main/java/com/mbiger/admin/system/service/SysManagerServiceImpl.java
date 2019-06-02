@@ -10,7 +10,6 @@ import com.mbiger.common.model.sysManager.dao.SysManagerDao;
 import com.mbiger.common.model.sysManagerRole.dao.SysManagerRoleDao;
 import com.mbiger.common.model.sysRole.bean.SysRole;
 import com.mbiger.common.model.sysRole.dao.SysRoleDao;
-import com.mbiger.common.util.IpHelper;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -64,9 +63,9 @@ public class SysManagerServiceImpl implements SysManagerService {
 
     public void loginSuccessInit() {
         Subject subject = SecurityUtils.getSubject();
-        SysManager sysManager  = (SysManager)subject.getPrincipal();
+        SysManager sysManager = (SysManager) subject.getPrincipal();
         //登录成功处理
-        if(subject != null && subject.isAuthenticated()){
+        if (subject != null && subject.isAuthenticated()) {
             Session session = subject.getSession();
             CurrentManager currentManager = new CurrentManager();
             currentManager.setSysManager(sysManager);
@@ -74,9 +73,9 @@ public class SysManagerServiceImpl implements SysManagerService {
             List<SysRole> roleList = sysRoleDao.listRoleByManagerId(sysManager.getId());
             currentManager.setRoles(roleList);
             //查询一级菜单
-            List<SysFunction> functionList = sysFunctionDao.listSysFunctionByManagerId(sysManager.getId(),"root");
+            List<SysFunction> functionList = sysFunctionDao.listSysFunctionByManagerId(sysManager.getId(), "root");
             currentManager.setLevelOneFunctions(functionList);
-            session.setAttribute(ApplicationSessionKeys.CURRENT_USER,currentManager);
+            session.setAttribute(ApplicationSessionKeys.CURRENT_USER, currentManager);
         }
     }
 }

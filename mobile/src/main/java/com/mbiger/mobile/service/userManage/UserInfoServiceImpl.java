@@ -39,7 +39,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfoDao.addUserInfo(userInfo);
     }
 
-    public void updateUserInfo(UserInfo userInfo){
+    public void updateUserInfo(UserInfo userInfo) {
         userInfoDao.updateUserInfo(userInfo);
     }
 
@@ -61,11 +61,12 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     /**
      * 注册-校验
+     *
      * @Author Feng.yanmin
-     * @UpdateDate:   2019/1/17 16:05
+     * @UpdateDate: 2019/1/17 16:05
      */
     public Map<String, String> userRegisterVerify(String mobile, String nickName, String validateCode, String exitValidateCode) {
-        Map<String, String>  resultMap = new HashMap<String, String>();
+        Map<String, String> resultMap = new HashMap<String, String>();
         try {
             // 校验1：验证昵称是否存在
             UserInfo checkNickName = userInfoDao.getUserInfoByNickName(nickName);
@@ -84,15 +85,15 @@ public class UserInfoServiceImpl implements UserInfoService {
             // 校验3：图形验证码
             if (StringHelper.isEmpty(exitValidateCode) || !exitValidateCode.equalsIgnoreCase(validateCode)) {
                 resultMap.put("flag", ResultCode.VALIDATE_CODE_ERROR.code());
-                resultMap.put("msg",ResultCode.VALIDATE_CODE_ERROR.message());
+                resultMap.put("msg", ResultCode.VALIDATE_CODE_ERROR.message());
                 return resultMap;
             }
 
-            resultMap.put("flag",  ResultCode.SUCCESS.code());
-            resultMap.put("msg",  ResultCode.SUCCESS.message());
-        }catch (Exception e){
+            resultMap.put("flag", ResultCode.SUCCESS.code());
+            resultMap.put("msg", ResultCode.SUCCESS.message());
+        } catch (Exception e) {
             e.printStackTrace();
-            resultMap.put("flag",ResultCode.PERMISSION_NO_ACCESS.code());
+            resultMap.put("flag", ResultCode.PERMISSION_NO_ACCESS.code());
             resultMap.put("msg", ResultCode.PERMISSION_NO_ACCESS.message());
         }
         return resultMap;
@@ -100,10 +101,11 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     /**
      * 注册-提交
+     *
      * @Author Feng.yanmin
-     * @UpdateDate:   2019/1/17 16:05
+     * @UpdateDate: 2019/1/17 16:05
      */
-    public Map<String, String> userRegisterSubmit(String mobile, String password, String nickName ){
+    public Map<String, String> userRegisterSubmit(String mobile, String password, String nickName) {
         Map<String, String> resultMap = new HashMap<String, String>();
         try {
             // 1、添加数据
@@ -124,23 +126,23 @@ public class UserInfoServiceImpl implements UserInfoService {
             //params.put("date", DateHelper.getYMDFormatDate(new Date()));
             sysMessageService.sendWebSiteMessage(newUser.getId(), MessageBusiType.REGISTER, params);
 
-            resultMap.put("flag",  ResultCode.SUCCESS.code());
-            resultMap.put("msg",  ResultCode.SUCCESS.message());
+            resultMap.put("flag", ResultCode.SUCCESS.code());
+            resultMap.put("msg", ResultCode.SUCCESS.message());
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            resultMap.put("flag",ResultCode.PERMISSION_NO_ACCESS.code());
+            resultMap.put("flag", ResultCode.PERMISSION_NO_ACCESS.code());
             resultMap.put("msg", ResultCode.PERMISSION_NO_ACCESS.message());
         }
         return resultMap;
     }
 
     /**
-     * @Description:  登录逻辑
-     * @Author:       zhangkele
-     * @UpdateDate:   2019/1/17 16:05
+     * @Description: 登录逻辑
+     * @Author: zhangkele
+     * @UpdateDate: 2019/1/17 16:05
      */
-    public Map<String,String> login(String userName,String password,String ip,String sid,String exitVerifyCode,String validateCode){
+    public Map<String, String> login(String userName, String password, String ip, String sid, String exitVerifyCode, String validateCode) {
         Map<String, String> result = new HashMap<String, String>();
         //M版没有图形验证码
         /*if (exitVerifyCode == null || !exitVerifyCode.equalsIgnoreCase(validateCode)) {
@@ -157,7 +159,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         }
         UserInfo userInfo = userInfoDao.getUserInfoByNickNameOrMobile(userName.trim());
         //账户存在性校验
-        if(userInfo == null){
+        if (userInfo == null) {
             result.put("flag", "false");
             result.put("message", "您输入的账户不存在，请重新输入！");
             return result;
@@ -170,10 +172,10 @@ public class UserInfoServiceImpl implements UserInfoService {
         }
 
         //密码输错次数校验
-        String passwordErrorCountKey = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_PASSWORDERRORCOUNT,userName);
-        Integer passwordErrorCount = (Integer)cacheService.getObject(passwordErrorCountKey);
-        passwordErrorCount = passwordErrorCount == null?0:passwordErrorCount;
-        if(passwordErrorCount >= 3){
+        String passwordErrorCountKey = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_PASSWORDERRORCOUNT, userName);
+        Integer passwordErrorCount = (Integer) cacheService.getObject(passwordErrorCountKey);
+        passwordErrorCount = passwordErrorCount == null ? 0 : passwordErrorCount;
+        if (passwordErrorCount >= 3) {
             result.put("flag", "false");
             result.put("message", "密码连续输错三次，请两小时后重试！");
             return result;
@@ -183,7 +185,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         String passwordMd5 = MD5Util.MD5(password);
         if (!passwordMd5.equalsIgnoreCase(userInfo.getPassword())) {
             passwordErrorCount++;
-            cacheService.set(passwordErrorCountKey, passwordErrorCount,PASSWORD_ERROR_TIME);
+            cacheService.set(passwordErrorCountKey, passwordErrorCount, PASSWORD_ERROR_TIME);
             result.put("flag", "false");
             result.put("message", "密码不正确，请重新输入！");
             return result;
@@ -204,11 +206,11 @@ public class UserInfoServiceImpl implements UserInfoService {
         sessionUser.setUserInfo(userInfo);
         sessionUser.setIp(ip);
         sessionUser.setSessionId(sid);
-        saveSession(sid,sessionUser);
+        saveSession(sid, sessionUser);
         /**
          *  清除密码错误
          */
-        if(passwordErrorCount > 0){
+        if (passwordErrorCount > 0) {
             clearPasswordErrorCount(userName);
         }
 
@@ -225,106 +227,106 @@ public class UserInfoServiceImpl implements UserInfoService {
         Integer uid = userInfo.getId();
 
         //根据sid查询原有的uid
-        String oldUid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid,"uid"}));
+        String oldUid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid, "uid"}));
         //判断key是否存在，若存在就删除
-        if(oldUid != null && !"".equals(oldUid)){
-            cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{oldUid}));
+        if (oldUid != null && !"".equals(oldUid)) {
+            cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{oldUid}));
         }
         //删除原有的key
-        cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid}));
-        cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid,"uid"}));
+        cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid}));
+        cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid, "uid"}));
 
         //以sid为key，存储sid和sessionUser的关系
-        cacheService.set(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid}),sessionUser,SESSION_INVALID_TIME);
+        cacheService.set(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid}), sessionUser, SESSION_INVALID_TIME);
 
         //以sid为key，存储sid和uid的关系
-        cacheService.set(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid,"uid"}),String.valueOf(uid),SESSION_INVALID_TIME);
+        cacheService.set(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid, "uid"}), String.valueOf(uid), SESSION_INVALID_TIME);
 
         //以uid为key,存储uid和sid的关系
-        cacheService.set(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{String.valueOf(uid)}),sid,SESSION_INVALID_TIME);
+        cacheService.set(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{String.valueOf(uid)}), sid, SESSION_INVALID_TIME);
     }
 
     public void loginOut(String sid, Integer uid) {
         //根据sid查询原有的uid
-        String oldUid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid,"uid"}));
+        String oldUid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid, "uid"}));
         //判断key是否存在，若存在就删除
-        if(oldUid != null && !"".equals(oldUid)){
-            cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{oldUid}));
+        if (oldUid != null && !"".equals(oldUid)) {
+            cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{oldUid}));
         }
-        cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid}));
-        cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{String.valueOf(uid)}));
+        cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid}));
+        cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{String.valueOf(uid)}));
     }
 
 
     public void loginOut(Integer uid) {
-        String sid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{String.valueOf(uid)}));
-        if(sid != null && !"".equalsIgnoreCase(sid)){
+        String sid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{String.valueOf(uid)}));
+        if (sid != null && !"".equalsIgnoreCase(sid)) {
             //根据sid查询原有的uid
-            String oldUid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid,"uid"}));
+            String oldUid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid, "uid"}));
             //判断key是否存在，若存在就删除
-            if(oldUid != null && !"".equals(oldUid)){
-                cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{oldUid}));
+            if (oldUid != null && !"".equals(oldUid)) {
+                cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{oldUid}));
             }
-            cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid}));
-            cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{String.valueOf(uid)}));
+            cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid}));
+            cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{String.valueOf(uid)}));
         }
     }
 
     public void loginOut(String sid) {
         SessionUser sessionUser = getSessionUserBySid(sid);
-        if(sessionUser != null){
+        if (sessionUser != null) {
             UserInfo userInfo = sessionUser.getUserInfo();
             Integer uid = userInfo.getId();
-            cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid}));
-            cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{String.valueOf(uid)}));
+            cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid}));
+            cacheService.remove(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{String.valueOf(uid)}));
         }
     }
 
     public SessionUser getSessionUserBySid(String sid) {
-        String key = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid});
-        SessionUser sessionUser = (SessionUser)cacheService.getObject(key);
-        if(sessionUser != null){//重置有效时间
+        String key = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid});
+        SessionUser sessionUser = (SessionUser) cacheService.getObject(key);
+        if (sessionUser != null) {//重置有效时间
             //以sid为key，存储sid和sessionUser的关系
-            cacheService.expire(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid}),SESSION_INVALID_TIME);
+            cacheService.expire(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid}), SESSION_INVALID_TIME);
 
-            cacheService.expire(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid,"uid"}),SESSION_INVALID_TIME);
+            cacheService.expire(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid, "uid"}), SESSION_INVALID_TIME);
 
-            String uid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid,"uid"}));
-            cacheService.expire(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{uid}),SESSION_INVALID_TIME);
+            String uid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid, "uid"}));
+            cacheService.expire(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{uid}), SESSION_INVALID_TIME);
         }
         return sessionUser;
     }
 
 
     public SessionUser getSessionUserByUid(Integer uid) {
-        String sid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{String.valueOf(uid)}));
-        if(sid != null && !"".equalsIgnoreCase(sid)){
-            String key = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid});
-            return (SessionUser)cacheService.getObject(key);
+        String sid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{String.valueOf(uid)}));
+        if (sid != null && !"".equalsIgnoreCase(sid)) {
+            String key = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid});
+            return (SessionUser) cacheService.getObject(key);
         }
         return null;
     }
 
     public void eidtSessionUserByUid(Integer uid, SessionUser sessionUser) {
-        String sid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{String.valueOf(uid)}));
-        if(sid != null && !"".equalsIgnoreCase(sid)){
-            String key = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid});
-            cacheService.set(key,sessionUser,SESSION_INVALID_TIME);
+        String sid = cacheService.get(RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{String.valueOf(uid)}));
+        if (sid != null && !"".equalsIgnoreCase(sid)) {
+            String key = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid});
+            cacheService.set(key, sessionUser, SESSION_INVALID_TIME);
         }
     }
 
     public void eidtSessionUserBySessionId(String sid, SessionUser sessionUser) {
-        String key = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{sid});
-        cacheService.set(key,sessionUser,SESSION_INVALID_TIME);
+        String key = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{sid});
+        cacheService.set(key, sessionUser, SESSION_INVALID_TIME);
     }
 
     public boolean isOnline(Integer uid) {
-        String key = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION,new String[]{String.valueOf(uid)});
+        String key = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_SESSION, new String[]{String.valueOf(uid)});
         return cacheService.hasKey(key);
     }
 
     public void clearPasswordErrorCount(String userName) {
-        String passwordErrorCountKey = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_PASSWORDERRORCOUNT,userName);
+        String passwordErrorCountKey = RedisUtil.keyBuilder(RedisEnum.USER_LOGIN_PASSWORDERRORCOUNT, userName);
         cacheService.remove(passwordErrorCountKey);
     }
 
@@ -335,19 +337,19 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     public Map<String, String> checkAndSavePassword(String mobile, String password) {
         Map<String, String> result = new HashMap<String, String>();
-        if(mobile == null){
+        if (mobile == null) {
             result.put("result", "false");
             result.put("flag", ResultCode.FORGOT_PASSWORD_MOBILE_NOT_EXIST.code());
             result.put("message", ResultCode.FORGOT_PASSWORD_MOBILE_NOT_EXIST.message());
             return result;
         }
-        if(password == null){
+        if (password == null) {
             result.put("result", "false");
             result.put("flag", ResultCode.FORGOT_PASSWORD_NOT_EXIST.code());
             result.put("message", ResultCode.FORGOT_PASSWORD_NOT_EXIST.message());
             return result;
         }
-       UserInfo userInfo = getUserByMobile(mobile);
+        UserInfo userInfo = getUserByMobile(mobile);
         if (userInfo == null) {
             result.put("result", "false");
             result.put("flag", ResultCode.FORGOT_PASSWORD_SMS_CODE_ERR.code());

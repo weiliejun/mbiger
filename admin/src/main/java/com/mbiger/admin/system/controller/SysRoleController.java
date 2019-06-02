@@ -1,20 +1,14 @@
 package com.mbiger.admin.system.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.mbiger.admin.system.service.SecurityService;
 import com.mbiger.admin.system.service.SysManagerService;
 import com.mbiger.admin.web.base.AbstractBaseController;
 import com.mbiger.common.constant.GlobalConstant;
-import com.mbiger.common.model.sysFunction.bean.SysFunction;
 import com.mbiger.common.model.sysManager.bean.SysManager;
 import com.mbiger.common.model.sysRole.bean.SysRole;
-import com.mbiger.common.util.MD5Util;
 import com.mbiger.common.util.StringHelper;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -72,19 +65,18 @@ public class SysRoleController extends AbstractBaseController {
     @ResponseBody
     public Map<String, Object> listSysRoles(HttpServletRequest request) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        Map<String,Object> requestParams = formQueryRemenber(request);
+        Map<String, Object> requestParams = formQueryRemenber(request);
         PageHelper.startPage(Integer.parseInt(requestParams.get("currentPage").toString()),
                 Integer.parseInt(requestParams.get("pageSize").toString()));
         PageHelper.orderBy("CREATE_TIME desc");
         final Map<String, Object> params = getQureyParams(requestParams);
-        final Page<SysRole> results = (Page<SysRole>)securityService.listSysRolesByParams(params);
+        final Page<SysRole> results = (Page<SysRole>) securityService.listSysRolesByParams(params);
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");
-        resultMap.put("count",String.valueOf(results.getTotal()));
-        resultMap.put("data",results.getResult());
+        resultMap.put("count", String.valueOf(results.getTotal()));
+        resultMap.put("data", results.getResult());
         return resultMap;
     }
-
 
 
     /**
@@ -97,7 +89,7 @@ public class SysRoleController extends AbstractBaseController {
     public Map<String, Object> addOrUpdateSysRole(SysRole sysRole) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         //参数校验
-        if(StringHelper.isEmpty(sysRole.getName())){
+        if (StringHelper.isEmpty(sysRole.getName())) {
             resultMap.put("flag", "false");
             resultMap.put("msg", "角色名称不能为空");
             return resultMap;
@@ -107,7 +99,7 @@ public class SysRoleController extends AbstractBaseController {
         if (sysRole.getId() == null) {
             //首先判断用户名是否可用
             existSysRole = securityService.getSysRoleByName(sysRole.getName());
-            if(existSysRole != null){
+            if (existSysRole != null) {
                 resultMap.put("flag", "false");
                 resultMap.put("msg", "该角色已经存在");
                 return resultMap;
@@ -123,15 +115,15 @@ public class SysRoleController extends AbstractBaseController {
             return resultMap;
         } else {//编辑
             existSysRole = securityService.getSysRoleById(sysRole.getId());
-            if(existSysRole == null){
+            if (existSysRole == null) {
                 resultMap.put("flag", "false");
                 resultMap.put("msg", "该角色已经存在");
                 return resultMap;
             }
             //判断修改的角色是否唯一
-            if(!existSysRole.getName().equals(sysRole.getName())){
+            if (!existSysRole.getName().equals(sysRole.getName())) {
                 SysRole oldSysRole = securityService.getSysRoleByName(sysRole.getName());
-                if(oldSysRole != null){
+                if (oldSysRole != null) {
                     resultMap.put("flag", "false");
                     resultMap.put("msg", "角色名称已存在");
                     return resultMap;
@@ -154,10 +146,10 @@ public class SysRoleController extends AbstractBaseController {
      */
     @RequestMapping(value = "/{operateType}")
     @ResponseBody
-    public Map<String, Object> operate(@PathVariable String operateType,Integer id) {
+    public Map<String, Object> operate(@PathVariable String operateType, Integer id) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         SysRole sysRole = securityService.getSysRoleById(id);
-        if(sysRole == null){
+        if (sysRole == null) {
             resultMap.put("flag", "false");
             resultMap.put("msg", "该角色不存在");
             return resultMap;
@@ -165,14 +157,14 @@ public class SysRoleController extends AbstractBaseController {
         SysRole sysRoleTemp = new SysRole();
         sysRoleTemp.setId(id);
         //删除
-        if("delete".equals(operateType)){
+        if ("delete".equals(operateType)) {
             securityService.deleteSysRoleById(id);
             resultMap.put("flag", "true");
             resultMap.put("msg", "删除成功");
             return resultMap;
         }
         //启用
-        if("enable".equals(operateType)){
+        if ("enable".equals(operateType)) {
             sysRoleTemp.setStatus("0");
             securityService.updateSysRole(sysRoleTemp);
             resultMap.put("flag", "true");
@@ -180,7 +172,7 @@ public class SysRoleController extends AbstractBaseController {
             return resultMap;
         }
         //禁用
-        if("disable".equals(operateType)){
+        if ("disable".equals(operateType)) {
             sysRoleTemp.setStatus("1");
             securityService.updateSysRole(sysRoleTemp);
             resultMap.put("flag", "true");
@@ -191,8 +183,6 @@ public class SysRoleController extends AbstractBaseController {
         resultMap.put("msg", "操作异常");
         return resultMap;
     }
-
-
 
 
     @ResponseBody
@@ -231,9 +221,9 @@ public class SysRoleController extends AbstractBaseController {
     @RequestMapping(value = "/grant/rights/setting")
     @ResponseBody
     public Map<String, Object> grantRoleRights(Integer roleId,
-                                               @RequestParam(value="functionCodes[]", required = false)String[] functionCodes) {
+                                               @RequestParam(value = "functionCodes[]", required = false) String[] functionCodes) {
         LinkedHashMap<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        if(roleId == null){
+        if (roleId == null) {
             resultMap.put("flag", "false");
             resultMap.put("msg", "参数为空");
             return resultMap;
@@ -241,7 +231,7 @@ public class SysRoleController extends AbstractBaseController {
         SysManager sysManager = new SysManager();
         sysManager.setId(1);
         sysManager.setName("系统管理员");
-        securityService.grantRoleRights(roleId,functionCodes,sysManager);
+        securityService.grantRoleRights(roleId, functionCodes, sysManager);
         resultMap.put("flag", "true");
         resultMap.put("msg", "设置成功");
         return resultMap;

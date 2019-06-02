@@ -10,28 +10,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class TestController extends AbstractBaseController {
 
-    @RequestMapping(value = {"/","/index"})
-    public String index(Model model){
+    @RequestMapping(value = {"/", "/index"})
+    public String index(Model model) {
 
 
         return "index";
     }
 
-    @RequestMapping(value = {"/login"},method = RequestMethod.GET)
-    public String loginIndex(){
-        return  "login";
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+    public String loginIndex() {
+        return "login";
     }
 
-    @RequestMapping(value = {"/test/{path1}"},method = RequestMethod.GET)
-    public String test1(@PathVariable String path1){
-        return  "pages" + "/" + path1;
+    @RequestMapping(value = {"/test/{path1}"}, method = RequestMethod.GET)
+    public String test1(@PathVariable String path1) {
+        return "pages" + "/" + path1;
     }
-    @RequestMapping(value = {"/test/{path1}/{path2}"},method = RequestMethod.GET)
-    public String test2(@PathVariable String path1,@PathVariable String path2){
-        return  "pages" + "/" + path1 + "/" + path2;
+
+    @RequestMapping(value = {"/test/{path1}/{path2}"}, method = RequestMethod.GET)
+    public String test2(@PathVariable String path1, @PathVariable String path2) {
+        return "pages" + "/" + path1 + "/" + path2;
     }
-    @RequestMapping(value = {"/test/{path1}/{path2}/{path3}"},method = RequestMethod.GET)
-    public String test3(@PathVariable String path1,@PathVariable String path2,@PathVariable String path3){
-        return  "pages" + "/" + path1 + "/" + path2 + "/" + path3;
+
+    @RequestMapping(value = {"/test/{path1}/{path2}/{path3}"}, method = RequestMethod.GET)
+    public String test3(@PathVariable String path1, @PathVariable String path2, @PathVariable String path3) {
+        return "pages" + "/" + path1 + "/" + path2 + "/" + path3;
     }
 }

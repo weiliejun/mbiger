@@ -3,19 +3,14 @@ package com.mbiger.admin.system.controller;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.mbiger.admin.system.service.ServiceInfoService;
-import com.mbiger.admin.system.service.SysManagerService;
 import com.mbiger.admin.system.service.UserExpenseService;
 import com.mbiger.admin.system.service.UserInfoService;
 import com.mbiger.admin.web.base.AbstractBaseController;
 import com.mbiger.common.constant.GlobalConstant;
 import com.mbiger.common.model.serviceinfo.bean.ServiceInfo;
-import com.mbiger.common.model.serviceinfo.dao.ServiceInfoDao;
-import com.mbiger.common.model.sysManager.bean.SysManager;
 import com.mbiger.common.model.user.bean.UserInfo;
 import com.mbiger.common.model.userExpense.bean.UserExpense;
-import com.mbiger.common.util.MD5Util;
 import com.mbiger.common.util.RandomUtil;
-import com.mbiger.common.util.StringHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +34,7 @@ public class UserExpenseController extends AbstractBaseController {
     @Autowired
     private UserExpenseService userExpenseService;
     @Autowired
-    private UserInfoService  userInfoService;
+    private UserInfoService userInfoService;
     @Autowired
     private ServiceInfoService serviceInfoService;
 
@@ -54,10 +49,11 @@ public class UserExpenseController extends AbstractBaseController {
     }
 
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
-    public String toListUserExpenses(HttpServletRequest request,Model model) {
+    public String toListUserExpenses(HttpServletRequest request, Model model) {
         model.addAllAttributes((Map<String, Object>) request.getSession().getAttribute(request.getRequestURI()));
         return "/system/userExpense/list";
     }
+
     /**
      * @Description 分页查询用户消费信息
      * @auther: cyp
@@ -67,19 +63,18 @@ public class UserExpenseController extends AbstractBaseController {
     @ResponseBody
     public Map<String, Object> listUserExpenses(HttpServletRequest request) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        Map<String,Object> requestParams = formQueryRemenber(request);
+        Map<String, Object> requestParams = formQueryRemenber(request);
         PageHelper.startPage(Integer.parseInt(requestParams.get("currentPage").toString()),
                 Integer.parseInt(requestParams.get("pageSize").toString()));
         PageHelper.orderBy("CREATE_TIME desc");
         final Map<String, Object> params = getQureyParams(requestParams);
-        final Page<Map<String,Object>> results = (Page<Map<String,Object>>)userExpenseService.listUserExpensesMapByParams(params);
+        final Page<Map<String, Object>> results = (Page<Map<String, Object>>) userExpenseService.listUserExpensesMapByParams(params);
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");
-        resultMap.put("count",String.valueOf(results.getTotal()));
-        resultMap.put("data",results.getResult());
+        resultMap.put("count", String.valueOf(results.getTotal()));
+        resultMap.put("data", results.getResult());
         return resultMap;
     }
-
 
 
     /**
@@ -119,17 +114,17 @@ public class UserExpenseController extends AbstractBaseController {
      */
     @RequestMapping(value = "/{operateType}")
     @ResponseBody
-    public Map<String, Object> operate(@PathVariable String operateType,Integer id) {
+    public Map<String, Object> operate(@PathVariable String operateType, Integer id) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         UserExpense userExpense = userExpenseService.getUserExpenseById(id);
-        if(userExpense == null){
+        if (userExpense == null) {
             resultMap.put("flag", "false");
             resultMap.put("msg", "该消费记录不存在");
             return resultMap;
         }
         userExpense.setId(id);
         //删除
-        if("delete".equals(operateType)){
+        if ("delete".equals(operateType)) {
             userExpense.setDataStatus(GlobalConstant.DATA_INVALID);
             userExpenseService.updateUserExpense(userExpense);
             resultMap.put("flag", "true");
@@ -137,7 +132,7 @@ public class UserExpenseController extends AbstractBaseController {
             return resultMap;
         }
         //启用
-        if("enable".equals(operateType)){
+        if ("enable".equals(operateType)) {
             userExpense.setStatus("0");
             userExpenseService.updateUserExpense(userExpense);
             resultMap.put("flag", "true");
@@ -145,7 +140,7 @@ public class UserExpenseController extends AbstractBaseController {
             return resultMap;
         }
         //禁用
-        if("disable".equals(operateType)){
+        if ("disable".equals(operateType)) {
             userExpense.setStatus("1");
             userExpenseService.updateUserExpense(userExpense);
             resultMap.put("flag", "true");
@@ -168,15 +163,15 @@ public class UserExpenseController extends AbstractBaseController {
     public Map<String, Object> tochooseUserlistUserExpenses(HttpServletRequest request) {
 
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        Map<String,Object> requestParams = formQueryRemenber(request);
+        Map<String, Object> requestParams = formQueryRemenber(request);
         PageHelper.startPage(Integer.parseInt(requestParams.get("currentPage").toString()),
                 Integer.parseInt(requestParams.get("pageSize").toString()));
         final Map<String, Object> params = getQureyParams(requestParams);
-        final Page<UserInfo> results = (Page<UserInfo>)userInfoService.listUserInfosByParams(params);
+        final Page<UserInfo> results = (Page<UserInfo>) userInfoService.listUserInfosByParams(params);
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");
-        resultMap.put("count",String.valueOf(results.getTotal()));
-        resultMap.put("data",results.getResult());
+        resultMap.put("count", String.valueOf(results.getTotal()));
+        resultMap.put("data", results.getResult());
         return resultMap;
     }
 
@@ -191,15 +186,15 @@ public class UserExpenseController extends AbstractBaseController {
     public Map<String, Object> toChooseServiceInfo(HttpServletRequest request) {
 
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        Map<String,Object> requestParams = formQueryRemenber(request);
+        Map<String, Object> requestParams = formQueryRemenber(request);
         PageHelper.startPage(Integer.parseInt(requestParams.get("currentPage").toString()),
                 Integer.parseInt(requestParams.get("pageSize").toString()));
         final Map<String, Object> params = getQureyParams(requestParams);
-        final Page<ServiceInfo> results = (Page<ServiceInfo>)serviceInfoService.listServiceInfosByParams(params);
+        final Page<ServiceInfo> results = (Page<ServiceInfo>) serviceInfoService.listServiceInfosByParams(params);
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");
-        resultMap.put("count",String.valueOf(results.getTotal()));
-        resultMap.put("data",results.getResult());
+        resultMap.put("count", String.valueOf(results.getTotal()));
+        resultMap.put("data", results.getResult());
         return resultMap;
     }
 }

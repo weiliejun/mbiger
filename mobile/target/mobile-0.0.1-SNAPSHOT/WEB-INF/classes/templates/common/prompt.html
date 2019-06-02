@@ -21,6 +21,7 @@
     .appSecCon{ text-align: center;font-size: 0.24rem; color: #666;}
     .appSecCon p{margin-bottom:0.2rem;}
     /*提示框内容 end*/
+
 </style>
 
 <!--①底部两个按钮的提示框 start-->
@@ -49,7 +50,8 @@
 <!--①底部两个按钮的提示框 end-->
 
 <!--②底部一个按钮的提示框 start-->
-<div class="modal fade" id="tipModalGlobal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="tipModalGlobal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog applyApiLog">
         <div class="modal-content">
             <div class="modal-header">
@@ -63,7 +65,7 @@
             </div>
             <div class="modal-footer">
                 <div class="cityBtnBox">
-                    <a id="confirmButton"  href="javascript:GlobalPrompt.close();" class="appSureBtn">确定</a>
+                    <a id="confirmButton" href="javascript:GlobalPrompt.close();" class="appSureBtn">确定</a>
                 </div>
             </div>
         </div>
@@ -112,4 +114,5 @@
         $("#confirmButton").removeClass("aDisabledBtn");
         $("#tipModalGlobal").modal('hide');
     }
+
 </script>

@@ -30,7 +30,7 @@ public class WebsiteAdvertiseServiceImpl implements WebsiteAdvertiseService {
         advertiseDao.updateAdvertiseClicks(code);
     }
 
-    public List<WebsiteAdvertise> listAdvertisesByParams(Map<String, String> params){
+    public List<WebsiteAdvertise> listAdvertisesByParams(Map<String, String> params) {
         return advertiseDao.listAdvertisesByParams(params);
     }
 }

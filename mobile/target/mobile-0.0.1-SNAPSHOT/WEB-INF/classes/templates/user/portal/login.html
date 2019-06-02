@@ -6,32 +6,32 @@
     <link rel="stylesheet" th:href="@{/css/login_register.css}">
 </head>
 <body>
-    <!-- 头部公共 start -->
-    <div th:replace="/common/header :: commonHeader('login')"></div>
-    <form id="loginForm">
-        <ul class="userInfo">
-            <li class="clearfix">
-                <span class="userTit">手机号</span>
-                <input id="userName" name="userName" type="text" class="longText" placeholder="请输入手机号">
-            </li>
-            <li class="clearfix">
-                <span class="userTit">密码</span>
-                <input id="password" name="password" type="password" class="pwdText shortText" placeholder="请输入密码">
-                <p class="rightBox"><i></i></p>
-            </li>
-        </ul>
-    </form>
-    <div class="logMsgBox clearfix">
-        <div class="errorBox fl"><label id="validatecode_label"></label></div>
-        <a th:href="@{/user/forgotpassword}" class="fr forgetTit">忘记密码？</a>
-    </div>
+<!-- 头部公共 start -->
+<div th:replace="/common/header :: commonHeader('login')"></div>
+<form id="loginForm">
+    <ul class="userInfo">
+        <li class="clearfix">
+            <span class="userTit">手机号</span>
+            <input id="userName" name="userName" type="text" class="longText" placeholder="请输入手机号">
+        </li>
+        <li class="clearfix">
+            <span class="userTit">密码</span>
+            <input id="password" name="password" type="password" class="pwdText shortText" placeholder="请输入密码">
+            <p class="rightBox"><i></i></p>
+        </li>
+    </ul>
+</form>
+<div class="logMsgBox clearfix">
+    <div class="errorBox fl"><label id="validatecode_label"></label></div>
+    <a th:href="@{/user/forgotpassword}" class="fr forgetTit">忘记密码？</a>
+</div>
 
-    <a id="loginBtn" href="javascript:;" class="publicBtn">登录</a>
+<a id="loginBtn" href="javascript:;" class="publicBtn">登录</a>
 
-    <!-- 公共JS start -->
-    <div th:include="/common/publicJs :: onloadJS"></div>
-    <!-- 公共JS start -->
-    <script type="text/javascript">
+<!-- 公共JS start -->
+<div th:include="/common/publicJs :: onloadJS"></div>
+<!-- 公共JS start -->
+<script type="text/javascript">
 
         $(document).ready(function() {
             // 加载验证码
@@ -114,6 +114,7 @@
             });
 
         });
-    </script>
+
+</script>
 </body>
 </html>

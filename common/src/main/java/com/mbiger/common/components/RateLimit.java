@@ -1,4 +1,5 @@
 package com.mbiger.common.components;
+
 import com.mbiger.common.redis.util.RedisUtil;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
@@ -18,12 +19,14 @@ public class RateLimit {
 
     @Resource
     JedisPool idJedisPools;
+
     /**
      * 流量控制,允许访问返回true 不允许访问返回false
-     * @param key 放入redis的key
+     *
+     * @param key     放入redis的key
      * @param timeOut 超时时间单位秒
-     * @param count 超时时间内允许访问的次数
-     * @param type 不同类型的数据
+     * @param count   超时时间内允许访问的次数
+     * @param type    不同类型的数据
      */
     public boolean allow(String type, String key, int timeOut, int count) {
         // 若不使用流量控制直接返回true
@@ -32,7 +35,7 @@ public class RateLimit {
         }
         boolean result = false;
         Jedis jedis = idJedisPools.getResource();
-        key = RedisUtil.keyBuilder(RATE_LIMIT,type,key);
+        key = RedisUtil.keyBuilder(RATE_LIMIT, type, key);
         try {
             jedis.connect();
             Long newTimes = null;
@@ -40,7 +43,7 @@ public class RateLimit {
             if (pttl > 0) {
                 newTimes = jedis.incr(key);
                 if (newTimes > count) {
-                    logger.info("key:{"+ key +"},超出{"+timeOut+"}秒内允许访问{"+count+"}次的限制,这是第{"+newTimes+"}次访问");
+                    logger.info("key:{" + key + "},超出{" + timeOut + "}秒内允许访问{" + count + "}次的限制,这是第{" + newTimes + "}次访问");
                 } else {
                     result = true;
                 }
@@ -52,13 +55,13 @@ public class RateLimit {
                 tx.exec();
                 newTimes = rsp1.get();
                 if (newTimes > count) {
-                    logger.info("key:{"+key+"},{"+timeOut+"}秒内允许访问{}次,第{"+newTimes+"}次访问");
+                    logger.info("key:{" + key + "},{" + timeOut + "}秒内允许访问{}次,第{" + newTimes + "}次访问");
                 } else {
                     result = true;
                 }
             }
             if (result) {
-                logger.debug("key:{"+key+"},访问次数{"+newTimes+"}");
+                logger.debug("key:{" + key + "},访问次数{" + newTimes + "}");
             }
         } catch (Exception e) {
             logger.error("流量控制发生异常", e);

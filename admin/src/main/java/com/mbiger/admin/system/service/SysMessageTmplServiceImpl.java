@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service("sysMessageTmplService")
-public class SysMessageTmplServiceImpl  implements SysMessageTmplService {
+public class SysMessageTmplServiceImpl implements SysMessageTmplService {
     @Autowired
     private SysMessageTmplDao sysMessageTmplDao;
 
@@ -37,6 +37,7 @@ public class SysMessageTmplServiceImpl  implements SysMessageTmplService {
 
     /**
      * 数据库查询内容解析为模板
+     *
      * @param busiType
      * @param type
      * @param values
@@ -52,7 +53,7 @@ public class SysMessageTmplServiceImpl  implements SysMessageTmplService {
         Map<String, String> tmplResult = getSysMessageTmpl(busiType, type);
 
         Set<String> keys = tmplResult.keySet();
-        for (Iterator<String> iterator = keys.iterator(); iterator.hasNext();) {
+        for (Iterator<String> iterator = keys.iterator(); iterator.hasNext(); ) {
             String key = iterator.next();
             result.put(key, tmplResult.get(key));
         }
@@ -99,6 +100,7 @@ public class SysMessageTmplServiceImpl  implements SysMessageTmplService {
 
     /**
      * cyp
+     *
      * @param busiType
      * @param type
      * @return
@@ -116,11 +118,11 @@ public class SysMessageTmplServiceImpl  implements SysMessageTmplService {
         }
 
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("busiType",busiType);
-        params.put("type",type);
+        params.put("busiType", busiType);
+        params.put("type", type);
         List<SysMessageTmpl> messageTmplList = sysMessageTmplDao.listMessageTmplsByParam(params);
-        SysMessageTmpl  messageTmpl = null;
-        if(messageTmplList!= null && messageTmplList.size()>0){
+        SysMessageTmpl messageTmpl = null;
+        if (messageTmplList != null && messageTmplList.size() > 0) {
             messageTmpl = messageTmplList.get(0);
         }
         //1表示禁用，后期改为字典获取值

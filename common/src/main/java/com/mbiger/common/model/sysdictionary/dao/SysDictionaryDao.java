@@ -1,7 +1,10 @@
 package com.mbiger.common.model.sysdictionary.dao;
+
 import com.mbiger.common.db.AbstractBaseDao;
 import com.mbiger.common.model.sysdictionary.bean.SysDictionary;
-import org.springframework.cache.annotation.*;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -22,56 +25,56 @@ public class SysDictionaryDao extends AbstractBaseDao {
     }
 
 
-    public SysDictionary getSysDictionaryById(Integer id){
-        return (SysDictionary)queryForObject("sysdictionary.getSysDictionaryById",id);
+    public SysDictionary getSysDictionaryById(Integer id) {
+        return (SysDictionary) queryForObject("sysdictionary.getSysDictionaryById", id);
     }
 
 
-    public List<SysDictionary> listSysDictionarysByParams(Map<String,Object> params){
-        return queryForList("sysdictionary.listSysDictionarysByParams",params);
+    public List<SysDictionary> listSysDictionarysByParams(Map<String, Object> params) {
+        return queryForList("sysdictionary.listSysDictionarysByParams", params);
     }
 
-    @Cacheable(key="#parentCode",unless="#result == null")
-    public List<SysDictionary> getSysDictionarysByParentCode(String parentCode){
-        Map<String,Object> params = new HashMap<String,Object>();
-        params.put("parentCode",parentCode);
+    @Cacheable(key = "#parentCode", unless = "#result == null")
+    public List<SysDictionary> getSysDictionarysByParentCode(String parentCode) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("parentCode", parentCode);
         List<SysDictionary> sysDictionaryList = listSysDictionarysByParams(params);
         return sysDictionaryList;
     }
 
-    @Cacheable(key="#parentCode + ':' + #code",unless="#result == null")
-    public SysDictionary getSysDictionaryByCode(String parentCode,String code){
-        Map<String,Object> params = new HashMap<String,Object>();
-        params.put("parentCode",parentCode);
-        params.put("code",code);
+    @Cacheable(key = "#parentCode + ':' + #code", unless = "#result == null")
+    public SysDictionary getSysDictionaryByCode(String parentCode, String code) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("parentCode", parentCode);
+        params.put("code", code);
         List<SysDictionary> sysDictionaryList = listSysDictionarysByParams(params);
-        if(sysDictionaryList != null && sysDictionaryList.size() > 0){
+        if (sysDictionaryList != null && sysDictionaryList.size() > 0) {
             return sysDictionaryList.get(0);
         }
         return null;
     }
 
-    public SysDictionary getSysDictionaryByCode(String code){
-        Map<String,Object> params = new HashMap<String,Object>();
-        params.put("code",code);
+    public SysDictionary getSysDictionaryByCode(String code) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("code", code);
         List<SysDictionary> sysDictionaryList = listSysDictionarysByParams(params);
-        if(sysDictionaryList != null && sysDictionaryList.size() > 0){
+        if (sysDictionaryList != null && sysDictionaryList.size() > 0) {
             return sysDictionaryList.get(0);
         }
         return null;
     }
 
-    public SysDictionary getSysDictionaryByName(String parentCode,String name,String isHasChild){
-        Map<String,Object> params = new HashMap<String,Object>();
-        if("0".equals(isHasChild)){
-            params.put("name",name);
-        }else{
-            params.put("parentCode",parentCode);
-            params.put("name",name);
+    public SysDictionary getSysDictionaryByName(String parentCode, String name, String isHasChild) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        if ("0".equals(isHasChild)) {
+            params.put("name", name);
+        } else {
+            params.put("parentCode", parentCode);
+            params.put("name", name);
         }
 
         List<SysDictionary> sysDictionaryList = listSysDictionarysByParams(params);
-        if(sysDictionaryList != null && sysDictionaryList.size() > 0){
+        if (sysDictionaryList != null && sysDictionaryList.size() > 0) {
             return sysDictionaryList.get(0);
         }
         return null;

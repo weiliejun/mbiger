@@ -14,111 +14,112 @@
     <link rel="stylesheet" href="assets/css/productInfo.css">
 </head>
 <body>
-    <header class="header_info clearfix">
-        <h1 class="head_L"><a href="javascript:;"></a></h1>
-        <h3 class="head_C"></h3>
-        <div class="head_R clearfix">
-            <a href="javascript:;" class="userIcon"></a>
-            <a href="javascript:;" class="menuIcon" data-toggle="modal" data-target="#myNav"></a>
-        </div>
-    </header>
-    <div class="occupyPos"></div>
-
-    <div class="eachProBan phoQCBelongBan">
-        <a href="javascript:;" class="applyBtn" data-toggle="modal" data-target="#applyApiM">申请API</a>
+<header class="header_info clearfix">
+    <h1 class="head_L"><a href="javascript:;"></a></h1>
+    <h3 class="head_C"></h3>
+    <div class="head_R clearfix">
+        <a href="javascript:;" class="userIcon"></a>
+        <a href="javascript:;" class="menuIcon" data-toggle="modal" data-target="#myNav"></a>
     </div>
+</header>
+<div class="occupyPos"></div>
 
-    <div class="proDetailsCon">
-        <h3 class="detailTit">应用介绍</h3>
-        <div class="detailText">
-            <p>全国移动、联通、电信等手机号码归属地查询，更新及时、准确度高。</p>
-            <span>（接口流量限制情况：10次流控/分钟）</span>
-        </div>
-    </div>
-    <div class="queryCon">
-        <h3 class="detailTit">免费查询</h3>
-        <div class="queryBox clearfix">
-            <input type="text" class="inText form-control" placeholder="请输入要查询的手机号码">
-            <a href="javascript:;" class="queryBtn" data-target="#queryModal" data-toggle="modal">查询</a>
-        </div>
-        <div class="errorBox"><label for="">请输入...</label></div>
-        <div class="queResBox">
-            <h3 class="queResTit">查询结果：</h3>
-            <table class="queResCon">
-                <tr>
-                    <th><span>归属地</span></th>
-                    <td>浙江 台州 中国移动 GSM</td>
-                </tr>
-            </table>
-        </div>
-    </div>
+<div class="eachProBan phoQCBelongBan">
+    <a href="javascript:;" class="applyBtn" data-toggle="modal" data-target="#applyApiM">申请API</a>
+</div>
 
-    <!--①底部两个按钮的提示框 start-->
-    <div class="modal fade" id="applyApiM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog applyApiLog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">在线申请免费API</h4>
+<div class="proDetailsCon">
+    <h3 class="detailTit">应用介绍</h3>
+    <div class="detailText">
+        <p>全国移动、联通、电信等手机号码归属地查询，更新及时、准确度高。</p>
+        <span>（接口流量限制情况：10次流控/分钟）</span>
+    </div>
+</div>
+<div class="queryCon">
+    <h3 class="detailTit">免费查询</h3>
+    <div class="queryBox clearfix">
+        <input type="text" class="inText form-control" placeholder="请输入要查询的手机号码">
+        <a href="javascript:;" class="queryBtn" data-target="#queryModal" data-toggle="modal">查询</a>
+    </div>
+    <div class="errorBox"><label for="">请输入...</label></div>
+    <div class="queResBox">
+        <h3 class="queResTit">查询结果：</h3>
+        <table class="queResCon">
+            <tr>
+                <th><span>归属地</span></th>
+                <td>浙江 台州 中国移动 GSM</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!--①底部两个按钮的提示框 start-->
+<div class="modal fade" id="applyApiM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog applyApiLog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">在线申请免费API</h4>
+            </div>
+            <div class="modal-body">
+                <div class="applyMCon">
+                    <p>您的联系电话13688886666</p>
+                    <span>提交申请后我们会尽快联系您</span>
                 </div>
-                <div class="modal-body">
-                    <div class="applyMCon">
-                        <p>您的联系电话13688886666</p>
-                        <span>提交申请后我们会尽快联系您</span>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="applyMBtn">
-                        <a href="javascript:;" data-dismiss="modal" class="appCancelBtn">取消</a>
-                        <a href="javascript:;" class="appSureBtn">确认</a>
-                    </div>
+            </div>
+            <div class="modal-footer">
+                <div class="applyMBtn">
+                    <a href="javascript:;" data-dismiss="modal" class="appCancelBtn">取消</a>
+                    <a href="javascript:;" class="appSureBtn">确认</a>
                 </div>
             </div>
         </div>
     </div>
-    <!--①底部两个按钮的提示框 end-->
+</div>
+<!--①底部两个按钮的提示框 end-->
 
-    <!--②底部一个按钮的提示框 start-->
-    <div class="modal fade" id="queryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog applyApiLog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">提示</h4>
+<!--②底部一个按钮的提示框 start-->
+<div class="modal fade" id="queryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog applyApiLog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <div class="applyMCon">
+                    <p class="cityTxt">手机号码不存在</p>
                 </div>
-                <div class="modal-body">
-                    <div class="applyMCon">
-                        <p class="cityTxt">手机号码不存在</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="cityBtnBox">
-                        <a href="javascript:;" class="appSureBtn">确认</a>
-                    </div>
+            </div>
+            <div class="modal-footer">
+                <div class="cityBtnBox">
+                    <a href="javascript:;" class="appSureBtn">确认</a>
                 </div>
             </div>
         </div>
     </div>
-    <!--②底部一个按钮的提示框 end-->
+</div>
+<!--②底部一个按钮的提示框 end-->
 
 
-    <footer class="footer_info">
-        <img src="assets/images/public/zdCode.png" class="zdCode" />
-        <p class="followTip">长按识别或截图保存关注微信公众号</p>
-        <p class="consultNum">咨询电话：400-0000-1111</p>
-        <p class="zdCopyRight">
-            <span>Copyright © 2018-2019  mbiger . All Rights Reserved </span>
-            <span>众大技术  版权所有</span>
-        </p>
-    </footer>
-    <script type="text/javascript" src="assets/js/public/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="assets/js/public/fontsizeset.js"></script>
-    <script type="text/javascript" src="assets/js/public/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/public/swiper.min.js"></script>
-    <script>
+<footer class="footer_info">
+    <img src="assets/images/public/zdCode.png" class="zdCode"/>
+    <p class="followTip">长按识别或截图保存关注微信公众号</p>
+    <p class="consultNum">咨询电话：400-0000-1111</p>
+    <p class="zdCopyRight">
+        <span>Copyright © 2018-2019  mbiger . All Rights Reserved </span>
+        <span>众大技术  版权所有</span>
+    </p>
+</footer>
+<script type="text/javascript" src="assets/js/public/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="assets/js/public/fontsizeset.js"></script>
+<script type="text/javascript" src="assets/js/public/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/public/swiper.min.js"></script>
+<script>
         $(document).ready(function(){
 
         });
-    </script>
+
+</script>
 </body>
 </html>

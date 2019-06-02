@@ -18,8 +18,7 @@ public interface ServiceInfoService {
      * @auther: cyp
      * @UpadteDate: 2019/3/01 16:59
      */
-     List<ServiceInfo> listServiceInfosByParams(Map<String,Object> params);
-
+    List<ServiceInfo> listServiceInfosByParams(Map<String, Object> params);
 
 
 }

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <div th:fragment="bannerLeft(channel)">
-    <link rel="stylesheet" type="text/css" href="/css/public/personalNavLeft.css" />
+    <link rel="stylesheet" type="text/css" href="/css/public/personalNavLeft.css"/>
     <div class="perLeft">
         <div class="perTit"><a href="/account/index">个人中心</a></div>
         <ul class="perNavBox">
             <li>
                 <p style="cursor:default;">众大服务</p>
                 <div class="childList cloudPos">
-                    <a href="javascript:;" class="cloudSAASBtn" th:classappend="${channel eq 'saasCenter'} ? 'currentList':''">云计算SaaS</a>
+                    <a href="javascript:;" class="cloudSAASBtn"
+                       th:classappend="${channel eq 'saasCenter'} ? 'currentList':''">云计算SaaS</a>
                     <div class="cloudSAASList">
                         <a href="/account/saasCenter/weatherQuery">全国天气预报查询<i class="freeIcon1"></i></a>
                         <a href="/account/saasCenter/mobileNumberPlaceQuery">手机号码归属地查询<i class="freeIcon2"></i></a>
@@ -24,17 +25,20 @@
                     </div>
                 </div>
                 <div class="childList">
-                    <a id="paasCenterLable" href="javascript:;" th:class="${channel eq 'paasCenter'} ? 'currentList':''">云计算PaaS</a>
+                    <a id="paasCenterLable" href="javascript:;"
+                       th:class="${channel eq 'paasCenter'} ? 'currentList':''">云计算PaaS</a>
 
                 </div>
                 <div class="childList">
-                    <a id="iaasCenterLable" href="javascript:;" th:class="${channel eq 'iaasCenter'} ? 'currentList':''">云计算IaaS</a>
+                    <a id="iaasCenterLable" href="javascript:;"
+                       th:class="${channel eq 'iaasCenter'} ? 'currentList':''">云计算IaaS</a>
                     <!--<div class="cloudSAASList">
                         <a th:href="'/account/iaasCenter/'+${iaasService.serviceCode}" th:each="iaasService,iaasStat:${iaasServiceList}" th:text="${iaasService.serviceName}"></a>
                     </div>-->
                 </div>
                 <div class="childList">
-                    <a id="customizationCenterLable" href="javascript:;" th:class="${channel eq 'customizationCenter'} ? 'currentList':''">定制研发</a>
+                    <a id="customizationCenterLable" href="javascript:;"
+                       th:class="${channel eq 'customizationCenter'} ? 'currentList':''">定制研发</a>
                     <!--<div class="cloudSAASList">
                         <a href="/account/customizationCenter/websiteDesign">网站建设</a>
                     </div>-->
@@ -42,10 +46,11 @@
             </li>
             <li>
                 <p style="cursor:default;">账户管理</p>
-                <div class="childList" >
-                    <a href="/accountManage/modifyPassword" th:class="${channel eq 'modifyPassword'} ? 'currentList':''">密码修改</a>
+                <div class="childList">
+                    <a href="/accountManage/modifyPassword"
+                       th:class="${channel eq 'modifyPassword'} ? 'currentList':''">密码修改</a>
                 </div>
-                <div class="childList" >
+                <div class="childList">
                     <a href="/accountManage/modifyMobile" th:class="${channel eq 'modifyMobile'} ? 'currentList':''">手机号修改</a>
                 </div>
             </li>
@@ -60,6 +65,7 @@
                 <a href="/account/paasCenter/{{= $value.serviceCode}}">{{= $value.serviceName}}</a>
             {{/each}}
         </div>
+
     </script>
     <!-- iaas center 服务菜单 -->
     <script id="iaasCenterServiceTmpl" type="text/x-jquery-tmpl">
@@ -68,6 +74,7 @@
                 <a href="/account/iaasCenter/{{= $value.serviceCode}}">{{= $value.serviceName}}</a>
             {{/each}}
         </div>
+
     </script>
     <!-- 定制服务 center 服务菜单 -->
     <script id="customizationCenterTmpl" type="text/x-jquery-tmpl">
@@ -76,6 +83,7 @@
                 <a href="/account/customizationCenter/{{= $value.serviceCode}}">{{= $value.serviceName}}</a>
             {{/each}}
         </div>
+
     </script>
 
     <script type="text/javascript">
@@ -99,6 +107,7 @@
                 }
             );
         });
+
     </script>
 </div>
 </html>

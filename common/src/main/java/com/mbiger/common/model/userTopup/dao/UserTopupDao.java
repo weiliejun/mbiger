@@ -16,7 +16,7 @@ public class UserTopupDao extends AbstractBaseDao {
      * @auther: xsp
      * @UpadteDate: 2019/1/18 10:13
      */
-    public void addUserTopup (UserTopup userTopup) {
+    public void addUserTopup(UserTopup userTopup) {
         insert("userTopup.addUserTopup", userTopup);
     }
 
@@ -25,7 +25,7 @@ public class UserTopupDao extends AbstractBaseDao {
      * @auther: xsp
      * @UpadteDate: 2019/1/18 10:14
      */
-    public void updateUserTopup (UserTopup userTopup) {
+    public void updateUserTopup(UserTopup userTopup) {
         update("userTopup.updateUserTopup", userTopup);
     }
 
@@ -34,7 +34,7 @@ public class UserTopupDao extends AbstractBaseDao {
      * @auther: xsp
      * @UpadteDate: 2019/1/18 10:17
      */
-    public UserTopup getUserTopupById (Integer id) {
+    public UserTopup getUserTopupById(Integer id) {
         return (UserTopup) queryForObject("userTopup.getUserTopupById", id);
     }
 
@@ -43,7 +43,7 @@ public class UserTopupDao extends AbstractBaseDao {
      * @auther: xsp
      * @UpadteDate: 2019/1/18 10:17
      */
-    public List<UserTopup> listUserTopupsByParams (Map<String,Object> params) {
+    public List<UserTopup> listUserTopupsByParams(Map<String, Object> params) {
         return (List<UserTopup>) queryForList("userTopup.listUserTopupsByParams", params);
     }
 
@@ -52,7 +52,7 @@ public class UserTopupDao extends AbstractBaseDao {
      * @auther: xsp
      * @UpadteDate: 2019/1/21 10:17
      */
-    public BigDecimal countUserTopupTotalAmount (Integer userId) {
+    public BigDecimal countUserTopupTotalAmount(Integer userId) {
         return (BigDecimal) queryForObject("userTopup.countUserTopupTotalAmount", userId);
     }
 

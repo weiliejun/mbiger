@@ -29,6 +29,7 @@
     .layui-form .layui-input-block input, .layui-form .layui-input-block textarea {
         color: #aaaaaa;
     }
+
 </style>
 <body>
 <div class="layui-fluid">
@@ -39,22 +40,27 @@
         <div class="layui-form-item">
             <label class="layui-form-label">手机号</label>
             <div class="layui-input-block">
-                <input id="mobile"  type="text" name="mobile" value="" class="layui-input" lay-verify="required" autocomplete="off" placeholder="请输入手机号">
+                <input id="mobile" type="text" name="mobile" value="" class="layui-input" lay-verify="required"
+                       autocomplete="off" placeholder="请输入手机号">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">短信签名</label>
             <div class="layui-input-block">
-                <input id="signature" type="text" name="signature" value="" class="layui-input" lay-verify="required" placeholder="请输入短信签名">
+                <input id="signature" type="text" name="signature" value="" class="layui-input" lay-verify="required"
+                       placeholder="请输入短信签名">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">审核状态</label>
             <div class="layui-input-block">
-                <input id="reviewStatus" type="radio"  name="reviewStatus"  lay-filter="reviewStatus" value="0"  class="layui-input "  title="通过">
-                <input  type="radio" name="reviewStatus" value="1"   lay-filter="reviewStatus" class="layui-input "  title="拒绝">
-                <input  type="radio" name="reviewStatus" value="2"   lay-filter="reviewStatus" class="layui-input "  title="待审核" checked>
+                <input id="reviewStatus" type="radio" name="reviewStatus" lay-filter="reviewStatus" value="0"
+                       class="layui-input " title="通过">
+                <input type="radio" name="reviewStatus" value="1" lay-filter="reviewStatus" class="layui-input "
+                       title="拒绝">
+                <input type="radio" name="reviewStatus" value="2" lay-filter="reviewStatus" class="layui-input "
+                       title="待审核" checked>
             </div>
         </div>
         <div class="layui-form-item one-btn-btn">

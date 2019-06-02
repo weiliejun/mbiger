@@ -3,36 +3,39 @@
 <html>
 <head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
     <title>众大技术-登录</title>
-    <link rel="stylesheet" type="text/css" href="/css/loginRegister.css" />
+    <link rel="stylesheet" type="text/css" href="/css/loginRegister.css"/>
 </head>
 
 <body>
-    <!--loginHead start-->
-    <div class="loginHead clearfix">
-        <h1 class="logoImg"><a href="/"><img src="images/publicImg/bigerLogo.png" /></a></h1>
-        <p class="welcomeLogin">欢迎登录</p>
-    </div>
-    <!--loginHead end-->
-    <div class="loginBox">
-        <form id="loginForm" name ="loginForm" action="" method="post">
+<!--loginHead start-->
+<div class="loginHead clearfix">
+    <h1 class="logoImg"><a href="/"><img src="images/publicImg/bigerLogo.png"/></a></h1>
+    <p class="welcomeLogin">欢迎登录</p>
+</div>
+<!--loginHead end-->
+<div class="loginBox">
+    <form id="loginForm" name="loginForm" action="" method="post">
         <div class="loginCon clearfix">
-            <img src="images/earthBg.png" class="earthBg" />
+            <img src="images/earthBg.png" class="earthBg"/>
             <div class="loginInfo">
                 <h3 class="loginTit">用户登录</h3>
                 <div class="errorTip">
-                    <label  class="error" id="validatecode_label"></label>
+                    <label class="error" id="validatecode_label"></label>
                 </div>
                 <ul class="userInfo">
                     <li>
-                        <input type="text" id="userName" name="userName" class="form-control userName" placeholder="手机号/用户名" />
+                        <input type="text" id="userName" name="userName" class="form-control userName"
+                               placeholder="手机号/用户名"/>
                     </li>
                     <li>
-                        <input type="password"  id="password" name="password" class="form-control userPass" placeholder="密码" />
+                        <input type="password" id="password" name="password" class="form-control userPass"
+                               placeholder="密码"/>
                     </li>
                     <li class="clearfix">
-                        <input type="text" id="validateCode" name="validateCode" class="form-control fl userYzm" placeholder="验证码" >
+                        <input type="text" id="validateCode" name="validateCode" class="form-control fl userYzm"
+                               placeholder="验证码">
                         <span class="fl"><img class="verifyCodeImage" alt="" style="display: none;"></span>
-                   </li>
+                    </li>
                 </ul>
                 <div class="clearfix loginText">
                     <a href="/register/index" class="regNow">立即注册</a>
@@ -41,16 +44,16 @@
                 <a href="javascript:;" class="loginBtn btnEnabled" id="loginBtn">登录</a>
             </div>
         </div>
-        </form>
-        <!-- 重定向路径 -->
-        <span id="returnUrl" th:text="${#httpServletRequest.getParameter('returnUrl')}" th:hidden="true"></span>
-    </div>
-    <!-- 公共底部 start -->
-    <div th:replace="/common/footer :: commonFooter"></div>
-    <!-- 公共底部 end -->
-    <!-- 遮罩 start-->
-   <!-- <div th:replace="/common/mask"></div>-->
-    <!-- 遮罩 end-->
+    </form>
+    <!-- 重定向路径 -->
+    <span id="returnUrl" th:text="${#httpServletRequest.getParameter('returnUrl')}" th:hidden="true"></span>
+</div>
+<!-- 公共底部 start -->
+<div th:replace="/common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+<!-- 遮罩 start-->
+<!-- <div th:replace="/common/mask"></div>-->
+<!-- 遮罩 end-->
 </body>
 
 <script type="text/javascript">
@@ -157,6 +160,7 @@
     $(".verifyCodeImage").click(function() {
         loadVerifyCodeImage();
     });
+
 </script>
 </html>
 

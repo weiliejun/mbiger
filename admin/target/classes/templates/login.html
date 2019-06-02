@@ -10,7 +10,7 @@
         <div class="opcBg"></div>
         <div class="outBox">
             <div class="backTop clearfix">
-                <a href="javascript:;"><img th:src="@{/images/login/backLogo.png}" /></a>
+                <a href="javascript:;"><img th:src="@{/images/login/backLogo.png}"/></a>
                 <h1>北京众大技术</h1>
             </div>
             <form class="layui-form">
@@ -18,16 +18,18 @@
                     <ul class="backUserInfo">
                         <li>
                             <i></i>
-                            <input id="userName" name="userName" type="text" class="" placeholder="请输入手机号/邮箱/用户名" lay-verify="required|userName">
+                            <input id="userName" name="userName" type="text" class="" placeholder="请输入手机号/邮箱/用户名"
+                                   lay-verify="required|userName">
                         </li>
                         <li>
                             <i></i>
-                            <input id="password" name="password" type="password" class="passText" placeholder="请输入密码" lay-verify="required|password">
+                            <input id="password" name="password" type="password" class="passText" placeholder="请输入密码"
+                                   lay-verify="required|password">
                         </li>
                         <li>
                             <i></i>
-                            <input id="imageCode" name="imageCode" type="text" class="yzmText" placeholder="请输入验证码" >
-                            <a id="changeImageCode" href="javascript:;" class="yzmImg"><img id="imgObj" /></a>
+                            <input id="imageCode" name="imageCode" type="text" class="yzmText" placeholder="请输入验证码">
+                            <a id="changeImageCode" href="javascript:;" class="yzmImg"><img id="imgObj"/></a>
                         </li>
                     </ul>
                     <div class="errorBox">
@@ -37,9 +39,9 @@
                             <input type="checkbox" id="rememberMe" name="rememberMe" lay-ignore>
                             <label for="rememberMe">记住密码</label>
                         </div>
-                       <!-- <a href="javascript:;" class="forgetBox">忘记密码？</a>-->
+                        <!-- <a href="javascript:;" class="forgetBox">忘记密码？</a>-->
                     </div>
-                    <a id="loginBtn" href="javascript:;" class="backLogin"  lay-filter="login" lay-submit>登录</a>
+                    <a id="loginBtn" href="javascript:;" class="backLogin" lay-filter="login" lay-submit>登录</a>
                 </div>
             </form>
         </div>
@@ -132,5 +134,6 @@
     if (top.location !== self.location) {
         top.location = self.location;
     }
+
 </script>
 </html>

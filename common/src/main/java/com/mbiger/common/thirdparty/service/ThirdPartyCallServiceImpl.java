@@ -2,7 +2,6 @@ package com.mbiger.common.thirdparty.service;
 
 import com.mbiger.common.thirdparty.util.MbigerServiceUtil;
 import com.mbiger.common.util.APIUrlHelper;
-import com.mbiger.common.util.HttpClientUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +14,7 @@ import java.util.Map;
  * @UpdateDate 2019/1/23 12:40
  */
 @Service("thirdPartyCallService")
-public class ThirdPartyCallServiceImpl implements ThirdPartyCallService{
+public class ThirdPartyCallServiceImpl implements ThirdPartyCallService {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public String callThirdPartyAPI(Map<String, String> params) {
@@ -28,6 +27,6 @@ public class ThirdPartyCallServiceImpl implements ThirdPartyCallService{
         params.remove("service");
         params.remove("rateLimitKey");
         params.remove("expenseType");
-        return MbigerServiceUtil.httpPost(APIUrlHelper.getRequestUrl(apiName),params);
+        return MbigerServiceUtil.httpPost(APIUrlHelper.getRequestUrl(apiName), params);
     }
 }

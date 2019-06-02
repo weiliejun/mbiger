@@ -11,16 +11,16 @@ import java.util.Map;
 public class WebsiteCaseDao extends AbstractBaseDao {
 
     public WebsiteCase addCase(WebsiteCase record) {
-        record = (WebsiteCase)insert("websiteCase.addCase", record);
+        record = (WebsiteCase) insert("websiteCase.addCase", record);
         return record;
     }
 
     public int updateCase(WebsiteCase record) {
-        return update("websiteCase.updateCase",record);
+        return update("websiteCase.updateCase", record);
     }
 
     public WebsiteCase getCaseById(Integer id) {
-        return (WebsiteCase)queryForObject("websiteCase.getCaseById",id);
+        return (WebsiteCase) queryForObject("websiteCase.getCaseById", id);
     }
 
     public List<WebsiteCase> listCasesByParams(Map<String, String> params) {

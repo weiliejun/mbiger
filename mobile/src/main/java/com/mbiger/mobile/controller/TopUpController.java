@@ -4,9 +4,9 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.mbiger.common.model.user.bean.UserInfo;
 import com.mbiger.common.model.userTopup.bean.UserTopup;
+import com.mbiger.common.web.SessionUser;
 import com.mbiger.mobile.service.userManage.UserTopupService;
 import com.mbiger.mobile.web.base.AbstractBaseController;
-import com.mbiger.common.web.SessionUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -71,6 +71,7 @@ public class TopUpController extends AbstractBaseController {
         model.addAttribute("headText", "充值");
         return "user/account/topUp/topUpOnlineSuf";
     }
+
     /**
      * @Description 用户充值记录
      * @auther: xsp
@@ -133,7 +134,7 @@ public class TopUpController extends AbstractBaseController {
             params.put("mobile", mobile);
             params.put("transferFile", transferFile);
             result = userTopupService.offLineTransfer(params);
-        } catch(IOException e) {
+        } catch (IOException e) {
             result.put("flag", "false");
             result.put("msg", "转账失败！");
         }

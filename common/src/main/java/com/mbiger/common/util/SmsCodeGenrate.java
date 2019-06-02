@@ -1,6 +1,7 @@
 package com.mbiger.common.util;
 
 import java.util.Random;
+
 /**
  * @Description 生成手机验证码随机字符串6位
  * @auther: cyp
@@ -8,11 +9,11 @@ import java.util.Random;
  */
 public class SmsCodeGenrate {
 
-        public static int getRandomVerifyCode() {
-            Random random = new Random();
-            int x = random.nextInt(899999);
-            x = x + 100000;
-            return x;
-        }
+    public static int getRandomVerifyCode() {
+        Random random = new Random();
+        int x = random.nextInt(899999);
+        x = x + 100000;
+        return x;
     }
+}
 

@@ -5,12 +5,13 @@
         <h3 class="bsApplyTit">在线申请免费API</h3>
         <a href="javascript:;" class="bsApplyClose"></a>
     </div>
-    <form id="appointmentForm" name ="appointmentForm" action="" method="post">
+    <form id="appointmentForm" name="appointmentForm" action="" method="post">
         <ul class="bsApplyInfo clearfix">
             <li>
                 <div class="clearfix">
                     <span class="bsInfoTit">姓名</span>
-                    <input type="text" id="customerName" name="customerName" placeholder="输入您的姓名" class="bsInfoTxt form-control" th:value="${customerName}"/>
+                    <input type="text" id="customerName" name="customerName" placeholder="输入您的姓名"
+                           class="bsInfoTxt form-control" th:value="${customerName}"/>
                 </div>
                 <div class="bsErrorBox">
                     <label id="customerNameError" for="customerName" class="error"></label>
@@ -19,7 +20,8 @@
             <li class="clearfix">
                 <div class="clearfix">
                     <span class="bsInfoTit">手机号码</span>
-                    <input type="text"  id="customerPhone" name="customerPhone" placeholder="输入您的手机号" class="bsInfoTxt form-control" th:value="${customerPhone}"/>
+                    <input type="text" id="customerPhone" name="customerPhone" placeholder="输入您的手机号"
+                           class="bsInfoTxt form-control" th:value="${customerPhone}"/>
                 </div>
                 <div class="bsErrorBox">
                     <label id="customerPhoneError" for="customerPhone" class="error"></label>
@@ -28,25 +30,27 @@
             <li class="clearfix">
                 <div class="clearfix">
                     <span class="bsInfoTit">验证码</span>
-                    <input type="text" id="validateCode" name="validateCode"  placeholder="输入手机验证码" class="bsInfoTxt form-control bsYzmTxt" />
+                    <input type="text" id="validateCode" name="validateCode" placeholder="输入手机验证码"
+                           class="bsInfoTxt form-control bsYzmTxt"/>
                     <span><img class="verifyCodeImage" alt="" style="display: none;"></span>
                 </div>
                 <div class="bsErrorBox">
-                    <label id="verifyCodeError"  for="validateCode" class="error"></label>
+                    <label id="verifyCodeError" for="validateCode" class="error"></label>
                 </div>
             </li>
             <li id="remoteValidateCodeDiv" class="clearfix" style="display: none;">
                 <div class="clearfix">
                     <span class="bsInfoTit">短信验证码</span>
-                    <input type="text" id="remoteValidateCode" name="remoteValidateCode"  placeholder="输入手机验证码" class="bsInfoTxt form-control bsYzmTxt" />
+                    <input type="text" id="remoteValidateCode" name="remoteValidateCode" placeholder="输入手机验证码"
+                           class="bsInfoTxt form-control bsYzmTxt"/>
                     <a id="sendremotecodebutton" href="javascript:;" class="bsYzmBtn">获取验证码</a>
                 </div>
                 <div class="bsErrorBox">
-                    <label id="remoteValidateCodeError"  for="remoteValidateCode" class="error"></label>
+                    <label id="remoteValidateCodeError" for="remoteValidateCode" class="error"></label>
                 </div>
             </li>
         </ul>
-        <a href="javascript:;"  class="bsSubmitBtn btnEnabled" id="applySubmit">提交申请</a>
+        <a href="javascript:;" class="bsSubmitBtn btnEnabled" id="applySubmit">提交申请</a>
         <p class="bsSubTip">提交申请后我们会尽快联系您！</p>
     </form>
     <!--  发送短信验证码 图形验证码  -->
@@ -237,6 +241,7 @@
                 }
             });
         })
+
 
     </script>
 </div>

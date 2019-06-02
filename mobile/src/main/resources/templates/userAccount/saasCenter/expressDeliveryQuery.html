@@ -2,55 +2,60 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
     <title>众大技术-账户中心-物流查询</title>
-    <link rel="stylesheet" type="text/css" href="/css/Account_center.css" />
+    <link rel="stylesheet" type="text/css" href="/css/Account_center.css"/>
 </head>
 <body>
-    <!-- 头部公共 start -->
-    <div th:replace="common/header :: commonHeader('index')"></div>
-    <!-- 头部公共 end-->
-    
-    <div class="personalBox">
-        <div class="personalCon clearfix">
-            <!-- 账户左侧导航栏  start  -->
-            <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('saasCenter')"></div>
-            <!-- 账户左侧导航栏  end    -->
-            <div class="perRight">
-                <div id="content" class="daohang">
-                    <h5 class=""><img src="/images/personalCenter/blue.png" alt=""><span>众大服务</span>/<span>云计算SaaS</span>/<span>全球物流快递查询</span></h5>
-                    <div class="banner">
-                        <div class="bg_01">
-                            <h3 class="queryTit">全球物流快递查询</h3>
-                            <a href="/appointment/expressDeliveryQuery/download" class="applyForBtn">下载API文档</a>
-                            <p class="diffText">数据准确，支持中国:顺丰、申通、圆通、韵达、中通、汇通、EMS等，国外：美、饿、日韩、香港、马来西亚等近500家快递物流。</p>
-                        </div>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('index')"></div>
+<!-- 头部公共 end-->
+
+<div class="personalBox">
+    <div class="personalCon clearfix">
+        <!-- 账户左侧导航栏  start  -->
+        <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('saasCenter')"></div>
+        <!-- 账户左侧导航栏  end    -->
+        <div class="perRight">
+            <div id="content" class="daohang">
+                <h5 class=""><img src="/images/personalCenter/blue.png"
+                                  alt=""><span>众大服务</span>/<span>云计算SaaS</span>/<span>全球物流快递查询</span></h5>
+                <div class="banner">
+                    <div class="bg_01">
+                        <h3 class="queryTit">全球物流快递查询</h3>
+                        <a href="/appointment/expressDeliveryQuery/download" class="applyForBtn">下载API文档</a>
+                        <p class="diffText">数据准确，支持中国:顺丰、申通、圆通、韵达、中通、汇通、EMS等，国外：美、饿、日韩、香港、马来西亚等近500家快递物流。</p>
                     </div>
-                    <div class="chaxun">
-                        <form id ="dataForm"  autocomplete="off">
-                            <div class="input-group">
-                                <input id="trackingNumber" type="text" class="form-control selectInput" name ="trackingNumber" placeholder="输入要查询的快递单号">
-                                <input id="validateCode" type="hidden" name="validateCode" value="1234" />
-                                <a id ="search" href="javascript:;" class="centerBtn btnEnabled enterEvent">
-                                    立刻查询
-                                </a>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="yu_e">
-                        <p>当前账户余额：<strong id="accountBalance" th:text="${#numbers.formatDecimal(accountBalance,1,'COMMA',2,'POINT')}"></strong> 元　单次查询费用：
-                            <strong id="singleCost" th:text="${#numbers.formatDecimal(singleCost,1,'COMMA',2,'POINT')}"></strong>元/次　免费查询次数剩余：
-                            <span id="remainderFreeCount" th:text="${remainderFreeCount}"></span>次</p>
-                    </div>
-                    <div class="line"></div>
                 </div>
+                <div class="chaxun">
+                    <form id="dataForm" autocomplete="off">
+                        <div class="input-group">
+                            <input id="trackingNumber" type="text" class="form-control selectInput"
+                                   name="trackingNumber" placeholder="输入要查询的快递单号">
+                            <input id="validateCode" type="hidden" name="validateCode" value="1234"/>
+                            <a id="search" href="javascript:;" class="centerBtn btnEnabled enterEvent">
+                                立刻查询
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="yu_e">
+                    <p>当前账户余额：<strong id="accountBalance"
+                                      th:text="${#numbers.formatDecimal(accountBalance,1,'COMMA',2,'POINT')}"></strong>
+                        元　单次查询费用：
+                        <strong id="singleCost"
+                                th:text="${#numbers.formatDecimal(singleCost,1,'COMMA',2,'POINT')}"></strong>元/次　免费查询次数剩余：
+                        <span id="remainderFreeCount" th:text="${remainderFreeCount}"></span>次</p>
+                </div>
+                <div class="line"></div>
             </div>
-        </div>    
+        </div>
     </div>
-    <!-- 公共底部 start -->
-    <div th:replace="common/footer :: commonFooter"></div>
-    <!-- 公共底部 end -->
-    <!-- 弹框 start-->
-    <div th:replace="/common/prompt"></div>
-    <!-- 弹框 end-->
+</div>
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+<!-- 弹框 start-->
+<div th:replace="/common/prompt"></div>
+<!-- 弹框 end-->
 </body>
 <script type="text/javascript" th:src="@{/plugins/template/jquery.tmpl.min.js}"></script>
 
@@ -93,6 +98,7 @@
         <div style="height:80px;"></div>
     </div>
 </div>
+
 </script>
 
 <script type="text/javascript">
@@ -159,6 +165,7 @@
             }
         });
     });
+
 </script>
 </html>
 

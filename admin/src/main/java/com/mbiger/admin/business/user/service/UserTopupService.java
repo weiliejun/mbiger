@@ -33,10 +33,11 @@ public interface UserTopupService {
      * @UpadteDate: 2019/1/18 10:17
      */
     List<UserTopup> listUserTopupsByParams(Map<String, Object> params);
+
     /**
      * @Description 更新充值状态
      * @auther: xsp
      * @UpadteDate: 2019/3/6 13:03
      */
-    Map<String, Object> updateTopUpStatus (Integer userTopUpId);
+    Map<String, Object> updateTopUpStatus(Integer userTopUpId);
 }

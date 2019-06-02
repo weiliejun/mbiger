@@ -7,18 +7,17 @@ import java.util.Map;
 
 public interface WebsiteBulletinService {
 
-     void addWebsiteBulletin(WebsiteBulletin websiteBulletin);
+    void addWebsiteBulletin(WebsiteBulletin websiteBulletin);
 
-     WebsiteBulletin getWebsiteBulletinById(Integer id);
+    WebsiteBulletin getWebsiteBulletinById(Integer id);
 
-     void updateWebsiteBulletin(WebsiteBulletin websiteBulletin);
+    void updateWebsiteBulletin(WebsiteBulletin websiteBulletin);
 
-     int countWebsiteBulletinsByParams(Map<String, Object> params);
+    int countWebsiteBulletinsByParams(Map<String, Object> params);
 
-     public List<Map<String,Object>> listWebsiteBulletinsByParams(Map<String, Object> params);
+    public List<Map<String, Object>> listWebsiteBulletinsByParams(Map<String, Object> params);
 
-     public List<WebsiteBulletin> listWebsiteBulletinByParams(Map<String, Object> params);
-
+    public List<WebsiteBulletin> listWebsiteBulletinByParams(Map<String, Object> params);
 
 
 }

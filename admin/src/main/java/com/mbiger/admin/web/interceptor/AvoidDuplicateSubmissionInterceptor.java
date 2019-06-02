@@ -1,13 +1,5 @@
 package com.mbiger.admin.web.interceptor;
 
-import java.lang.reflect.Method;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.mbiger.admin.web.annotations.AvoidDuplicateSubmission;
@@ -22,6 +14,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.Method;
+
 
 /**
  * 防止重复提交过滤器
@@ -30,58 +26,58 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 public class AvoidDuplicateSubmissionInterceptor extends HandlerInterceptorAdapter {
     private static final Logger LOG = LoggerFactory.getLogger(AvoidDuplicateSubmissionInterceptor.class);
 
-    public boolean preHandle(HttpServletRequest request, 
-            HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request,
+                             HttpServletResponse response, Object handler) throws Exception {
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
-    	if(handler instanceof HandlerMethod){    		
-            HandlerMethod handlerMethod = (HandlerMethod) handler;             
-            Method method = handlerMethod.getMethod();  
+        if (handler instanceof HandlerMethod) {
+            HandlerMethod handlerMethod = (HandlerMethod) handler;
+            Method method = handlerMethod.getMethod();
             AvoidDuplicateSubmission annotation = method.getAnnotation(AvoidDuplicateSubmission.class);
-            if (annotation != null) { 
-                boolean needSaveSession = annotation.needSaveToken(); 
+            if (annotation != null) {
+                boolean needSaveSession = annotation.needSaveToken();
                 if (needSaveSession) {
                     session.setAttribute("token", WebUtil.generateToken(session.getId().toString()));
                 }
-                boolean needRemoveSession = annotation.needRemoveToken(); 
-                if (needRemoveSession) { 
+                boolean needRemoveSession = annotation.needRemoveToken();
+                if (needRemoveSession) {
                     if (isRepeatSubmit(request)) {
-                        SysManager sysManager  = (SysManager)subject.getPrincipal();
+                        SysManager sysManager = (SysManager) subject.getPrincipal();
                         String userName = sysManager.getName();
                         LOG.warn("请不要重复提交,[user:" + userName + ",url:"
-                                + request.getServletPath() + "]"); 
+                                + request.getServletPath() + "]");
                         //response.sendRedirect(request.getContextPath() + "");
-                        if(WebUtil.isAjax(request)){
+                        if (WebUtil.isAjax(request)) {
                             response.setCharacterEncoding("UTF-8");
                             response.setContentType("application/json");
                             JSONObject resultJson = new JSONObject();
-                            resultJson.put("flag","false");
-                            resultJson.put("msg","请不要重复提交");
+                            resultJson.put("flag", "false");
+                            resultJson.put("msg", "请不要重复提交");
                             response.getWriter().write(JSON.toJSONString(resultJson));
                         }
                         return false;
                     }
                     session.removeAttribute("token");
-                } 
-            } 
-        } 
-        return true; 
-    } 
-  
-    private boolean isRepeatSubmit(HttpServletRequest request) {
-        String serverToken = (String) request.getSession(false).getAttribute("token"); 
-        if (serverToken == null) { 
-            return true; 
-        } 
-        String clinetToken = request.getParameter("token"); 
-        if (clinetToken == null) { 
-            return true; 
-        } 
-        if (!serverToken.equals(clinetToken)) { 
-            return true;
-        } 
-        return false; 
+                }
+            }
+        }
+        return true;
     }
 
-  
+    private boolean isRepeatSubmit(HttpServletRequest request) {
+        String serverToken = (String) request.getSession(false).getAttribute("token");
+        if (serverToken == null) {
+            return true;
+        }
+        String clinetToken = request.getParameter("token");
+        if (clinetToken == null) {
+            return true;
+        }
+        if (!serverToken.equals(clinetToken)) {
+            return true;
+        }
+        return false;
+    }
+
+
 }

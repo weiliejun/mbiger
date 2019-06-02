@@ -23,6 +23,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
+
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLException;
 import javax.net.ssl.SSLHandshakeException;
@@ -189,6 +190,7 @@ public class HttpClientUtil {
     public static String doGet(String url) {
         return doGet(url, Collections.EMPTY_MAP, Collections.EMPTY_MAP);
     }
+
     /**
      * GET请求
      */
@@ -230,12 +232,13 @@ public class HttpClientUtil {
                 try {
                     response.close();
                 } catch (IOException e) {
-                    logger.error("释放链接异常",e);
+                    logger.error("释放链接异常", e);
                 }
             }
         }
         return null;
     }
+
     /**
      * POST请求
      */
@@ -276,13 +279,13 @@ public class HttpClientUtil {
         } catch (IOException e) {
             logger.info("请求路径:" + apiUrl);
             logger.info("请求参数:" + JSON.toJSONString(params));
-            logger.error("post请求异常",e);
+            logger.error("post请求异常", e);
         } finally {
             if (response != null) {
                 try {
                     response.close();
                 } catch (IOException e) {
-                    logger.error("释放链接异常",e);
+                    logger.error("释放链接异常", e);
                 }
             }
         }
@@ -313,7 +316,7 @@ public class HttpClientUtil {
                 String sval = URLEncoder.encode(value, DEFAULT_CHARSET);
                 sb.append(ch).append(key).append("=").append(sval);
             } catch (UnsupportedEncodingException e) {
-                throw new RuntimeException("参数编码异常",e);
+                throw new RuntimeException("参数编码异常", e);
             }
         }
         return sb.toString();
@@ -335,11 +338,11 @@ public class HttpClientUtil {
 
     public static void main(String[] args) {
         //System.out.println(doGet("http://www.baidu.com"));
-        Map<String,String> params = new HashMap<String,String>();
-        params.put("userName","1370000088");
-        params.put("password","111111");
-        params.put("validateCode","44ms");
-        System.out.println(doPost("https://www.vjinke.com/onlogin",params));
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("userName", "1370000088");
+        params.put("password", "111111");
+        params.put("validateCode", "44ms");
+        System.out.println(doPost("https://www.vjinke.com/onlogin", params));
         closeConnectionPool();
     }
 

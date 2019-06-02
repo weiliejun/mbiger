@@ -17,16 +17,17 @@ import java.util.Properties;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @ComponentScan("com.mbiger")
 public class Admin extends SpringBootServletInitializer {
-    public static void main(String[] args)  throws Exception{
-        SpringApplication.run(Admin.class,args);
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(Admin.class, args);
     }
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(Admin.class);
     }
+
     @Bean
-    PageHelper pageHelper(){
+    PageHelper pageHelper() {
         //分页插件
         PageHelper pageHelper = new PageHelper();
         Properties properties = new Properties();

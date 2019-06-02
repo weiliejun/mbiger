@@ -5,7 +5,7 @@ import com.mbiger.common.model.userInfoExt.bean.UserInfoExt;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserInfoExtDao  extends AbstractBaseDao {
+public class UserInfoExtDao extends AbstractBaseDao {
     public int deleteByPrimaryKey(Integer userId) {
         return 0;
     }

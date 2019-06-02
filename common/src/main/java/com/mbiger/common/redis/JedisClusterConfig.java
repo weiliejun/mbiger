@@ -19,67 +19,68 @@ import javax.annotation.Resource;
 @ConditionalOnClass(JedisCluster.class)
 @EnableConfigurationProperties(JedisConfigProperties.class)
 public class JedisClusterConfig {
-	
-	@Value("${spring.redis.host}")
-	private String masterHost;
-	
-	@Value("${spring.redis.port}")
-	private int masterPoint;
 
-	@Value("${spring.redis.password}")
-	private String masterPassword;
-	
+    @Value("${spring.redis.host}")
+    private String masterHost;
+
+    @Value("${spring.redis.port}")
+    private int masterPoint;
+
+    @Value("${spring.redis.password}")
+    private String masterPassword;
+
 //	@Value("${x.redis.slave.host}")
 //	private String slaveHost;
-	
+
 //	@Value("${x.redis.slave.port}")
 //	private int slavePoint;
-	
-	@Resource
+
+    @Resource
     private JedisConfigProperties jedisConfigProperties;
-	
-	/**
+
+    /**
      * jedis 连接池
+     *
      * @return
      */
     private JedisPoolConfig jedisPoolConfig() {
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-		jedisPoolConfig.setMaxTotal(jedisConfigProperties.getMaxActive());
+        jedisPoolConfig.setMaxTotal(jedisConfigProperties.getMaxActive());
         jedisPoolConfig.setMaxIdle(jedisConfigProperties.getMaxIdle());
-		jedisPoolConfig.setMinIdle(jedisConfigProperties.getMinIdle());
-		jedisPoolConfig.setMaxWaitMillis(jedisConfigProperties.getMaxWaitMillis());
-		jedisPoolConfig.setTestOnBorrow(jedisConfigProperties.isTestOnBorrow());
-		jedisPoolConfig.setTestOnReturn(jedisConfigProperties.isTestOnReturn());
+        jedisPoolConfig.setMinIdle(jedisConfigProperties.getMinIdle());
+        jedisPoolConfig.setMaxWaitMillis(jedisConfigProperties.getMaxWaitMillis());
+        jedisPoolConfig.setTestOnBorrow(jedisConfigProperties.isTestOnBorrow());
+        jedisPoolConfig.setTestOnReturn(jedisConfigProperties.isTestOnReturn());
         jedisPoolConfig.setTimeBetweenEvictionRunsMillis(jedisConfigProperties.getTimeBetweenEvictionRunsMillis());
         jedisPoolConfig.setMinEvictableIdleTimeMillis(jedisConfigProperties.getMinEvictableIdleTimeMillis());
-		jedisPoolConfig.setNumTestsPerEvictionRun(jedisConfigProperties.getNumTestsPerEvictionRun());
+        jedisPoolConfig.setNumTestsPerEvictionRun(jedisConfigProperties.getNumTestsPerEvictionRun());
         return jedisPoolConfig;
     }
-	
-	@Bean("jedisConnectionFactory")
+
+    @Bean("jedisConnectionFactory")
     public JedisConnectionFactory jedisMasterConnectionFactory() {
-		return createJedisFactory(masterHost,masterPoint,masterPassword);
+        return createJedisFactory(masterHost, masterPoint, masterPassword);
     }
-	
+
 //	@Bean("jedisSlavesConnectionFactory")
 //	public JedisConnectionFactory jedisSlaveConnectionFactory() {
 //		return createJedisFactory(slaveHost,slavePoint);
 //	}
 
-	@Bean("idJedisPools")
-	public JedisPool jedisPool(){
-    	return new JedisPool(jedisPoolConfig(),masterHost,masterPoint,2000,masterPassword);
-	}
+    @Bean("idJedisPools")
+    public JedisPool jedisPool() {
+        return new JedisPool(jedisPoolConfig(), masterHost, masterPoint, 2000, masterPassword);
+    }
 
-	private JedisConnectionFactory createJedisFactory(String host,int port,String password){
-		RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration ();
-		redisStandaloneConfiguration.setHostName(host);
-		redisStandaloneConfiguration.setPort(port);
-		redisStandaloneConfiguration.setPassword(password);
+    private JedisConnectionFactory createJedisFactory(String host, int port, String password) {
+        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
+        redisStandaloneConfiguration.setHostName(host);
+        redisStandaloneConfiguration.setPort(port);
+        redisStandaloneConfiguration.setPassword(password);
 
-		JedisPoolingClientConfigurationBuilder poolConfig = (JedisPoolingClientConfigurationBuilder) JedisClientConfiguration.builder();
-		poolConfig.poolConfig(jedisPoolConfig());
-		JedisConnectionFactory factory = new JedisConnectionFactory(redisStandaloneConfiguration, poolConfig.build());
-		return factory;
-	}
+        JedisPoolingClientConfigurationBuilder poolConfig = (JedisPoolingClientConfigurationBuilder) JedisClientConfiguration.builder();
+        poolConfig.poolConfig(jedisPoolConfig());
+        JedisConnectionFactory factory = new JedisConnectionFactory(redisStandaloneConfiguration, poolConfig.build());
+        return factory;
+    }
 }

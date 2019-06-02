@@ -21,5 +21,5 @@ public interface SysMessageService {
      * @auther: xsp
      * @UpadteDate: 2019/3/12 16:15
      */
-    Map<String, Object> sendWebSiteMessage (Integer userId, String busiType, Map<String, String> params);
+    Map<String, Object> sendWebSiteMessage(Integer userId, String busiType, Map<String, String> params);
 }

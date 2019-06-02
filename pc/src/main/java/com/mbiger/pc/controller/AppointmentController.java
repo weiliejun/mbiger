@@ -9,20 +9,14 @@ import com.mbiger.common.model.sysMessage.bean.SysMessage;
 import com.mbiger.common.model.user.bean.UserInfo;
 import com.mbiger.common.util.DateHelper;
 import com.mbiger.common.util.StringHelper;
+import com.mbiger.common.web.SessionUser;
 import com.mbiger.pc.service.mbigerServiceManage.MbigerService;
 import com.mbiger.pc.service.sysMessageManage.SysMessageService;
 import com.mbiger.pc.service.userManage.CustomerAppointmentService;
 import com.mbiger.pc.web.base.AbstractBaseController;
-import com.mbiger.common.web.SessionUser;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +24,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -50,36 +42,37 @@ public class AppointmentController extends AbstractBaseController {
 
     /**
      * 申请API提交（saas服务申请，需要发送短信）
+     *
      * @param request
      * @param serviceType
      * @return
      */
     @RequestMapping("/appointment/apply/{serviceType}/submit")
-    public @ResponseBody Map<String,?> appointmentApplySubmit(HttpServletRequest request,
-                                                         @PathVariable String serviceType,
-                                                         CustomerAppointment appointment,
-                                                         @RequestParam(value = "validateCode") String validateCode,
-                                                         @RequestParam(value = "remoteValidateCode") String remoteValidateCode)
-    {
+    public @ResponseBody
+    Map<String, ?> appointmentApplySubmit(HttpServletRequest request,
+                                          @PathVariable String serviceType,
+                                          CustomerAppointment appointment,
+                                          @RequestParam(value = "validateCode") String validateCode,
+                                          @RequestParam(value = "remoteValidateCode") String remoteValidateCode) {
         String flag = "true";
         String message = "提交成功！";
-        Map<String,Object> resultMap = new HashMap<String, Object>();
-        try{
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        try {
 
-            SessionUser sessionUser =  getSessionUserBySid(request);
-            if(sessionUser == null){
-                resultMap.put("flag","nologin");
-                resultMap.put("msg","未登录，请登录后操作！");
-                return  resultMap;
+            SessionUser sessionUser = getSessionUserBySid(request);
+            if (sessionUser == null) {
+                resultMap.put("flag", "nologin");
+                resultMap.put("msg", "未登录，请登录后操作！");
+                return resultMap;
             }
             UserInfo userInfo = sessionUser.getUserInfo();
             // 获取session中存放短信验证码、图形验证码
-            String exitSmsCodeSession =(String)request.getSession().getAttribute(ApplicationSessionKeys.SMS_VERIFY_CODE);
+            String exitSmsCodeSession = (String) request.getSession().getAttribute(ApplicationSessionKeys.SMS_VERIFY_CODE);
             String exitValidateCode = (String) request.getSession().getAttribute(ApplicationSessionKeys.LOGIN_VERIFYCODE);
             // 校验3：图形验证码
             if (StringHelper.isEmpty(exitValidateCode) || !exitValidateCode.equalsIgnoreCase(validateCode)) {
                 resultMap.put("flag", ResultCode.VALIDATE_CODE_ERROR.code());
-                resultMap.put("msg",ResultCode.VALIDATE_CODE_ERROR.message());
+                resultMap.put("msg", ResultCode.VALIDATE_CODE_ERROR.message());
                 return resultMap;
             }
             // 校验4：短信验证码是否正确
@@ -90,10 +83,10 @@ public class AppointmentController extends AbstractBaseController {
                     return resultMap;
                 }
                 //校验：短信验证码是否过期
-                Map<String,String> param = new HashMap<String,String>();
-                param.put("mobile",appointment.getCustomerPhone());
-                param.put("busiType","sssaApiApply");
-                param.put("type","sms");
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("mobile", appointment.getCustomerPhone());
+                param.put("busiType", "sssaApiApply");
+                param.put("type", "sms");
                 SysMessage sysMessage = sysMessageService.getSysMessageByParams(param);
                 if (DateHelper.validTimeDifference(sysMessage.getCreateTime()) == false) {
                     resultMap.put("flag", ResultCode.SMS_CODE_TIMEOUT.code());
@@ -101,14 +94,14 @@ public class AppointmentController extends AbstractBaseController {
                     return resultMap;
                 }
             }
-            if(StringHelper.isEmpty(serviceType) || "undefined".equals(serviceType)){
-                resultMap.put("flag","false");
-                resultMap.put("msg","当前服务地址不存在");
-                logger.info("===当前请求地址：/appointment/"+serviceType +"/submit");
-                return  resultMap;
+            if (StringHelper.isEmpty(serviceType) || "undefined".equals(serviceType)) {
+                resultMap.put("flag", "false");
+                resultMap.put("msg", "当前服务地址不存在");
+                logger.info("===当前请求地址：/appointment/" + serviceType + "/submit");
+                return resultMap;
             }
             // 'PAAS','IAAS','CUSTOMIZATION' 三部分预约咨询手机号，姓名为登录用户
-            if(StringHelper.isEmpty(appointment.getCustomerName()) || StringHelper.isEmpty(appointment.getCustomerPhone())){
+            if (StringHelper.isEmpty(appointment.getCustomerName()) || StringHelper.isEmpty(appointment.getCustomerPhone())) {
                 appointment.setCustomerName(userInfo.getNickName());
                 appointment.setCustomerPhone(userInfo.getMobile());
             }
@@ -119,37 +112,38 @@ public class AppointmentController extends AbstractBaseController {
             appointment.setDataStatus("0");
             customerAppointmentService.addCustomerAppointment(appointment);
 
-        }catch (Exception e){
-            logger.error("msg",e);
+        } catch (Exception e) {
+            logger.error("msg", e);
             e.printStackTrace();
             flag = "false";
             message = "系统异常！";
         }
-        resultMap.put("flag",flag);
-        resultMap.put("msg",message);
-        return  resultMap;
+        resultMap.put("flag", flag);
+        resultMap.put("msg", message);
+        return resultMap;
     }
 
     /**
      * 服务咨询提交（paas，iaas，定制服务）
+     *
      * @param request
      * @param serviceType
      * @return
      */
     @RequestMapping("/appointment/consult/{serviceType}/submit")
-    public @ResponseBody Map<String,?> appointmentConsultSubmit(HttpServletRequest request,@PathVariable String serviceType, CustomerAppointment appointment)
-    {
+    public @ResponseBody
+    Map<String, ?> appointmentConsultSubmit(HttpServletRequest request, @PathVariable String serviceType, CustomerAppointment appointment) {
         String flag = "true";
         String msg = "提交成功！";
-        Map<String,Object> resultMap = new HashMap<String, Object>();
-        try{
-            if(StringHelper.isEmpty(serviceType) || "undefined".equals(serviceType)){
-                resultMap.put("flag","false");
-                resultMap.put("msg","当前服务地址不存在");
-                logger.info("===当前请求地址：/appointment/"+serviceType +"/submit");
-                return  resultMap;
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        try {
+            if (StringHelper.isEmpty(serviceType) || "undefined".equals(serviceType)) {
+                resultMap.put("flag", "false");
+                resultMap.put("msg", "当前服务地址不存在");
+                logger.info("===当前请求地址：/appointment/" + serviceType + "/submit");
+                return resultMap;
             }
-            SessionUser sessionUser =  getSessionUserBySid(request);
+            SessionUser sessionUser = getSessionUserBySid(request);
             UserInfo userInfo = sessionUser.getUserInfo();
             appointment.setUserId(userInfo.getId());
             appointment.setServiceCode(serviceType);
@@ -158,25 +152,26 @@ public class AppointmentController extends AbstractBaseController {
             appointment.setDataStatus("0");
             customerAppointmentService.addCustomerAppointment(appointment);
 
-        }catch (Exception e){
-            logger.error("msg",e);
+        } catch (Exception e) {
+            logger.error("msg", e);
             e.printStackTrace();
-            resultMap.put("flag","false");
-            resultMap.put("msg","系统异常，请联系管理员！");
-            return  resultMap;
+            resultMap.put("flag", "false");
+            resultMap.put("msg", "系统异常，请联系管理员！");
+            return resultMap;
         }
-        resultMap.put("flag",flag);
-        resultMap.put("msg",msg);
-        return  resultMap;
+        resultMap.put("flag", flag);
+        resultMap.put("msg", msg);
+        return resultMap;
     }
 
     /**
      * 文档下载（未使用资源服务器，直接返回文档地址）
+     *
      * @param
      * @return
      */
     @RequestMapping("/appointment/{serviceType}/downloadlocal")
-    public String docDownloadFromLocal( @PathVariable String serviceType) {
+    public String docDownloadFromLocal(@PathVariable String serviceType) {
         {
             String url = "true";
             try {
@@ -185,7 +180,7 @@ public class AppointmentController extends AbstractBaseController {
                     logger.info("===当前请求地址：/appointment/" + serviceType + "/submit");
                     return null;
                 }
-                url =  "forward:/static/doc/"+serviceInfo.getDocLink();
+                url = "forward:/static/doc/" + serviceInfo.getDocLink();
 
                 logger.info("文件路径:   " + url + "\n");
             } catch (Exception e) {
@@ -221,15 +216,15 @@ public class AppointmentController extends AbstractBaseController {
             headers.add("Content-Disposition","attachment; filename=" + new String(serviceInfo.getDocLink().getBytes("UTF-8"),"iso-8859-1"));
 
             *//****** 远程文件地址，借助浏览器，下载文件
-            String basePath = pictureServerAccessURL +serviceInfo.getDocLink();
-            File file = new File(basePath);
-            fis = new FileInputStream(file);
-            body = new byte[fis.available()];
-            fis.read(body);
-            headers = new HttpHeaders();
-            headers.add("Content-Disposition","attachment; filename=" + new String(file.getName().getBytes("UTF-8"),"iso-8859-1"));
-            logger.info("文件路径:   "+file.getPath()+"\n");
-            *******//*
+     String basePath = pictureServerAccessURL +serviceInfo.getDocLink();
+     File file = new File(basePath);
+     fis = new FileInputStream(file);
+     body = new byte[fis.available()];
+     fis.read(body);
+     headers = new HttpHeaders();
+     headers.add("Content-Disposition","attachment; filename=" + new String(file.getName().getBytes("UTF-8"),"iso-8859-1"));
+     logger.info("文件路径:   "+file.getPath()+"\n");
+     *******//*
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -262,7 +257,7 @@ public class AppointmentController extends AbstractBaseController {
             resultMap.put("msg", "未登录，请登录后操作！");
             return resultMap;
         }
-        Map<String,Object>  params = new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<String, Object>();
         params.put("userId", sessionUser.getUserInfo().getId());
         params.put("serviceCode", serviceType);
         params.put("status", "1"); // 未联系

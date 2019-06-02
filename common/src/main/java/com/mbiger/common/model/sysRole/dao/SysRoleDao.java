@@ -12,30 +12,31 @@ import java.util.Map;
 public class SysRoleDao extends AbstractBaseDao {
 
     public void addSysRole(SysRole sysRole) {
-        insert("sysRole.addSysRole",sysRole);
+        insert("sysRole.addSysRole", sysRole);
     }
 
     public void deleteSysRoleById(Integer id) {
-        delete("sysRole.deleteSysRoleById",id);
+        delete("sysRole.deleteSysRoleById", id);
     }
 
     public void updateSysRole(SysRole sysRole) {
-        update("sysRole.updateSysRole",sysRole);
+        update("sysRole.updateSysRole", sysRole);
     }
 
     public SysRole getSysRoleById(Integer id) {
-        return (SysRole)queryForObject("sysRole.getSysRoleById",id);
+        return (SysRole) queryForObject("sysRole.getSysRoleById", id);
     }
 
     public SysRole getSysRoleByName(String roleName) {
-        Map<String,Object> params = new HashMap<String,Object>();
-        params.put("name",roleName);
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("name", roleName);
         List<SysRole> SysRoleList = listSysRolesByParams(params);
-        if(SysRoleList != null && SysRoleList.size() > 0){
+        if (SysRoleList != null && SysRoleList.size() > 0) {
             return SysRoleList.get(0);
         }
         return null;
     }
+
     /**
      * @Description 根据动态参数获取角色列表
      * @auther: zhangkele

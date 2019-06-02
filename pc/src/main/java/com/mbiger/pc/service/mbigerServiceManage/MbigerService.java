@@ -19,7 +19,8 @@ public interface MbigerService {
      * @auther: zhangkele
      * @UpadteDate: 2019/1/23 13:56
      */
-    int getRemainderFreeCount(String serviceCode,String menuType,String userId);
+    int getRemainderFreeCount(String serviceCode, String menuType, String userId);
+
     /**
      * @Description 获取接口单次调用的费用
      * @auther: zhangkele
@@ -32,7 +33,7 @@ public interface MbigerService {
      * @auther: zhangkele
      * @UpadteDate: 2019/1/23 14:12
      */
-    String processBusiness(Map<String,String> params);
+    String processBusiness(Map<String, String> params);
 
     /**
      * @Description 根据serviceCode查询服务信息

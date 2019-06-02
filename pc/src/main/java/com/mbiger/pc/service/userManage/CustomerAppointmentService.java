@@ -12,6 +12,6 @@ public interface CustomerAppointmentService {
 
     CustomerAppointment getCustomerAppointmentById(Integer id);
 
-    int countCustomerAppointmentsByParams(Map<String,Object> params);
+    int countCustomerAppointmentsByParams(Map<String, Object> params);
 
 }

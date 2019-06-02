@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class DialectConfig {
 
     @Bean
-    public CodeDialect registerCodeDialect(){
+    public CodeDialect registerCodeDialect() {
         return new CodeDialect();
     }
 

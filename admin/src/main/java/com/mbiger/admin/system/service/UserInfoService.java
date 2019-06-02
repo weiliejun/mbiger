@@ -17,6 +17,7 @@ public interface UserInfoService {
     UserInfo getUserByMobile(String mobile);
 
     UserInfo getUserInfoByNickName(String nickName);
+
     /**
      * @Description 根据appKey查询用户
      * @auther: zhangkele
@@ -25,17 +26,19 @@ public interface UserInfoService {
     UserInfo getUserInfoByAppKey(String appKey);
 
     /**
-     *  注册信息-校验（发送短信验证码按钮、注册按钮）（公共方法）
+     * 注册信息-校验（发送短信验证码按钮、注册按钮）（公共方法）
+     *
      * @param mobile
      * @param nickName
-     * @param validateCode 图形码
+     * @param validateCode   图形码
      * @param exitVerifyCode session保存的图形码
      * @Author Feng.yanmin
      */
     Map<String, String> userRegisterVerify(String mobile, String nickName, String validateCode, String exitVerifyCode);
 
     /**
-     *  提交注册信息
+     * 提交注册信息
+     *
      * @param mobile
      * @param password
      * @param nickName
@@ -44,23 +47,23 @@ public interface UserInfoService {
     Map<String, String> userRegisterSubmit(String mobile, String password, String nickName);
 
     /**
-     * @Description:  登录逻辑
-     * @Author:       zhangkele
-     * @UpdateDate:   2019/1/17 18:26
+     * @Description: 登录逻辑
+     * @Author: zhangkele
+     * @UpdateDate: 2019/1/17 18:26
      */
-    Map<String,String> login(String userName, String password, String ip, String sid, String exitVerifyCode, String validateCode);
+    Map<String, String> login(String userName, String password, String ip, String sid, String exitVerifyCode, String validateCode);
 
     /**
-     * @Description:  保存session信息
-     * @Author:       zhangkele
-     * @UpdateDate:   2019/1/17 18:26
+     * @Description: 保存session信息
+     * @Author: zhangkele
+     * @UpdateDate: 2019/1/17 18:26
      */
     void saveSession(String sid, SessionUser sessionUser);
 
     /**
-     * @Description:  登出
-     * @Author:       zhangkele
-     * @UpdateDate:   2019/1/17 18:26
+     * @Description: 登出
+     * @Author: zhangkele
+     * @UpdateDate: 2019/1/17 18:26
      */
     void loginOut(String sid, Integer uid);
 
@@ -68,6 +71,7 @@ public interface UserInfoService {
      * 是指定的用户下线
      */
     void loginOut(Integer uid);
+
     /**
      * 指定的用户下线(根据sessionid)
      */
@@ -90,9 +94,9 @@ public interface UserInfoService {
 
     /**
      * 根据sessionId修改CurrentUser 返回修改后的CurrentUser
-
      */
     void eidtSessionUserBySessionId(String sid, SessionUser sessionUser);
+
     /**
      * 指定用户是否在线
      */
@@ -106,7 +110,7 @@ public interface UserInfoService {
     /**
      * 忘记密码校验保存
      */
-    Map<String,String> checkAndSavePassword(String mobile, String password);
+    Map<String, String> checkAndSavePassword(String mobile, String password);
 
     /**
      * @Description 修改AppSecret
@@ -121,6 +125,6 @@ public interface UserInfoService {
      * @auther: cyp
      * @UpadteDate: 2019-02-28 10:55
      */
-    List<UserInfo> listUserInfosByParams(Map<String,Object> params);
+    List<UserInfo> listUserInfosByParams(Map<String, Object> params);
 
 }

@@ -29,71 +29,71 @@ import java.util.Map;
 @Aspect
 @Component
 public class ThirdPartyCallLogAspect {
-	private final Logger logger = Logger.getLogger(ThirdPartyCallLogAspect.class);
+    private final Logger logger = Logger.getLogger(ThirdPartyCallLogAspect.class);
 
-	@Autowired
-	private ServiceCallLogDao serviceCallLogDao;
+    @Autowired
+    private ServiceCallLogDao serviceCallLogDao;
 
-	@Pointcut("execution (* com.mbiger.common.thirdparty.service.ThirdPartyCallService.*(..))")
-	public void pointCut(){
-	}
+    @Pointcut("execution (* com.mbiger.common.thirdparty.service.ThirdPartyCallService.*(..))")
+    public void pointCut() {
+    }
 
-	public void doBefore(JoinPoint jp) {
-		logger.info("log Begining method: " + jp.getTarget().getClass().getName() + "." + jp.getSignature().getName());
-	}
-
-
-	@Around(value = "pointCut()")
-	public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
-		Object[] args = pjp.getArgs();
-		if (!ArrayUtils.isEmpty(args)) {
-			Map<String,String> params = (Map<String,String>) args[0];
-			String ordId = params.get("ordId");
-			String service = params.get("service");
-			if(logger.isDebugEnabled()){
-				logger.debug("thirdpartyService invoke,params:"  + JSON.toJSONString(params));
-			}
-			//新增请求接口日志
-			ServiceCallLog serviceCallLog = new ServiceCallLog();
-			if(StringHelper.isNotEmpty(params.get("userId"))){
-				serviceCallLog.setUserId(Integer.valueOf(params.get("userId")));
-				serviceCallLog.setAppkey(params.get("appKey"));
-			}
-			serviceCallLog.setOrdId(ordId);
-			serviceCallLog.setServiceCode(service);
-			//移除多余的参数
-			params.remove("userId");
-			params.remove("appKey");
-			params.remove("ordId");
-			params.remove("service");
-			String reqeustContent = JSON.toJSONString(params);
-			serviceCallLog.setRequestContent(reqeustContent);
-			serviceCallLog.setRequestTime(new Date());
-			serviceCallLog.setCreateTime(new Date());
-			serviceCallLog.setDataStatus(GlobalConstant.DATA_VALID);
-			serviceCallLogDao.addServiceCallLog(serviceCallLog);
-			params.put("service",service);
-			String respContent = (String)pjp.proceed(args);
-			if(logger.isDebugEnabled()){
-				logger.debug("thirdpartyService return,respContent:"  + respContent);
-			}
-			String respContentProcess = StringHelper.moreLengthOfDBProcess(respContent,2000);
-			serviceCallLogDao.updateServiceCallLogByOrdId(ordId,respContentProcess);
-			return respContent;
-		}
-		return null;
-	}
+    public void doBefore(JoinPoint jp) {
+        logger.info("log Begining method: " + jp.getTarget().getClass().getName() + "." + jp.getSignature().getName());
+    }
 
 
-	public void doAfter(JoinPoint jp)  {
-		logger.info("log Ending method: " + jp.getTarget().getClass().getName() + "." + jp.getSignature().getName());
-	}
+    @Around(value = "pointCut()")
+    public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
+        Object[] args = pjp.getArgs();
+        if (!ArrayUtils.isEmpty(args)) {
+            Map<String, String> params = (Map<String, String>) args[0];
+            String ordId = params.get("ordId");
+            String service = params.get("service");
+            if (logger.isDebugEnabled()) {
+                logger.debug("thirdpartyService invoke,params:" + JSON.toJSONString(params));
+            }
+            //新增请求接口日志
+            ServiceCallLog serviceCallLog = new ServiceCallLog();
+            if (StringHelper.isNotEmpty(params.get("userId"))) {
+                serviceCallLog.setUserId(Integer.valueOf(params.get("userId")));
+                serviceCallLog.setAppkey(params.get("appKey"));
+            }
+            serviceCallLog.setOrdId(ordId);
+            serviceCallLog.setServiceCode(service);
+            //移除多余的参数
+            params.remove("userId");
+            params.remove("appKey");
+            params.remove("ordId");
+            params.remove("service");
+            String reqeustContent = JSON.toJSONString(params);
+            serviceCallLog.setRequestContent(reqeustContent);
+            serviceCallLog.setRequestTime(new Date());
+            serviceCallLog.setCreateTime(new Date());
+            serviceCallLog.setDataStatus(GlobalConstant.DATA_VALID);
+            serviceCallLogDao.addServiceCallLog(serviceCallLog);
+            params.put("service", service);
+            String respContent = (String) pjp.proceed(args);
+            if (logger.isDebugEnabled()) {
+                logger.debug("thirdpartyService return,respContent:" + respContent);
+            }
+            String respContentProcess = StringHelper.moreLengthOfDBProcess(respContent, 2000);
+            serviceCallLogDao.updateServiceCallLogByOrdId(ordId, respContentProcess);
+            return respContent;
+        }
+        return null;
+    }
 
 
-	@AfterThrowing(value="pointCut()",throwing="e")
-	public void doThrowing(JoinPoint jp, Throwable e) {
-		String message = "invoke method: " + jp.getTarget().getClass().getName() +
-				"." + jp.getSignature().getName() + " throw exception";
-		logger.error(message,e);
-	}
+    public void doAfter(JoinPoint jp) {
+        logger.info("log Ending method: " + jp.getTarget().getClass().getName() + "." + jp.getSignature().getName());
+    }
+
+
+    @AfterThrowing(value = "pointCut()", throwing = "e")
+    public void doThrowing(JoinPoint jp, Throwable e) {
+        String message = "invoke method: " + jp.getTarget().getClass().getName() +
+                "." + jp.getSignature().getName() + " throw exception";
+        logger.error(message, e);
+    }
 }

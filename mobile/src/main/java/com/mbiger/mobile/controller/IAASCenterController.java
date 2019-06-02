@@ -26,15 +26,16 @@ public class IAASCenterController extends AbstractBaseController {
 
     /**
      * 账户用心-iaas服务页面
+     *
      * @param request
      * @param model
      * @param serviceType
      * @return
      */
     @RequestMapping("/iaasCenter/{serviceType}")
-    public String iaasCenterIndex(HttpServletRequest request , Model model, @PathVariable String serviceType ){
+    public String iaasCenterIndex(HttpServletRequest request, Model model, @PathVariable String serviceType) {
         // 查询  服务信息
-        ServiceInfo serviceInfo =  mbigerService.getServiceInfoByCode(serviceType);
+        ServiceInfo serviceInfo = mbigerService.getServiceInfoByCode(serviceType);
         model.addAttribute("serviceInfo", serviceInfo);
         model.addAttribute("serviceType", serviceType);
         return "userAccount/iaasCenter/consulting";

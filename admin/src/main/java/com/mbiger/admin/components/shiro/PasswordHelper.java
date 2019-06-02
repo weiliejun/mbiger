@@ -1,8 +1,8 @@
 package com.mbiger.admin.components.shiro;
 
-import com.mbiger.common.model.sysManager.bean.SysManager;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
+
 /**
  * @Description shrio登录密码加密
  * @auther: zhangkele
@@ -19,6 +19,6 @@ public class PasswordHelper {
     }
 
     public static void main(String[] args) {
-        System.out.println("-----------" + encryptPassword("sysadmin","123456"));
+        System.out.println("-----------" + encryptPassword("sysadmin", "123456"));
     }
 }

@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
     <title>众大技术-注册</title>
-    <link rel="stylesheet" type="text/css" href="/css/loginRegister.css" />
+    <link rel="stylesheet" type="text/css" href="/css/loginRegister.css"/>
 
 </head>
 <body>
 <!--Head start-->
 <div class="loginHead clearfix">
-    <h1 class="logoImg"><a href="/"><img src="/images/publicImg/bigerLogo.png" /></a></h1>
+    <h1 class="logoImg"><a href="/"><img src="/images/publicImg/bigerLogo.png"/></a></h1>
     <p class="welcomeLogin">欢迎注册</p>
     <div class="haveAccountNum">已有账号？<a href="/login">立即登录</a></div>
 </div>
@@ -16,39 +16,44 @@
 
 <div class="registerBox">
     <div class="registerCon">
-        <form action="" id="registerForm" autocomplete="off"  >
+        <form action="" id="registerForm" autocomplete="off">
             <ul class="registerInfo">
                 <li class="clearfix">
                     <span class="regiTit">用户名</span>
-                    <input type="text" th:autocomplete="off" class="form-control" id="nickName" name="nickName" onkeydown="if (event.keyCode==13) {}" placeholder="8-16位字母数字组合，以字母开头" />
-                    <label id="nickNameError" for="nickName" class="error" style="display: none;" ></label>
+                    <input type="text" th:autocomplete="off" class="form-control" id="nickName" name="nickName"
+                           onkeydown="if (event.keyCode==13) {}" placeholder="8-16位字母数字组合，以字母开头"/>
+                    <label id="nickNameError" for="nickName" class="error" style="display: none;"></label>
                 </li>
                 <li class="clearfix">
                     <span class="regiTit">密码</span>
-                    <input type="password" class="form-control" id="password" name="password"  placeholder="8-16位字母数字组合" />
+                    <input type="password" class="form-control" id="password" name="password"
+                           placeholder="8-16位字母数字组合"/>
                     <label id="passwordError" for="password" class="error" style="display: none;"></label>
                 </li>
                 <li class="clearfix">
                     <span class="regiTit">手机号码</span>
-                    <input type="text" class="form-control" id="mobile" name="mobile" placeholder="手机号码" />
+                    <input type="text" class="form-control" id="mobile" name="mobile" placeholder="手机号码"/>
                     <label id="mobileError" for="mobile" class="error" style="display: none;"> </label>
                 </li>
                 <li class="clearfix">
                     <span class="regiTit">验证码</span>
-                    <input type="text" class="form-control yzmInput" id="validateCode" name="validateCode" placeholder="验证码" />
+                    <input type="text" class="form-control yzmInput" id="validateCode" name="validateCode"
+                           placeholder="验证码"/>
                     <span><img class="verifyCodeImage" alt="" style="display: none;"></span>
                     <label id="verifyCodeError" for="validateCode" class="error" style="display: none;"></label>
                 </li>
                 <li class="clearfix">
                     <span class="regiTit">短信验证码</span>
-                    <input type="text" class="form-control yzmInput" id="remoteValidateCode" name="remoteValidateCode" placeholder="短信验证码" value=""/>
+                    <input type="text" class="form-control yzmInput" id="remoteValidateCode" name="remoteValidateCode"
+                           placeholder="短信验证码" value=""/>
                     <a id="sendremotecodebutton" href="javascript:;" class="getReYzm btnEnabled">获取短信验证码</a>
-                    <label id="remoteValidateCodeError" for="remoteValidateCode" class="error" style="display: none;"></label>
+                    <label id="remoteValidateCodeError" for="remoteValidateCode" class="error"
+                           style="display: none;"></label>
                 </li>
             </ul>
             <div class="readTip">
-                <input type="checkbox" name="protocol" id="protocol" class="" style="margin-right: 5px;" >我已阅读并同意
-                 <a href="javascript:;" target="_blank" data-target="#agreementModal" data-toggle="modal">《众大网站服务协议》</a>
+                <input type="checkbox" name="protocol" id="protocol" class="" style="margin-right: 5px;">我已阅读并同意
+                <a href="javascript:;" target="_blank" data-target="#agreementModal" data-toggle="modal">《众大网站服务协议》</a>
                 <span class="tip"><label id="protocolLabel" for="protocol" class="error"></label></span>
             </div>
         </form>
@@ -68,7 +73,8 @@
 <!-- 弹框 end-->
 
 <!-- 注册 服务协议 模态框 -->
-<div class="modal fade" id="agreementModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="agreementModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content agreeModal">
             <div class="modal-body" th:replace="/common/agreement/agreementContent"><!--协议内容  -->
@@ -259,6 +265,7 @@
         }
     });
     //********************  发送短信验证码  end  ******************************************//
+
 
 </script>
 </html>

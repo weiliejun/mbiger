@@ -1,4 +1,5 @@
 package com.mbiger.common.model.user.bean;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;

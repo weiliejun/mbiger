@@ -2,7 +2,6 @@ package com.mbiger.common.db;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -29,12 +28,12 @@ public class DataSourceConfig {
 		return DataSourceBuilder.create().build();
 	}*/
 
-	@Bean(name = "x_master")
-	@Primary
-	@ConfigurationProperties(prefix = "spring.datasource")
-	public DataSource druidDataSource() {
-		DruidDataSource druidDataSource = new DruidDataSource();
-		return druidDataSource;
-	}
+    @Bean(name = "x_master")
+    @Primary
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource druidDataSource() {
+        DruidDataSource druidDataSource = new DruidDataSource();
+        return druidDataSource;
+    }
 
 }

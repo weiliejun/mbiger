@@ -47,13 +47,13 @@
     <build>
         <plugins>
             <plugin>
-                <groupId> org.springframework.boot </groupId>
-                <artifactId> spring-boot-maven-plugin </artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <!--如果父项目不是spring-boot-starter-parent，需要显示指定execution-->
                 <executions>
                     <execution>
                         <goals>
-                            <goal> repackage</goal>
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>

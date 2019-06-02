@@ -1,4 +1,5 @@
 package com.mbiger.common.model.serviceinfo.dao;
+
 import com.mbiger.common.db.AbstractBaseDao;
 import com.mbiger.common.model.serviceinfo.bean.ServiceInfo;
 import org.springframework.stereotype.Repository;
@@ -19,28 +20,30 @@ public class ServiceInfoDao extends AbstractBaseDao {
         update("serviceinfo.updateServiceInfo", serviceInfo);
     }
 
-    public ServiceInfo getServiceInfoById(Integer id){
-        return (ServiceInfo)queryForObject("serviceinfo.getServiceInfoById",id);
+    public ServiceInfo getServiceInfoById(Integer id) {
+        return (ServiceInfo) queryForObject("serviceinfo.getServiceInfoById", id);
     }
+
     /**
      * @Description 根据动态参数查询ServiceInfo列表
      * @auther: zhangkele
      * @UpadteDate: 2019/1/23 16:59
      */
-    public List<ServiceInfo> listServiceInfosByParams(Map<String,Object> params){
-        return  (List<ServiceInfo>)queryForList("serviceinfo.listServiceInfosByParams",params);
+    public List<ServiceInfo> listServiceInfosByParams(Map<String, Object> params) {
+        return (List<ServiceInfo>) queryForList("serviceinfo.listServiceInfosByParams", params);
     }
+
     /**
      * @Description 根据serviceCode查询ServiceInfo
      * @auther: FENG.yanmin
      * @UpadteDate: 2019/1/23 17:01
      */
-    public ServiceInfo getServiceInfoByServiceCode(String serviceCode){
-        Map<String,Object> params = new HashMap<String,Object>();
-        params.put("serviceCode",serviceCode);
-        params.put("status","0");
+    public ServiceInfo getServiceInfoByServiceCode(String serviceCode) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("serviceCode", serviceCode);
+        params.put("status", "0");
         List<ServiceInfo> serviceInfoList = listServiceInfosByParams(params);
-        if(serviceInfoList != null && serviceInfoList.size() > 0){
+        if (serviceInfoList != null && serviceInfoList.size() > 0) {
             return serviceInfoList.get(0);
         }
         return null;
@@ -51,12 +54,12 @@ public class ServiceInfoDao extends AbstractBaseDao {
      * @auther: FENG.yanmin
      * @UpadteDate: 2019/1/28 16:59
      */
-    public List<ServiceInfo> listServiceInfosByServiceModule(String serviceModule){
-        Map<String,Object> params = new HashMap<String,Object>();
-        params.put("serviceModule",serviceModule);
-        params.put("status","0");
+    public List<ServiceInfo> listServiceInfosByServiceModule(String serviceModule) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("serviceModule", serviceModule);
+        params.put("status", "0");
         List<ServiceInfo> serviceInfoList = listServiceInfosByParams(params);
-        return  serviceInfoList;
+        return serviceInfoList;
     }
 
 }

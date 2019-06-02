@@ -20,32 +20,32 @@ import java.util.Map;
 
 @Configuration
 @AutoConfigureAfter({DataSourceConfig.class})
-@MapperScan(basePackages = "com.mbiger.common.model.*.mapper", sqlSessionTemplateRef  = "sqlSessionTemplate")
+@MapperScan(basePackages = "com.mbiger.common.model.*.mapper", sqlSessionTemplateRef = "sqlSessionTemplate")
 public class DynamicDataSourceConfig {
-	
-	@Autowired
-	@Qualifier("x_master")
-	private DataSource master;
-	
-	@Bean(name = "dynamicDataSource")
-	public DataSource dynamicDataSource(){
-		//动态数据源对象
-		DynamicDataSource dynamicDataSource = new DynamicDataSource();
-		//设置默认数据源
-		dynamicDataSource.setDefaultTargetDataSource(master);
-		//配置多数据源
-		Map<Object,Object> dataSourceMap = new HashMap<>();
-		//填入主数据源
-		dataSourceMap.put("x_master",master);
-		//如果从数据源存在，填入从数据源
+
+    @Autowired
+    @Qualifier("x_master")
+    private DataSource master;
+
+    @Bean(name = "dynamicDataSource")
+    public DataSource dynamicDataSource() {
+        //动态数据源对象
+        DynamicDataSource dynamicDataSource = new DynamicDataSource();
+        //设置默认数据源
+        dynamicDataSource.setDefaultTargetDataSource(master);
+        //配置多数据源
+        Map<Object, Object> dataSourceMap = new HashMap<>();
+        //填入主数据源
+        dataSourceMap.put("x_master", master);
+        //如果从数据源存在，填入从数据源
 		/*if (slave!=null){
 			dataSourceMap.put("x_slave",slave);
 		}*/
-		dynamicDataSource.setTargetDataSources(dataSourceMap);
-		return dynamicDataSource;
-	}
-	
-	@Bean(name = "sqlSessionFactory")
+        dynamicDataSource.setTargetDataSources(dataSourceMap);
+        return dynamicDataSource;
+    }
+
+    @Bean(name = "sqlSessionFactory")
     @Primary
     public SqlSessionFactory sqlSessionFactory(@Qualifier("dynamicDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();

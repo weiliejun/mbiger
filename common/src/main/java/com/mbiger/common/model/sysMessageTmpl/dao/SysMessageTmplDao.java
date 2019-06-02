@@ -2,7 +2,6 @@ package com.mbiger.common.model.sysMessageTmpl.dao;
 
 import com.mbiger.common.db.AbstractBaseDao;
 import com.mbiger.common.model.sysMessageTmpl.bean.SysMessageTmpl;
-import com.mbiger.common.model.sysRole.bean.SysRole;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,19 +11,19 @@ import java.util.Map;
 public class SysMessageTmplDao extends AbstractBaseDao {
 
     public SysMessageTmpl addSysMessageTmpl(SysMessageTmpl sysMessageTmpl) {
-        return  (SysMessageTmpl)queryForObject("sysMessageTmpl.addSysMessageTmpl",sysMessageTmpl);
+        return (SysMessageTmpl) queryForObject("sysMessageTmpl.addSysMessageTmpl", sysMessageTmpl);
     }
 
     public void updateSysMessageTmpl(SysMessageTmpl sysMessageTmpl) {
-        update("sysMessageTmpl.updateSysMessageTmpl",sysMessageTmpl);
+        update("sysMessageTmpl.updateSysMessageTmpl", sysMessageTmpl);
     }
 
     public SysMessageTmpl getSysMessageTmplById(Integer id) {
-        return (SysMessageTmpl)queryForObject("sysMessageTmpl.getSysMessageTmplById",id);
+        return (SysMessageTmpl) queryForObject("sysMessageTmpl.getSysMessageTmplById", id);
     }
 
-    public List<SysMessageTmpl> listMessageTmplsByParam(Map<String, Object> params){
-        return  queryForList("sysMessageTmpl.listMessageTmplsByParam",params);
+    public List<SysMessageTmpl> listMessageTmplsByParam(Map<String, Object> params) {
+        return queryForList("sysMessageTmpl.listMessageTmplsByParam", params);
     }
 
 }

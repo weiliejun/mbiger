@@ -14,102 +14,103 @@
     <link rel="stylesheet" href="assets/css/productInfo.css">
 </head>
 <body>
-    <header class="header_info clearfix">
-        <h1 class="head_L"><a href="javascript:;"></a></h1>
-        <h3 class="head_C"></h3>
-        <div class="head_R clearfix">
-            <a href="javascript:;" class="userIcon"></a>
-            <a href="javascript:;" class="menuIcon" data-toggle="modal" data-target="#myNav"></a>
-        </div>
-    </header>
-    <div class="occupyPos"></div>
-
-    <div class="eachProBan bankCardBelongBan">
-        <a href="javascript:;" class="applyBtn">申请API</a>
+<header class="header_info clearfix">
+    <h1 class="head_L"><a href="javascript:;"></a></h1>
+    <h3 class="head_C"></h3>
+    <div class="head_R clearfix">
+        <a href="javascript:;" class="userIcon"></a>
+        <a href="javascript:;" class="menuIcon" data-toggle="modal" data-target="#myNav"></a>
     </div>
+</header>
+<div class="occupyPos"></div>
 
-    <div class="proDetailsCon">
-        <h3 class="detailTit">应用介绍</h3>
-        <div class="detailText">
-            <p>支持对银行卡号、姓名、身份证号、预留手机号等元素的随机组合验证。返回:认证结果、银行卡名称、银行卡类型、对应银行联系电话、对应银行名称、对应银行网站地址。</p>
-            <b>银行卡认证分为以下几种形式（请按要求填写）：</b>
-            <p>1、持卡人姓名 + 银行卡卡号（二要素）</p>
-            <p>2、持卡人姓名 + 持卡人身份证号 + 银行卡卡号（三要素）</p>
-            <p>3、持卡人姓名 + 持卡人身份证号 + 银行预留手机号 + 银行卡卡号（四要素）</p>
-        </div>
-    </div>
-    <div class="queryCon">
-        <h3 class="detailTit">查询</h3>
-        <div class="tableBox">
-            <table class="futWea logTable">
-                <tr>
-                    <th>账户余额</th>
-                    <th>单次查询</th>
-                    <th>免费查询剩余次数</th>
-                </tr>
-                <tr class="queryData">
-                    <td>0元</td>
-                    <td>1元/次</td>
-                    <td>0次</td>
-                </tr>
-            </table>
-        </div>
-        <div class="queryBox clearfix">
-            <input type="text" class="personId form-control " placeholder="持卡人姓名（必填）">
-            <input type="text" class="personId form-control " placeholder="持卡人身份证号（选填）">
-            <input type="text" class="personId form-control " placeholder="银行预留手机号码（选填）">
-            <input type="text" class="personId form-control noneMarBot" placeholder="银行卡号（选填）">
-        </div>
-        <div class="errorBox"><label for="">请输入...</label></div>
-        <a href="javascript:;" class="publicBtn phoNameBtn">查询</a>
-        <div class="queResBox">
-            <h3 class="queResTit">查询结果：</h3>
-            <table class="queResCon expressCon">
-                <tr>
-                    <th><span>校验结果</span></th>
-                    <td>实名认证通过，信息一致</td>
-                </tr>
-                <tr>
-                    <th><span>银行卡名称</span></th>
-                    <td>龙卡储蓄卡(银联卡)</td>
-                </tr>
-                <tr>
-                    <th><span>银行卡类型</span></th>
-                    <td>借记卡</td>
-                </tr>
-                <tr>
-                    <th><span>银行联系电话</span></th>
-                    <td>95533</td>
-                </tr>
-                <tr>
-                    <th><span>银行名称</span></th>
-                    <td>建设银行</td>
-                </tr>
-                <tr>
-                    <th><span>银行网址</span></th>
-                    <td>http://www.ccb.com</td>
-                </tr>
-            </table>
-        </div>
-    </div>
+<div class="eachProBan bankCardBelongBan">
+    <a href="javascript:;" class="applyBtn">申请API</a>
+</div>
 
-    <footer class="footer_info">
-        <img src="assets/images/public/zdCode.png" class="zdCode" />
-        <p class="followTip">长按识别或截图保存关注微信公众号</p>
-        <p class="consultNum">咨询电话：400-0000-1111</p>
-        <p class="zdCopyRight">
-            <span>Copyright © 2018-2019  mbiger . All Rights Reserved </span>
-            <span>众大技术  版权所有</span>
-        </p>
-    </footer>
-    <script type="text/javascript" src="assets/js/public/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="assets/js/public/fontsizeset.js"></script>
-    <script type="text/javascript" src="assets/js/public/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/public/swiper.min.js"></script>
-    <script>
+<div class="proDetailsCon">
+    <h3 class="detailTit">应用介绍</h3>
+    <div class="detailText">
+        <p>支持对银行卡号、姓名、身份证号、预留手机号等元素的随机组合验证。返回:认证结果、银行卡名称、银行卡类型、对应银行联系电话、对应银行名称、对应银行网站地址。</p>
+        <b>银行卡认证分为以下几种形式（请按要求填写）：</b>
+        <p>1、持卡人姓名 + 银行卡卡号（二要素）</p>
+        <p>2、持卡人姓名 + 持卡人身份证号 + 银行卡卡号（三要素）</p>
+        <p>3、持卡人姓名 + 持卡人身份证号 + 银行预留手机号 + 银行卡卡号（四要素）</p>
+    </div>
+</div>
+<div class="queryCon">
+    <h3 class="detailTit">查询</h3>
+    <div class="tableBox">
+        <table class="futWea logTable">
+            <tr>
+                <th>账户余额</th>
+                <th>单次查询</th>
+                <th>免费查询剩余次数</th>
+            </tr>
+            <tr class="queryData">
+                <td>0元</td>
+                <td>1元/次</td>
+                <td>0次</td>
+            </tr>
+        </table>
+    </div>
+    <div class="queryBox clearfix">
+        <input type="text" class="personId form-control " placeholder="持卡人姓名（必填）">
+        <input type="text" class="personId form-control " placeholder="持卡人身份证号（选填）">
+        <input type="text" class="personId form-control " placeholder="银行预留手机号码（选填）">
+        <input type="text" class="personId form-control noneMarBot" placeholder="银行卡号（选填）">
+    </div>
+    <div class="errorBox"><label for="">请输入...</label></div>
+    <a href="javascript:;" class="publicBtn phoNameBtn">查询</a>
+    <div class="queResBox">
+        <h3 class="queResTit">查询结果：</h3>
+        <table class="queResCon expressCon">
+            <tr>
+                <th><span>校验结果</span></th>
+                <td>实名认证通过，信息一致</td>
+            </tr>
+            <tr>
+                <th><span>银行卡名称</span></th>
+                <td>龙卡储蓄卡(银联卡)</td>
+            </tr>
+            <tr>
+                <th><span>银行卡类型</span></th>
+                <td>借记卡</td>
+            </tr>
+            <tr>
+                <th><span>银行联系电话</span></th>
+                <td>95533</td>
+            </tr>
+            <tr>
+                <th><span>银行名称</span></th>
+                <td>建设银行</td>
+            </tr>
+            <tr>
+                <th><span>银行网址</span></th>
+                <td>http://www.ccb.com</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<footer class="footer_info">
+    <img src="assets/images/public/zdCode.png" class="zdCode"/>
+    <p class="followTip">长按识别或截图保存关注微信公众号</p>
+    <p class="consultNum">咨询电话：400-0000-1111</p>
+    <p class="zdCopyRight">
+        <span>Copyright © 2018-2019  mbiger . All Rights Reserved </span>
+        <span>众大技术  版权所有</span>
+    </p>
+</footer>
+<script type="text/javascript" src="assets/js/public/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="assets/js/public/fontsizeset.js"></script>
+<script type="text/javascript" src="assets/js/public/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/public/swiper.min.js"></script>
+<script>
         $(document).ready(function(){
 
         });
-    </script>
+
+</script>
 </body>
 </html>

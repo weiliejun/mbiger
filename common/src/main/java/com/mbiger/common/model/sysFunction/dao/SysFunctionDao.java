@@ -2,7 +2,6 @@ package com.mbiger.common.model.sysFunction.dao;
 
 import com.mbiger.common.db.AbstractBaseDao;
 import com.mbiger.common.model.sysFunction.bean.SysFunction;
-import com.mbiger.common.model.sysRole.bean.SysRole;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -37,6 +36,7 @@ public class SysFunctionDao extends AbstractBaseDao {
     public void deleteSysFunctionById(Integer id) {
         delete("sysFunction.deleteSysFunctionById", id);
     }
+
     /**
      * @Description 根据code删除权限
      * @auther: zhangkele
@@ -45,6 +45,7 @@ public class SysFunctionDao extends AbstractBaseDao {
     public void deleteSysFunctionByCode(String code) {
         delete("sysFunction.deleteSysFunctionByCode", code);
     }
+
     /**
      * @Description 根据parentCode删除权限
      * @auther: zhangkele
@@ -67,7 +68,7 @@ public class SysFunctionDao extends AbstractBaseDao {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("code", code);
         List<SysFunction> sysFunctionList = listSysFunctionsByParams(params);
-        if(sysFunctionList != null && sysFunctionList.size() > 0){
+        if (sysFunctionList != null && sysFunctionList.size() > 0) {
             return sysFunctionList.get(0);
         }
         return null;
@@ -92,6 +93,7 @@ public class SysFunctionDao extends AbstractBaseDao {
         params.put("parentCode", parentCode);
         return listSysFunctionsByParams(params);
     }
+
     /**
      * @Description 根据parentCode获取权限数量
      * @auther: zhangkele
@@ -107,7 +109,7 @@ public class SysFunctionDao extends AbstractBaseDao {
         return (List<SysFunction>) queryForList("sysFunction.listSysFunctionByManagerId", params);
     }
 
-    public List<SysFunction> listSysFunctionByManagerId(Integer managerId,String parentCode) {
+    public List<SysFunction> listSysFunctionByManagerId(Integer managerId, String parentCode) {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("managerId", managerId);
         params.put("parentCode", parentCode);

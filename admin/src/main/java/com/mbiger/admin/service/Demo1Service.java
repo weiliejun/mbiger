@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 public class Demo1Service {
     @Autowired
     private UserInfoDao userInfoDao;
-    public UserInfo findUserInfo(Integer uid){
+
+    public UserInfo findUserInfo(Integer uid) {
         UserInfo userInfo = userInfoDao.getUserInfoById(uid);
         return userInfo;
     }

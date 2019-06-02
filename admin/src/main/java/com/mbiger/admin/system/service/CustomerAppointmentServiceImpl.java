@@ -26,6 +26,6 @@ public class CustomerAppointmentServiceImpl implements CustomerAppointmentServic
     }
 
     public List<Map<String, Object>> listCustomerAppointmentByParams(Map<String, Object> params) {
-        return customerAppointmentDao.listCustomerAppointmentByParams(params) ;
+        return customerAppointmentDao.listCustomerAppointmentByParams(params);
     }
 }

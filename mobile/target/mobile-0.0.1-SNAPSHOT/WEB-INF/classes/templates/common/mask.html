@@ -5,12 +5,13 @@
     .loadImg{position:absolute;left:50%;top:35%;transform: translate(-50%, -50%);}
     .loadTxt{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#ddd;}
     .maskClose{position:absolute;top:2.5%;right:1.5%;font-size:40px;color:#666;}
+
 </style>
 
 <div class="maskBg fade">
     <a href="javascript:;" class="maskClose">×</a>
     <div class="loadImg">
-        <img src="images/publicImg/loading.png" />
+        <img src="images/publicImg/loading.png"/>
     </div>
     <p class="loadTxt">认证加载中，请稍后...</p>
 </div>
@@ -34,4 +35,5 @@
     $(".maskClose").click(function () {
         Mask.hide();
     });
+
 </script>

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service("userSmsTemplateApplicationService")
-public class UserSmsTemplateApplicationServiceImpl implements  UserSmsTemplateApplicationService {
+public class UserSmsTemplateApplicationServiceImpl implements UserSmsTemplateApplicationService {
 
     @Autowired
     private UserSmsTemplateApplicationDao userSmsTemplateApplicationDao;
@@ -23,14 +23,14 @@ public class UserSmsTemplateApplicationServiceImpl implements  UserSmsTemplateAp
     }
 
     public void updateUserSmsTemplateApplication(UserSmsTemplateApplication userSmsTemplateApplication) {
-         userSmsTemplateApplicationDao.updateUserSmsTemplateApplication(userSmsTemplateApplication);
+        userSmsTemplateApplicationDao.updateUserSmsTemplateApplication(userSmsTemplateApplication);
     }
 
     public List<UserSmsTemplateApplication> listUserSmsTemplateApplicationsByParams(Map<String, Object> params) {
         return userSmsTemplateApplicationDao.listUserSmsTemplateApplicationsByParams(params);
     }
 
-    public int countUserSmsTemplateApplicationsByParams(Map<String,Object> params){
-        return  userSmsTemplateApplicationDao.countUserSmsTemplateApplicationsByParams(params);
+    public int countUserSmsTemplateApplicationsByParams(Map<String, Object> params) {
+        return userSmsTemplateApplicationDao.countUserSmsTemplateApplicationsByParams(params);
     }
 }

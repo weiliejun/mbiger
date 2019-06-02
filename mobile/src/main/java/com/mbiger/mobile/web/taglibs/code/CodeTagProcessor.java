@@ -55,7 +55,7 @@ public class CodeTagProcessor extends AbstractElementTagProcessor {
 
         String showText = "";
         if (type.equals("text")) {
-            SysDictionary sysDictionary = sysDictionaryDao.getSysDictionaryByCode(parentCode,value);
+            SysDictionary sysDictionary = sysDictionaryDao.getSysDictionaryByCode(parentCode, value);
             if (sysDictionary != null) {
                 showText = sysDictionary.getName();
             }

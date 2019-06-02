@@ -10,14 +10,11 @@ public interface UserWebsiteBulletinReadService {
 
     UserWebsiteBulletinRead getUserWebsiteBulletinReadById(Integer id);
 
-    UserWebsiteBulletinRead getUserWebsiteBulletinReadByBulletinId(Integer bulletinId,Integer userId);
+    UserWebsiteBulletinRead getUserWebsiteBulletinReadByBulletinId(Integer bulletinId, Integer userId);
 
     void updateUserWebsiteBulletinRead(UserWebsiteBulletinRead record);
 
-    int countUserWebsiteBulletinReadByParam(Map<String,Object> params);
-
-
-
+    int countUserWebsiteBulletinReadByParam(Map<String, Object> params);
 
 
 }

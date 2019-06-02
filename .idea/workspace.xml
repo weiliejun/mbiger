@@ -1,83 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b2dab493-f6ca-4999-82b2-4c7f6407dbb5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_1_39.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="b2dab493-f6ca-4999-82b2-4c7f6407dbb5" name="Default" comment="更新">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/mbiger/admin/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/mbiger/admin/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/mbiger/admin/web/MyWebMvcConfigurerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/mbiger/admin/web/MyWebMvcConfigurerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli/cli.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/common/common.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mbiger/common/model/websiteBulletin/mapper/websiteBulletinMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mbiger/common/model/websiteBulletin/mapper/websiteBulletinMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mbiger/common/util/DateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mbiger/common/util/DateHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/resources/mybatis-generator/generatorConfig.xml.mine" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/resources/mybatis-generator/generatorConfig.xml.r31" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/resources/mybatis-generator/generatorConfig.xml.r68" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/com/mbiger/common/model/websiteBulletin/mapper/websiteBulletinMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/mbiger/common/model/websiteBulletin/mapper/websiteBulletinMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/com/mbiger/common/util/DateHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/mbiger/common/util/DateHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/config/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/config/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/config/redis.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/config/redis.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/common-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/common-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbiger.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mbiger.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/mobile.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/mobile.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/Mobile.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/Mobile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/AccountManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/AccountManageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/MbigerServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/MbigerServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/SAASCenterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/SAASCenterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/TopUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/TopUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/UserAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/UserAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/UserExpenseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/UserExpenseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/WebsiteBulletinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/src/main/java/com/mbiger/mobile/controller/WebsiteBulletinController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/src/main/resources/static/images/zdjs/banner1.png" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/src/main/resources/static/images/zdjs/banner1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/Mobile.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/Mobile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/AccountManageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/AccountManageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/MbigerServiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/MbigerServiceController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/RegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/SAASCenterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/SAASCenterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/TopUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/TopUpController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/UserAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/UserAccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/UserExpenseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/UserExpenseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/WebsiteBulletinController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/classes/com/mbiger/mobile/controller/WebsiteBulletinController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/classes/static/images/zdjs/banner1.png" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/classes/static/images/zdjs/banner1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT.war.original" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT.war.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/Mobile.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/Mobile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/AccountManageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/AccountManageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/MbigerServiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/MbigerServiceController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/RegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/SAASCenterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/SAASCenterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/TopUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/TopUpController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/UserAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/UserAccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/UserExpenseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/UserExpenseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/WebsiteBulletinController.class" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/com/mbiger/mobile/controller/WebsiteBulletinController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/static/images/zdjs/banner1.png" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/classes/static/images/zdjs/banner1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/lib/common-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/target/mobile-0.0.1-SNAPSHOT/WEB-INF/lib/common-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pc/pc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pc/pc.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pc/src/main/java/com/mbiger/PC.java" beforeDir="false" afterPath="$PROJECT_DIR$/pc/src/main/java/com/mbiger/PC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pc/src/main/java/com/mbiger/pc/web/base/AbstractBaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pc/src/main/java/com/mbiger/pc/web/base/AbstractBaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pc/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/pc/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pc/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/pc/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pc/target/classes/com/mbiger/PC.class" beforeDir="false" afterPath="$PROJECT_DIR$/pc/target/classes/com/mbiger/PC.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/common/target/" />
@@ -129,21 +55,26 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/mbiger/admin/web/ApplicationContextHelper.java">
+        <entry file="file://$PROJECT_DIR$/admin/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="150">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/mbiger/admin/web/WebAppConfig.java">
+        <entry file="file://$PROJECT_DIR$/admin/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1375">
-              <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
+            <state relative-caret-position="200">
+              <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/src/main/resources/logback-spring.xml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -155,29 +86,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="138" column="32" selection-start-line="138" selection-start-column="32" selection-end-line="138" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/common/src/main/test/TestMysqlConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="14" column="42" lean-forward="true" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+            <state relative-caret-position="427">
+              <caret line="178" column="25" lean-forward="true" selection-start-line="178" selection-start-column="25" selection-end-line="178" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/mbiger/admin/system/controller/ServiceApplyController.java">
+        <entry file="file://$PROJECT_DIR$/common/src/main/test/TestMysqlConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+            <state relative-caret-position="175">
+              <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -386,6 +308,11 @@
               <item name="mbiger" type="b2602c69:ProjectViewProjectNode" />
               <item name="mbiger" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="mbiger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mbiger" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -443,7 +370,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestMysqlConnection">
+  <component name="RunManager" selected="Application.Admin">
+    <configuration name="Admin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mbiger.admin.Admin" />
+      <module name="admin" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mbiger.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestMysqlConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TestMysqlConnection" />
       <module name="common" />
@@ -492,9 +433,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.TestMysqlConnection" />
+      <item itemvalue="Application.Admin" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Admin" />
         <item itemvalue="Application.TestMysqlConnection" />
       </list>
     </recent_temporary>
@@ -708,7 +651,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558519671575</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="更新">
+      <created>1559464790146</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1559464790146</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -737,21 +687,21 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="设计师" order="8" />
       <window_info anchor="bottom" id="Spring" order="0" sideWeight="0.4989339" weight="0.32997763" />
-      <window_info anchor="bottom" id="Messages" order="1" sideWeight="0.4946695" weight="0.3098434" />
+      <window_info anchor="bottom" id="Messages" order="1" sideWeight="0.49413645" weight="0.30911064" />
       <window_info anchor="bottom" id="Java Enterprise" order="2" sideWeight="0.49733475" weight="0.32997763" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.48081023" weight="0.32827735" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.48027718" visible="true" weight="0.3275488" />
       <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.49946696" weight="0.3344519" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="9" sideWeight="0.4989339" weight="0.32885906" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49573562" weight="0.32885906" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50692964" side_tool="true" visible="true" weight="0.3275488" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5197228" side_tool="true" visible="true" weight="0.3275488" />
       <window_info anchor="bottom" id="调试" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.48027718" weight="0.3064877" />
-      <window_info anchor="bottom" id="SVN Repositories" order="15" sideWeight="0.49307036" visible="true" weight="0.3275488" />
+      <window_info anchor="bottom" id="SVN Repositories" order="15" sideWeight="0.49307036" weight="0.3275488" />
       <window_info anchor="bottom" id="运行" order="16" />
       <window_info anchor="bottom" id="消息" order="17" weight="0.32946634" />
       <window_info anchor="bottom" id="找到" order="18" />
@@ -785,7 +735,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -891,13 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1067,13 +1011,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/mbiger/admin/Admin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/mbiger/admin/web/ApplicationContextHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -1123,17 +1060,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/pom.xml">
+    <entry file="file://$PROJECT_DIR$/common/src/main/test/TestMysqlConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="138" column="32" selection-start-line="138" selection-start-column="32" selection-end-line="138" selection-end-column="32" />
+        <state relative-caret-position="175">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/test/TestMysqlConnection.java">
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/mbiger/admin/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/logback-spring.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
-          <caret line="14" column="42" lean-forward="true" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="178" column="25" lean-forward="true" selection-start-line="178" selection-start-column="25" selection-end-line="178" selection-end-column="25" />
         </state>
       </provider>
     </entry>

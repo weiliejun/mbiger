@@ -15,23 +15,23 @@ public interface SysMessageService {
 
     SysMessage getSysMessageByParams(Map<String, String> params);
 
-    List<Map<String,Object>> listSysMessagesByParams(Map<String, Object> params);
+    List<Map<String, Object>> listSysMessagesByParams(Map<String, Object> params);
 
     int countSysMessagesByParams(Map<String, Object> params);
 
-    Map<String,String> getVerifyCodeByForgetPassword(String mobile,String  busiType,String validateCode);
+    Map<String, String> getVerifyCodeByForgetPassword(String mobile, String busiType, String validateCode);
 
-    Map<String,String> sendSmsCodeOnline(String mobile,String  busiType,String validateCode,String userId);
+    Map<String, String> sendSmsCodeOnline(String mobile, String busiType, String validateCode, String userId);
 
-    Map<String,Object> validateSmsCodeByParams(String mobile, String busiType, String validateCode, String exitSmsCodeSession);
+    Map<String, Object> validateSmsCodeByParams(String mobile, String busiType, String validateCode, String exitSmsCodeSession);
 
-    int countSysMessageNums(Map<String,Object> params);
+    int countSysMessageNums(Map<String, Object> params);
 
     /**
      * @Description 发送站内信
      * @auther: xsp
      * @UpadteDate: 2019/3/12 16:15
      */
-    Map<String, Object> sendWebSiteMessage (Integer userId, String busiType, Map<String, String> params);
+    Map<String, Object> sendWebSiteMessage(Integer userId, String busiType, Map<String, String> params);
 
 }

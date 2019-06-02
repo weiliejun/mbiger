@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="/common/public :: commonStyle(~{::title},~{::link},~{})">
     <title>用户管理</title>
-    <link rel="Shortcut Icon" href="/favicon.ico" />
+    <link rel="Shortcut Icon" href="/favicon.ico"/>
 </head>
 </head>
 <body>
@@ -13,8 +13,9 @@
                 <legend><a name="color-design">用户管理88</a></legend>
             </fieldset>
             <div class="layui-btn-group" id="one_group">
-                <button class="layui-btn"  data-type="add"><i class="layui-icon">&#xe61f;</i><cite>增加用户</cite></button>
-                 <button class="layui-btn layui-btn-normal"  data-type="edit"><i class="layui-icon">&#xe642;</i><cite>修改用户</cite></button>
+                <button class="layui-btn" data-type="add"><i class="layui-icon">&#xe61f;</i><cite>增加用户</cite></button>
+                <button class="layui-btn layui-btn-normal" data-type="edit"><i
+                        class="layui-icon">&#xe642;</i><cite>修改用户</cite></button>
                 <!--  <button class="layui-btn layui-btn-danger"  data-type="del"><i class="layui-icon">&#xe640;</i><cite>删除用户</cite></button> -->
             </div>
         </div>
@@ -39,7 +40,7 @@
     {{#  if(d.img === undefined){ }}
     未知
     {{#  } else { }}
-    <img id="img" alt="" src="/oneManage{{d.img}}" width="30px" height="30px" />
+    <img id="img" alt="" src="/oneManage{{d.img}}" width="30px" height="30px"/>
     {{#  } }}
 </script>
 <script type="text/html" id="status">
@@ -253,6 +254,7 @@
 
         };
     });
+
 </script>
 </body>
 </html>

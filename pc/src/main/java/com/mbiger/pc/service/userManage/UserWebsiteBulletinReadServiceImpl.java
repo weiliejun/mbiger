@@ -20,8 +20,8 @@ public class UserWebsiteBulletinReadServiceImpl implements UserWebsiteBulletinRe
         return userWebsiteBulletinReadDao.getUserWebsiteBulletinReadById(id);
     }
 
-    public UserWebsiteBulletinRead getUserWebsiteBulletinReadByBulletinId(Integer bulletinId,Integer userId) {
-        return userWebsiteBulletinReadDao.getUserWebsiteBulletinReadByBulletinId(bulletinId,userId);
+    public UserWebsiteBulletinRead getUserWebsiteBulletinReadByBulletinId(Integer bulletinId, Integer userId) {
+        return userWebsiteBulletinReadDao.getUserWebsiteBulletinReadByBulletinId(bulletinId, userId);
     }
 
     public void updateUserWebsiteBulletinRead(UserWebsiteBulletinRead userWebsiteBulletinRead) {

@@ -20,7 +20,7 @@ import java.util.Map;
 public class ShiroConfig {
 
     @Bean
-    public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager,ShiroRedisCacheManager  shiroRedisCacheManager) {
+    public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager, ShiroRedisCacheManager shiroRedisCacheManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         // 没有登陆的用户只能访问登陆页面
@@ -45,7 +45,7 @@ public class ShiroConfig {
     }
 
     @Bean
-    public SecurityManager securityManager(ShiroRedisCacheManager  shiroRedisCacheManager) {
+    public SecurityManager securityManager(ShiroRedisCacheManager shiroRedisCacheManager) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         // 设置realm.
         securityManager.setRealm(myShiroRealm(shiroRedisCacheManager));
@@ -60,10 +60,11 @@ public class ShiroConfig {
     /**
      * cookie对象;
      * rememberMeCookie()方法是设置Cookie的生成模版，比如cookie的name，cookie的有效时间等等。
+     *
      * @return
      */
     @Bean
-    public SimpleCookie rememberMeCookie(){
+    public SimpleCookie rememberMeCookie() {
         //这个参数是cookie的名称，对应前端的checkbox的name = rememberMe
         SimpleCookie simpleCookie = new SimpleCookie("rememberMe");
         //<!-- 记住我cookie生效时间30天 ,单位秒;-->
@@ -76,7 +77,7 @@ public class ShiroConfig {
      * rememberMeManager()方法是生成rememberMe管理器，而且要将这个rememberMe管理器设置到securityManager中
      */
     @Bean
-    public CookieRememberMeManager rememberMeManager(){
+    public CookieRememberMeManager rememberMeManager() {
         CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
         cookieRememberMeManager.setCookie(rememberMeCookie());
         //rememberMe cookie加密的密钥 建议每个项目都不一样 默认AES算法 密钥长度(128 256 512 位)
@@ -88,7 +89,7 @@ public class ShiroConfig {
      * 配置密码比较器
      */
     @Bean
-    public RetryLimitHashedCredentialsMatcher retryLimitHashedCredentialsMatcher(ShiroRedisCacheManager  shiroRedisCacheManager){
+    public RetryLimitHashedCredentialsMatcher retryLimitHashedCredentialsMatcher(ShiroRedisCacheManager shiroRedisCacheManager) {
         RetryLimitHashedCredentialsMatcher retryLimitHashedCredentialsMatcher = new RetryLimitHashedCredentialsMatcher(shiroRedisCacheManager);
         return retryLimitHashedCredentialsMatcher;
     }
@@ -98,7 +99,7 @@ public class ShiroConfig {
      * 身份认证realm; (这个需要自己写，账号密码校验；权限等)
      */
     @Bean
-    public MyShiroRealm myShiroRealm(ShiroRedisCacheManager  shiroRedisCacheManager) {
+    public MyShiroRealm myShiroRealm(ShiroRedisCacheManager shiroRedisCacheManager) {
         MyShiroRealm myShiroRealm = new MyShiroRealm();
         myShiroRealm.setCredentialsMatcher(retryLimitHashedCredentialsMatcher(shiroRedisCacheManager));
         return myShiroRealm;
@@ -122,7 +123,6 @@ public class ShiroConfig {
     }
 
 
-
     @Bean
     public SessionDAO sessionDAO() {
         return new MemorySessionDAO();//使用默认的MemorySessionDAO
@@ -132,7 +132,7 @@ public class ShiroConfig {
      * 限制同一账号同时登录人数控制
      */
     @Bean
-    public KickoutSessionControlFilter kickoutSessionControlFilter(ShiroRedisCacheManager  shiroRedisCacheManager) {
+    public KickoutSessionControlFilter kickoutSessionControlFilter(ShiroRedisCacheManager shiroRedisCacheManager) {
         KickoutSessionControlFilter kickoutSessionControlFilter = new KickoutSessionControlFilter();
         kickoutSessionControlFilter.setCacheManager(shiroRedisCacheManager);
         kickoutSessionControlFilter.setSessionManager(sessionManager());

@@ -3,28 +3,24 @@ package com.mbiger.admin.system.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.mbiger.admin.system.service.SecurityService;
-import com.mbiger.admin.system.service.SysManagerService;
 import com.mbiger.admin.web.base.AbstractBaseController;
 import com.mbiger.common.constant.GlobalConstant;
 import com.mbiger.common.model.sysFunction.bean.SysFunction;
 import com.mbiger.common.model.sysManager.bean.SysManager;
 import com.mbiger.common.model.sysRole.bean.SysRole;
 import com.mbiger.common.util.StringHelper;
-import com.mysql.cj.xdevapi.JsonArray;
 import org.apache.commons.lang.StringUtils;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Description 角色管理
@@ -53,7 +49,7 @@ public class SysFunctionController extends AbstractBaseController {
      * @auther: zhangkele
      * @UpadteDate: 2019/2/25 9:43
      */
-        @GetMapping(value = {"/systemSetting/icons"})
+    @GetMapping(value = {"/systemSetting/icons"})
     public String toIconSetting() {
         return "/system/sysFunction/icons";
     }
@@ -90,7 +86,7 @@ public class SysFunctionController extends AbstractBaseController {
         SysManager sysManager = getSessionSysManager();
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         //参数校验
-        if(StringHelper.isEmpty(sysFunction.getCode())){
+        if (StringHelper.isEmpty(sysFunction.getCode())) {
             resultMap.put("flag", "false");
             resultMap.put("msg", "权限编码不能为空");
             return resultMap;
@@ -100,7 +96,7 @@ public class SysFunctionController extends AbstractBaseController {
         if (sysFunction.getId() == null) {
             //唯一性校验
             existSysFunction = securityService.getSysFunctionByCode(sysFunction.getCode());
-            if(existSysFunction != null){
+            if (existSysFunction != null) {
                 resultMap.put("flag", "false");
                 resultMap.put("msg", "该权限已经存在");
                 return resultMap;
@@ -109,23 +105,23 @@ public class SysFunctionController extends AbstractBaseController {
             securityService.addSysFunction(sysFunction);
             //给系统超级管理员授权
             SysRole superManagerRole = securityService.getSysRoleByName(GlobalConstant.CONSOLE_SUPER_ADMIN_ROLE);
-            if(superManagerRole != null){
-                securityService.grantRoleRights(superManagerRole.getId(),new String[]{sysFunction.getCode()},sysManager);
+            if (superManagerRole != null) {
+                securityService.grantRoleRights(superManagerRole.getId(), new String[]{sysFunction.getCode()}, sysManager);
             }
             resultMap.put("flag", "true");
             resultMap.put("msg", "权限保存成功");
             return resultMap;
         } else {//编辑
             existSysFunction = securityService.getSysFunctionById(sysFunction.getId());
-            if(existSysFunction == null){
+            if (existSysFunction == null) {
                 resultMap.put("flag", "false");
                 resultMap.put("msg", "该权限不存在");
                 return resultMap;
             }
             //判断唯一性
-            if(!existSysFunction.getCode().equals(sysFunction.getCode())){
+            if (!existSysFunction.getCode().equals(sysFunction.getCode())) {
                 SysFunction oldSysFunction = securityService.getSysFunctionByCode(sysFunction.getCode());
-                if(oldSysFunction != null){
+                if (oldSysFunction != null) {
                     resultMap.put("flag", "false");
                     resultMap.put("msg", "该权限已存在");
                     return resultMap;
@@ -145,22 +141,22 @@ public class SysFunctionController extends AbstractBaseController {
      */
     @RequestMapping(value = "/{operateType}")
     @ResponseBody
-    public Map<String, Object> operate(@PathVariable String operateType,String code) {
+    public Map<String, Object> operate(@PathVariable String operateType, String code) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        if(StringHelper.isEmpty(code)){
+        if (StringHelper.isEmpty(code)) {
             resultMap.put("flag", "false");
             resultMap.put("msg", "参数为空");
             return resultMap;
         }
         SysFunction sysFunction = securityService.getSysFunctionByCode(code);
 
-        if(sysFunction == null){
+        if (sysFunction == null) {
             resultMap.put("flag", "false");
             resultMap.put("msg", "该权限不存在");
             return resultMap;
         }
         //删除
-        if("delete".equals(operateType)){
+        if ("delete".equals(operateType)) {
             securityService.deleteSysFunctionByCode(code);
             resultMap.put("flag", "true");
             resultMap.put("msg", "删除成功");
@@ -181,18 +177,18 @@ public class SysFunctionController extends AbstractBaseController {
     @ResponseBody
     public Map<String, Object> getSysFunction(String code) {
         LinkedHashMap<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        if(StringHelper.isEmpty(code)){
+        if (StringHelper.isEmpty(code)) {
             resultMap.put("flag", "false");
             resultMap.put("msg", "参数为空");
             return resultMap;
         }
         SysFunction sysFunction = securityService.getSysFunctionByCode(code);
-        if(sysFunction != null){
+        if (sysFunction != null) {
             resultMap.put("flag", "true");
             resultMap.put("msg", "获取成功");
-            resultMap.put("sysFunction",sysFunction);
+            resultMap.put("sysFunction", sysFunction);
             return resultMap;
-        }else{
+        } else {
             resultMap.put("flag", "false");
             resultMap.put("msg", "该权限信息不存在");
             return resultMap;
@@ -201,11 +197,10 @@ public class SysFunctionController extends AbstractBaseController {
     }
 
 
-
     //设置用户角色
     @RequestMapping(value = "/saveroles")
     @ResponseBody
-    public Map<String, Object> saveRoleSet(Integer[] role,Integer id) {
+    public Map<String, Object> saveRoleSet(Integer[] role, Integer id) {
         LinkedHashMap<String, Object> resultmap = new LinkedHashMap<String, Object>();
         try {
             resultmap.put("state", "success");
@@ -225,9 +220,9 @@ public class SysFunctionController extends AbstractBaseController {
      */
     @ResponseBody
     @RequestMapping("/load/menu")
-    public String loadMenuInfo(@RequestParam String parentCode){
+    public String loadMenuInfo(@RequestParam String parentCode) {
         SysManager sysManager = getSessionSysManager();
-        JSONArray jsonArray = getMenuTreeJson(sysManager.getId(),parentCode);
+        JSONArray jsonArray = getMenuTreeJson(sysManager.getId(), parentCode);
         return JSON.toJSONString(jsonArray);
     }
 
@@ -238,12 +233,12 @@ public class SysFunctionController extends AbstractBaseController {
      */
     @RequestMapping("/load/sysfunction")
     @ResponseBody
-    public String loadMenuInfo(@RequestParam String parentCode,Integer roleId){
+    public String loadMenuInfo(@RequestParam String parentCode, Integer roleId) {
         List<String> roleFunctionCodes = new ArrayList<String>();
-        if(roleId != null){
+        if (roleId != null) {
             roleFunctionCodes = securityService.listFunctionCodeByRoleId(roleId);
         }
-        JSONArray jsonArray = getFunctionTreeJson(parentCode,roleFunctionCodes);
+        JSONArray jsonArray = getFunctionTreeJson(parentCode, roleFunctionCodes);
         return JSON.toJSONString(jsonArray);
     }
 
@@ -252,21 +247,21 @@ public class SysFunctionController extends AbstractBaseController {
      * @auther: zhangkele
      * @UpadteDate: 2019/3/7 9:06
      */
-    private JSONArray getMenuTreeJson(Integer manager,String parentCode) {
-        List<SysFunction> sysFunctions = securityService.listSysFunctionByManagerIdAndParentCode(manager,parentCode);
+    private JSONArray getMenuTreeJson(Integer manager, String parentCode) {
+        List<SysFunction> sysFunctions = securityService.listSysFunctionByManagerIdAndParentCode(manager, parentCode);
         JSONArray jsonArray = new JSONArray();
-        for(SysFunction sysFunction:sysFunctions){
-            JSONObject jsonObject= new JSONObject();
+        for (SysFunction sysFunction : sysFunctions) {
+            JSONObject jsonObject = new JSONObject();
             jsonObject.put("id", sysFunction.getCode()); // 节点id
             jsonObject.put("title", sysFunction.getName()); // 节点名称
             jsonObject.put("spread", false); // 不展开
             jsonObject.put("icon", sysFunction.getIcon());
-            if(StringUtils.isNotEmpty(sysFunction.getUrl())){
+            if (StringUtils.isNotEmpty(sysFunction.getUrl())) {
                 jsonObject.put("href", sysFunction.getUrl()); // 菜单请求地址
             }
             Integer subSysFunctionCount = securityService.countSysFunctionsByParentCode(sysFunction.getCode());
-            if(subSysFunctionCount > 0){//有子节点
-                jsonObject.put("children",getMenuTreeJson(manager,sysFunction.getCode()));
+            if (subSysFunctionCount > 0) {//有子节点
+                jsonObject.put("children", getMenuTreeJson(manager, sysFunction.getCode()));
             }
             jsonArray.add(jsonObject);
         }
@@ -274,28 +269,27 @@ public class SysFunctionController extends AbstractBaseController {
     }
 
 
-
     /**
      * @Description 获取系统功能菜单树json数据
      * @auther: zhangkele
      * @UpadteDate: 2019/2/25 15:57
      */
-    private JSONArray getFunctionTreeJson(String parentCode,List<String> roleFunctionCodes) {
+    private JSONArray getFunctionTreeJson(String parentCode, List<String> roleFunctionCodes) {
         List<SysFunction> sysFunctions = securityService.listSysFunctionsByParentCode(parentCode);
         JSONArray jsonArray = new JSONArray();
         for (SysFunction sysFunction : sysFunctions) {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("id",sysFunction.getCode());// 节点id
-            jsonObject.put("name",sysFunction.getName());// 节点名称
+            jsonObject.put("id", sysFunction.getCode());// 节点id
+            jsonObject.put("name", sysFunction.getName());// 节点名称
 
             Integer subSysFunctionCount = securityService.countSysFunctionsByParentCode(sysFunction.getCode());
-            if(subSysFunctionCount <= 0){
+            if (subSysFunctionCount <= 0) {
                 jsonObject.put("open", "false"); // 无子节点
-            }else{
+            } else {
                 jsonObject.put("open", "true");//有子节点
-                jsonObject.put("children",getFunctionTreeJson(sysFunction.getCode(),roleFunctionCodes));
+                jsonObject.put("children", getFunctionTreeJson(sysFunction.getCode(), roleFunctionCodes));
             }
-            if(roleFunctionCodes.contains(sysFunction.getCode())){
+            if (roleFunctionCodes.contains(sysFunction.getCode())) {
                 jsonObject.put("checked", true);
             }
             jsonObject.put("functionType", String.valueOf(sysFunction.getFunctionType()));

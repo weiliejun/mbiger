@@ -8,13 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Random;
 
 /**
  * 生成验证码
@@ -22,24 +18,24 @@ import java.util.Random;
 @Controller
 public class ImageCodeController {
 
-	public static final int WIDTH = 120;
-	public static final int HEIGHT = 30;
+    public static final int WIDTH = 120;
+    public static final int HEIGHT = 30;
 
-	/**
-	 * @Description 生成图形验证码
-	 */
-	@RequestMapping(value = {"/get/imgcode"}, method = RequestMethod.GET)
-	public void getVerifyCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		response.reset();
-		response.setContentType("image/jpeg");
-		response.setHeader("Pragma", "no-cache");
-		response.setHeader("Cache-Control", "no-cache");
-		response.setDateHeader("Expires", 0);
-		VerifyCodeImageGenarator vCode = new VerifyCodeImageGenarator(WIDTH, HEIGHT, 4, 0);
-		//session存放图形验证码
-		Subject subject = SecurityUtils.getSubject();
-		subject.getSession().setAttribute(ApplicationSessionKeys.LOGIN_VERIFYCODE, vCode.getCode());
-		vCode.write(response.getOutputStream());
-	}
-    
+    /**
+     * @Description 生成图形验证码
+     */
+    @RequestMapping(value = {"/get/imgcode"}, method = RequestMethod.GET)
+    public void getVerifyCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.reset();
+        response.setContentType("image/jpeg");
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setDateHeader("Expires", 0);
+        VerifyCodeImageGenarator vCode = new VerifyCodeImageGenarator(WIDTH, HEIGHT, 4, 0);
+        //session存放图形验证码
+        Subject subject = SecurityUtils.getSubject();
+        subject.getSession().setAttribute(ApplicationSessionKeys.LOGIN_VERIFYCODE, vCode.getCode());
+        vCode.write(response.getOutputStream());
+    }
+
 }

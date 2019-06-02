@@ -20,11 +20,11 @@ public class PageController {
     private CacheService cacheService;
 
     @RequestMapping("/index")
-    public String pagetest(Model model, HttpServletRequest request){
+    public String pagetest(Model model, HttpServletRequest request) {
         UserInfo userInfo = new UserInfo();
         userInfo.setUserName(cacheService.get("user.name"));
-        model.addAttribute("name","hhhh");
-        model.addAttribute("user",userInfo);
+        model.addAttribute("name", "hhhh");
+        model.addAttribute("user", userInfo);
         System.out.println("name == " + userInfo.getUserName());
         return "/test";
     }

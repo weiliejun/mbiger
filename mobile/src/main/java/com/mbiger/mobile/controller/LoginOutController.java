@@ -1,8 +1,8 @@
 package com.mbiger.mobile.controller;
 
+import com.mbiger.common.web.SessionUser;
 import com.mbiger.mobile.service.userManage.UserInfoService;
 import com.mbiger.mobile.web.base.AbstractBaseController;
-import com.mbiger.common.web.SessionUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,7 @@ public class LoginOutController extends AbstractBaseController {
     @Autowired
     private UserInfoService userInfoService;
 
-    @RequestMapping(value = {"/loginOut"},method = RequestMethod.GET)
+    @RequestMapping(value = {"/loginOut"}, method = RequestMethod.GET)
     public String loginOut(HttpServletRequest request) {
         SessionUser sessionUser = getSessionUserBySid(request);
         if (sessionUser != null) {

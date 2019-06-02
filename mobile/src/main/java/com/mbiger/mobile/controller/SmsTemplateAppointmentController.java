@@ -25,26 +25,27 @@ public class SmsTemplateAppointmentController extends AbstractBaseController {
 
     /**
      * 短信签名申请API提交
+     *
      * @param request
      * @param serviceType
      * @return
      */
     @RequestMapping("/smsTemplateAppointment/apply/{serviceType}/submit")
-    public @ResponseBody Map<String,?> appointmentApplySubmit(HttpServletRequest request,
-                                                         @PathVariable String serviceType,
-                                                         UserSmsTemplateApplication userSmsTemplateApplication
-                                                       )
-    {
+    public @ResponseBody
+    Map<String, ?> appointmentApplySubmit(HttpServletRequest request,
+                                          @PathVariable String serviceType,
+                                          UserSmsTemplateApplication userSmsTemplateApplication
+    ) {
         String flag = "true";
         String message = "提交成功！";
-        Map<String,Object> resultMap = new HashMap<String, Object>();
-        try{
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        try {
 
-            SessionUser sessionUser =  getSessionUserBySid(request);
-            if(sessionUser == null){
-                resultMap.put("flag","nologin");
-                resultMap.put("msg","未登录，请登录后操作！");
-                return  resultMap;
+            SessionUser sessionUser = getSessionUserBySid(request);
+            if (sessionUser == null) {
+                resultMap.put("flag", "nologin");
+                resultMap.put("msg", "未登录，请登录后操作！");
+                return resultMap;
             }
 
             UserInfo userInfo = sessionUser.getUserInfo();
@@ -57,14 +58,14 @@ public class SmsTemplateAppointmentController extends AbstractBaseController {
             userSmsTemplateApplication.setDataStatus("0");
             userSmsTemplateApplicationService.addUserSmsTemplateApplication(userSmsTemplateApplication);
 
-        }catch (Exception e){
-            logger.error("msg",e);
+        } catch (Exception e) {
+            logger.error("msg", e);
             e.printStackTrace();
             flag = "false";
             message = "系统异常！";
         }
-        resultMap.put("flag",flag);
-        resultMap.put("msg",message);
-        return  resultMap;
+        resultMap.put("flag", flag);
+        resultMap.put("msg", message);
+        return resultMap;
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service("userExpenseService")
-public class UserExpenseServiceImpl  implements UserExpenseService {
+public class UserExpenseServiceImpl implements UserExpenseService {
 
     @Autowired
     private UserExpenseDao userExpenseDao;
@@ -26,11 +26,11 @@ public class UserExpenseServiceImpl  implements UserExpenseService {
         return userExpenseDao.getUserExpenseById(id);
     }
 
-    public List<UserExpense> listUserExpensesByParams(Map<String,Object> params) {
+    public List<UserExpense> listUserExpensesByParams(Map<String, Object> params) {
         return userExpenseDao.listUserExpensesByParams(params);
     }
 
-    public Integer countUserExpenses (Map<String,Object> params) {
+    public Integer countUserExpenses(Map<String, Object> params) {
         return userExpenseDao.countUserExpenses(params);
     }
 

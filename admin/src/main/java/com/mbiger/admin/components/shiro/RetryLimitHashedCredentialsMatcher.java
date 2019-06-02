@@ -11,6 +11,7 @@ import org.apache.shiro.cache.CacheManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * @Description 密码错误次数限制匹配器
  * @auther: zhangkele
@@ -32,21 +33,21 @@ public class RetryLimitHashedCredentialsMatcher extends SimpleCredentialsMatcher
     @Override
     public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
         //获取用户名
-        String userName = (String)token.getPrincipal();
+        String userName = (String) token.getPrincipal();
         //获取用户登录次数
         Integer retryCount = passwordRetryCache.get(userName);
         if (retryCount == null) {
             //如果用户没有登陆过,登陆次数加1 并放入缓存
             retryCount = 1;
-            passwordRetryCache.put(userName,retryCount);
-        }else{
+            passwordRetryCache.put(userName, retryCount);
+        } else {
             retryCount++;
-            passwordRetryCache.put(userName,retryCount);
+            passwordRetryCache.put(userName, retryCount);
         }
         if (retryCount > 3) {
             //如果用户登陆失败次数大于3次 抛出锁定用户异常  并修改数据库字段
             SysManager sysManager = sysManagerService.getSysManagerByCode(userName);
-            if (sysManager != null && "0".equals(sysManager.getStatus())){
+            if (sysManager != null && "0".equals(sysManager.getStatus())) {
                 //数据库字段 默认为 0  就是正常状态 所以 要改为1
                 //修改数据库的状态字段为锁定
                 SysManager sysManagerTemp = new SysManager();
@@ -68,12 +69,13 @@ public class RetryLimitHashedCredentialsMatcher extends SimpleCredentialsMatcher
 
     /**
      * 根据用户名 解锁用户
+     *
      * @param userName
      * @return
      */
-    public void unlockAccount(String userName){
+    public void unlockAccount(String userName) {
         SysManager sysManager = sysManagerService.getSysManagerByCode(userName);
-        if (sysManager != null){
+        if (sysManager != null) {
             //修改数据库的状态字段为正常状态
             SysManager sysManagerTemp = new SysManager();
             sysManagerTemp.setStatus("0");

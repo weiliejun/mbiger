@@ -25,13 +25,13 @@ import java.util.Map;
 @RequestMapping("/sysdictionary")
 public class SysDictionaryController extends AbstractBaseController {
     @Autowired
-    private SysDictionaryService sysDictionaryService ;
+    private SysDictionaryService sysDictionaryService;
 
     /**
      * @Description get请求 返回到list页面
      * @UpadteDate: 2019/2/22 14:42
      */
-    @GetMapping(value ="/list")
+    @GetMapping(value = "/list")
     public String toListSysDictionarys() {
         return "/system/sysdictionary/list";
     }
@@ -44,15 +44,15 @@ public class SysDictionaryController extends AbstractBaseController {
     @ResponseBody
     public Map<String, Object> listSysDictionarys(HttpServletRequest request) {
         LinkedHashMap<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        Map<String,Object> requestParams = formQueryRemenber(request);
+        Map<String, Object> requestParams = formQueryRemenber(request);
         PageHelper.startPage(Integer.parseInt(requestParams.get("currentPage").toString()),
                 Integer.parseInt(requestParams.get("pageSize").toString()));
         final Map<String, Object> params = getQureyParams(requestParams);
-        final Page<SysDictionary> results = (Page<SysDictionary>)sysDictionaryService.listSysDictionaryByParams(params);
+        final Page<SysDictionary> results = (Page<SysDictionary>) sysDictionaryService.listSysDictionaryByParams(params);
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");
-        resultMap.put("count",String.valueOf(results.getTotal()));
-        resultMap.put("data",results.getResult());
+        resultMap.put("count", String.valueOf(results.getTotal()));
+        resultMap.put("data", results.getResult());
         return resultMap;
     }
 
@@ -77,14 +77,14 @@ public class SysDictionaryController extends AbstractBaseController {
         try {
             //新增
             if (sysDictionary.getId() == null) {
-                SysDictionary exitDicByName = sysDictionaryService.getSysDictionaryByName(sysDictionary.getParentCode(),sysDictionary.getName(),sysDictionary.getHasChild());
-                if(exitDicByName !=null){
+                SysDictionary exitDicByName = sysDictionaryService.getSysDictionaryByName(sysDictionary.getParentCode(), sysDictionary.getName(), sysDictionary.getHasChild());
+                if (exitDicByName != null) {
                     resultMap.put("flag", "false");
                     resultMap.put("msg", "该类型名称已经存在！");
                     return resultMap;
                 }
                 SysDictionary exitDicByCode = sysDictionaryService.getSysDictionaryByCode(sysDictionary.getCode());
-                if(exitDicByCode !=null){
+                if (exitDicByCode != null) {
                     resultMap.put("flag", "false");
                     resultMap.put("msg", "该类型编号已经存在！");
                     return resultMap;
@@ -96,8 +96,8 @@ public class SysDictionaryController extends AbstractBaseController {
                 resultMap.put("msg", "新增成功");
                 return resultMap;
             } else {//编辑
-                SysDictionary exitDicByName = sysDictionaryService.getSysDictionaryByName(sysDictionary.getParentCode(),sysDictionary.getName(),sysDictionary.getHasChild());
-                if(exitDicByName !=null && !exitDicByName.getName().equals(sysDictionary.getName())){
+                SysDictionary exitDicByName = sysDictionaryService.getSysDictionaryByName(sysDictionary.getParentCode(), sysDictionary.getName(), sysDictionary.getHasChild());
+                if (exitDicByName != null && !exitDicByName.getName().equals(sysDictionary.getName())) {
                     resultMap.put("flag", "false");
                     resultMap.put("msg", "该类型名称已经存在！");
                     return resultMap;
@@ -124,10 +124,10 @@ public class SysDictionaryController extends AbstractBaseController {
      */
     @RequestMapping(value = "/{operateType}")
     @ResponseBody
-    public Map<String, Object> operateDictionary(@PathVariable String operateType,Integer id) {
+    public Map<String, Object> operateDictionary(@PathVariable String operateType, Integer id) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         SysDictionary dictionary = sysDictionaryService.getSysDictionaryById(id);
-        if(dictionary == null){
+        if (dictionary == null) {
             resultMap.put("flag", "false");
             resultMap.put("msg", "该类型不存在");
             return resultMap;
@@ -135,7 +135,7 @@ public class SysDictionaryController extends AbstractBaseController {
         SysDictionary temp = new SysDictionary();
         temp.setId(id);
         //删除
-        if("delete".equals(operateType)){
+        if ("delete".equals(operateType)) {
             temp.setDataStatus("1");
             sysDictionaryService.updateSysDictionary(temp);
             resultMap.put("flag", "true");
@@ -143,7 +143,7 @@ public class SysDictionaryController extends AbstractBaseController {
             return resultMap;
         }
         //设置为启用 -0
-        if("enable".equals(operateType)){
+        if ("enable".equals(operateType)) {
             temp.setStatus(GlobalConstant.STATUS_VALID);
             temp.setUpdateTime(new Date());
             sysDictionaryService.updateSysDictionary(temp);
@@ -152,7 +152,7 @@ public class SysDictionaryController extends AbstractBaseController {
             return resultMap;
         }
         //设置为禁用 -1
-        if("disable".equals(operateType)){
+        if ("disable".equals(operateType)) {
             temp.setStatus(GlobalConstant.STATUS_INVALID);
             sysDictionaryService.updateSysDictionary(temp);
             resultMap.put("flag", "true");
@@ -171,20 +171,20 @@ public class SysDictionaryController extends AbstractBaseController {
      */
     @PostMapping(value = "/tableSelect/list")
     @ResponseBody
-    public Map<String, Object> tableSelectList(HttpServletRequest request ) {
+    public Map<String, Object> tableSelectList(HttpServletRequest request) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         String aa = request.getParameter("selectRange");
-        Map<String,Object> requestParams = formQueryRemenber(request);
+        Map<String, Object> requestParams = formQueryRemenber(request);
         PageHelper.startPage(Integer.parseInt(requestParams.get("currentPage").toString()),
                 Integer.parseInt(requestParams.get("pageSize").toString()));
         final Map<String, Object> params = getQureyParams(requestParams);
-        params.put("grade",1);
-        params.put("status","0");
-        final Page<SysDictionary> results = (Page<SysDictionary>)sysDictionaryService.listSysDictionaryByParams(params);
+        params.put("grade", 1);
+        params.put("status", "0");
+        final Page<SysDictionary> results = (Page<SysDictionary>) sysDictionaryService.listSysDictionaryByParams(params);
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");
-        resultMap.put("count",String.valueOf(results.getTotal()));
-        resultMap.put("data",results.getResult());
+        resultMap.put("count", String.valueOf(results.getTotal()));
+        resultMap.put("data", results.getResult());
         return resultMap;
     }
 

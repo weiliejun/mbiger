@@ -16,7 +16,7 @@ public class UserExpenseDao extends AbstractBaseDao {
      * @auther: xsp
      * @UpadteDate: 2019/1/18 10:13
      */
-    public void addUserExpense (UserExpense userExpense) {
+    public void addUserExpense(UserExpense userExpense) {
         insert("userExpense.addUserExpense", userExpense);
     }
 
@@ -25,15 +25,16 @@ public class UserExpenseDao extends AbstractBaseDao {
      * @auther: xsp
      * @UpadteDate: 2019/1/18 10:14
      */
-    public void updateUserExpense (UserExpense userExpense) {
+    public void updateUserExpense(UserExpense userExpense) {
         update("userExpense.updateUserExpense", userExpense);
     }
+
     /**
      * @Description 通过appKey修改用户消费记录表状态
      * @auther: zhangkele
      * @UpadteDate: 2019/1/18 10:14
      */
-    public void updateUserExpenseStatusByAppKey (String appKey,String status) {
+    public void updateUserExpenseStatusByAppKey(String appKey, String status) {
         UserExpense userExpenseTemp = new UserExpense();
         userExpenseTemp.setAppkey(appKey);
         userExpenseTemp.setStatus(status);
@@ -46,7 +47,7 @@ public class UserExpenseDao extends AbstractBaseDao {
      * @auther: xsp
      * @UpadteDate: 2019/1/18 10:17
      */
-    public UserExpense getUserExpenseById (Integer id) {
+    public UserExpense getUserExpenseById(Integer id) {
         return (UserExpense) queryForObject("userExpense.getUserExpenseById", id);
     }
 
@@ -55,7 +56,7 @@ public class UserExpenseDao extends AbstractBaseDao {
      * @auther: xsp
      * @UpadteDate: 2019/1/18 10:17
      */
-    public List<UserExpense> listUserExpensesByParams (Map<String,Object> params) {
+    public List<UserExpense> listUserExpensesByParams(Map<String, Object> params) {
         return (List<UserExpense>) queryForList("userExpense.listUserExpensesByParams", params);
     }
 
@@ -64,7 +65,7 @@ public class UserExpenseDao extends AbstractBaseDao {
      * @auther: xsp
      * @UpadteDate: 2019/1/18 10:17
      */
-    public Integer countUserExpenses (Map<String,Object> params) {
+    public Integer countUserExpenses(Map<String, Object> params) {
         return (Integer) queryForObject("userExpense.countUserExpenses", params);
     }
 
@@ -73,12 +74,12 @@ public class UserExpenseDao extends AbstractBaseDao {
      * @auther: xsp
      * @UpadteDate: 2019/1/18 10:17
      */
-    public List<Map<String, Object>> listUserExpensesRecently (Integer userId) {
+    public List<Map<String, Object>> listUserExpensesRecently(Integer userId) {
         return (List<Map<String, Object>>) queryForList("userExpense.listUserExpensesRecently", userId);
     }
 
 
     public List<Map<String, Object>> listUserExpensesMapByParams(Map<String, Object> params) {
-        return queryForList("userExpense.listUserExpensesMapByParams",params);
+        return queryForList("userExpense.listUserExpensesMapByParams", params);
     }
 }

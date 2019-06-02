@@ -5,6 +5,7 @@ import com.mbiger.common.model.sysFunction.bean.SysFunction;
 import com.mbiger.common.model.sysManager.bean.SysManager;
 import com.mbiger.common.model.sysManagerRole.bean.SysManagerRole;
 import com.mbiger.common.model.sysRole.bean.SysRole;
+
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +45,7 @@ public interface SecurityService {
     SysRole getSysRoleById(Integer id);
 
     SysRole getSysRoleByName(String roleName);
+
     /**
      * @Description 根据动态条件查询角色列表
      * @auther: zhangkele
@@ -57,10 +59,10 @@ public interface SecurityService {
 
     List<SysFunction> listSysFunctionByManagerId(Integer managerId);
 
-    List<SysFunction> listSysFunctionByManagerIdAndParentCode(Integer managerId,String parentCode);
+    List<SysFunction> listSysFunctionByManagerIdAndParentCode(Integer managerId, String parentCode);
 
     List<SysManagerRole> listSysManagerRoleByManagerId(Integer managerId);
 
-    void grantSysManagerRoles(Integer[] roleIds,Integer managerId,SysManager manager);
+    void grantSysManagerRoles(Integer[] roleIds, Integer managerId, SysManager manager);
 
 }

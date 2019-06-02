@@ -14,57 +14,58 @@
     <link rel="stylesheet" href="assets/css/accountCenter.css">
 </head>
 <body>
-    <header class="header_info clearfix">
-        <h1 class="head_L"><a href="javascript:;" class="arrowLeft"></a></h1>
-        <h3 class="head_C">充值</h3>
-        <div class="head_R clearfix"><span class="rightTit"></span></div>
-    </header>
-    <div class="occupyPos"></div>
+<header class="header_info clearfix">
+    <h1 class="head_L"><a href="javascript:;" class="arrowLeft"></a></h1>
+    <h3 class="head_C">充值</h3>
+    <div class="head_R clearfix"><span class="rightTit"></span></div>
+</header>
+<div class="occupyPos"></div>
 
-    <div class="recTypeBox">
-        <ul class="recNav clearfix">
-            <li class="navLR"><a href="javascript:;" class="curType">在线充值</a></li>
-            <li class="navC"><i></i></li>
-            <li class="navLR"><a href="javascript:;" class="">线下充值</a></li>
-        </ul>
-        <p class="regTip">充值金额</p>
-        <div class="recNumBox">
-            <input type="text" class="form-control" placeholder="请输入充值金额">
-            <div class="errorBox addMarCen"><label for="">请输入...</label></div>
-        </div>
+<div class="recTypeBox">
+    <ul class="recNav clearfix">
+        <li class="navLR"><a href="javascript:;" class="curType">在线充值</a></li>
+        <li class="navC"><i></i></li>
+        <li class="navLR"><a href="javascript:;" class="">线下充值</a></li>
+    </ul>
+    <p class="regTip">充值金额</p>
+    <div class="recNumBox">
+        <input type="text" class="form-control" placeholder="请输入充值金额">
+        <div class="errorBox addMarCen"><label for="">请输入...</label></div>
     </div>
+</div>
 
-    <div class="chanRecType">
-        <p class="chanTit">选择充值方式</p>
-        <ul class="checkType">
-            <li>
-                <a href="javascript:;" class="typeBox clearfix">
-                    <p class="typeNameWx">微信</p>
-                    <i class="checkIcon"></i>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:;" class="typeBox clearfix">
-                    <p class="typeNameZfb">支付宝</p>
-                    <i class=""></i>
-                </a>
-            </li>
-        </ul>
-    </div>
+<div class="chanRecType">
+    <p class="chanTit">选择充值方式</p>
+    <ul class="checkType">
+        <li>
+            <a href="javascript:;" class="typeBox clearfix">
+                <p class="typeNameWx">微信</p>
+                <i class="checkIcon"></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="typeBox clearfix">
+                <p class="typeNameZfb">支付宝</p>
+                <i class=""></i>
+            </a>
+        </li>
+    </ul>
+</div>
 
-    <a href="javascript:;" class="publicBtn">充值</a>
+<a href="javascript:;" class="publicBtn">充值</a>
 
-    <script type="text/javascript" src="assets/js/public/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="assets/js/public/fontsizeset.js"></script>
-    <script type="text/javascript" src="assets/js/public/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/public/swiper.min.js"></script>
-    <script>
+<script type="text/javascript" src="assets/js/public/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="assets/js/public/fontsizeset.js"></script>
+<script type="text/javascript" src="assets/js/public/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/public/swiper.min.js"></script>
+<script>
         $(document).ready(function(){
             $('.checkType a').click(function(){
                 $(this).find('i').addClass('checkIcon');
                 $(this).parent().siblings().find('i').removeClass('checkIcon');
             });
         });
-    </script>
+
+</script>
 </body>
 </html>

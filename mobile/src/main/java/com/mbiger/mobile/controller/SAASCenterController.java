@@ -33,7 +33,7 @@ public class SAASCenterController extends AbstractBaseController {
     MbigerService mbigerService;
 
     @Autowired
-     private UserSmsTemplateApplicationService userSmsTemplateApplicationService;
+    private UserSmsTemplateApplicationService userSmsTemplateApplicationService;
 
     @Autowired
     private CustomerAppointmentService customerAppointmentService;
@@ -69,9 +69,9 @@ public class SAASCenterController extends AbstractBaseController {
                 !"ipPlaceQuery".equals(serviceType) &&
                 !"drivingQuestionsQuery".equals(serviceType)) {
             //单次调用费用
-            BigDecimal singleCost = mbigerService.getSingleCost(serviceType,GlobalConstant.DEFAULT);
+            BigDecimal singleCost = mbigerService.getSingleCost(serviceType, GlobalConstant.DEFAULT);
             //剩余免费使用次数
-            Integer remainderFreeCount = mbigerService.getRemainderFreeCount(serviceType,GlobalConstant.DEFAULT,String.valueOf(userInfo.getId()));
+            Integer remainderFreeCount = mbigerService.getRemainderFreeCount(serviceType, GlobalConstant.DEFAULT, String.valueOf(userInfo.getId()));
             //重新查询用户金额
             userInfo = userInfoService.getUserById(userInfo.getId());
             model.addAttribute("accountBalance", userInfo.getUserAccountBalance());
@@ -79,16 +79,16 @@ public class SAASCenterController extends AbstractBaseController {
             model.addAttribute("singleCost", singleCost);
 
             //云短信申请短信签名统计有效个数
-            Map<String,Object>  params = new HashMap<String, Object>();
-            params.put("userId",userInfo.getId());
-            params.put("reviewStatusFail","1");//(未审核，审核已通过)
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("userId", userInfo.getId());
+            params.put("reviewStatusFail", "1");//(未审核，审核已通过)
             int countNum = userSmsTemplateApplicationService.countUserSmsTemplateApplicationsByParams(params);
             params.remove("reviewStatusFail");
-            params.put("reviewStatus","0");//通过审核
+            params.put("reviewStatus", "0");//通过审核
             List<UserSmsTemplateApplication> userSmsTemplateApplicationsList = userSmsTemplateApplicationService.listUserSmsTemplateApplicationsByParams(params);
 
             boolean applyFlag = false;
-            if(countNum <5){
+            if (countNum < 5) {
                 applyFlag = true;
             }
             request.setAttribute("applyFlag", applyFlag);
@@ -106,15 +106,15 @@ public class SAASCenterController extends AbstractBaseController {
     //检查短信签名的个数
     @RequestMapping("/account/userSmsTemplateApply/checkNumber")
     @ResponseBody
-    public boolean checkNumber(HttpServletRequest request,String userId) {
+    public boolean checkNumber(HttpServletRequest request, String userId) {
         boolean flag = false;
 
         //云短信申请短信签名统计有效个数
-        Map<String,Object>  params = new HashMap<String, Object>();
-        params.put("userId",Integer.parseInt(userId));
-        params.put("reviewStatusFail","1");//(未审核，审核已通过)
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("userId", Integer.parseInt(userId));
+        params.put("reviewStatusFail", "1");//(未审核，审核已通过)
         int countNum = userSmsTemplateApplicationService.countUserSmsTemplateApplicationsByParams(params);
-        if(countNum <5){
+        if (countNum < 5) {
             flag = true;
         }
         return flag;

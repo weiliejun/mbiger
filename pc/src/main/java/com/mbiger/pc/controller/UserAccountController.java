@@ -6,12 +6,12 @@ import com.mbiger.common.constant.ApplicationSessionKeys;
 import com.mbiger.common.model.serviceinfo.bean.ServiceInfo;
 import com.mbiger.common.model.sysMessage.bean.SysMessage;
 import com.mbiger.common.model.user.bean.UserInfo;
+import com.mbiger.common.web.SessionUser;
 import com.mbiger.pc.service.mbigerServiceManage.MbigerService;
 import com.mbiger.pc.service.sysMessageManage.SysMessageService;
 import com.mbiger.pc.service.userManage.UserExpenseService;
 import com.mbiger.pc.service.userManage.UserInfoService;
 import com.mbiger.pc.web.base.AbstractBaseController;
-import com.mbiger.common.web.SessionUser;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +30,7 @@ import java.util.Map;
 @RequestMapping("/account")
 public class UserAccountController extends AbstractBaseController {
 
-   private static Logger logger = org.apache.log4j.Logger.getLogger(UserAccountController.class);
+    private static Logger logger = org.apache.log4j.Logger.getLogger(UserAccountController.class);
 
     @Autowired
     private UserExpenseService userExpenseService;
@@ -39,7 +39,7 @@ public class UserAccountController extends AbstractBaseController {
     private UserInfoService userInfoService;
 
     @Autowired
-    private SysMessageService sysMessageService ;
+    private SysMessageService sysMessageService;
     @Autowired
     private MbigerService mbigerService;
 
@@ -49,7 +49,7 @@ public class UserAccountController extends AbstractBaseController {
      * @auther: xsp
      * @date: 2019/1/17 18:19
      */
-    public String index(HttpServletRequest request,Model model, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "8") Integer pageSize, String loadingType) {
+    public String index(HttpServletRequest request, Model model, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "8") Integer pageSize, String loadingType) {
         UserInfo userInfo = getUserInfoBySid(request);
 
         //引入分页查询，使用PageHelper分页功能在查询之前传入当前页，然后多少记录
@@ -118,30 +118,30 @@ public class UserAccountController extends AbstractBaseController {
      * @UpadteDate: 2019-01-22 17:04
      */
     @RequestMapping(value = {"/sysMessage/index"}, method = RequestMethod.GET)
-    public String sysMessageIndex(HttpServletRequest request,Model model, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize) {
+    public String sysMessageIndex(HttpServletRequest request, Model model, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize) {
         UserInfo userInfo = getUserInfoBySid(request);
-        Map<String,Object> params = new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<String, Object>();
 
         //引入分页查询，使用PageHelper分页功能在查询之前传入当前页，然后多少记录
         PageHelper.startPage(pageNum, pageSize);
 
         //startPage后紧跟的这个查询就是分页查询
-        params.put("userId",userInfo.getId());
+        params.put("userId", userInfo.getId());
         params.put("type", "website");
-        List<Map<String,Object>> sysMessagesList = sysMessageService.listSysMessagesByParams(params);
+        List<Map<String, Object>> sysMessagesList = sysMessageService.listSysMessagesByParams(params);
 
         //使用PageInfo包装查询结果，只需要将pageInfo交给页面就可以
         PageInfo pageInfo = new PageInfo<Map<String, Object>>(sysMessagesList);
 
-        List<Map<String,Object>>  sysMessagesMap =  pageInfo.getList();
+        List<Map<String, Object>> sysMessagesMap = pageInfo.getList();
         //循环遍历，修改status为0；
         int countReadNum = 0;
-        if(sysMessagesMap!= null && sysMessagesMap.size()>0){
-            for (Map<String,Object> sysMessages : sysMessagesMap) {
+        if (sysMessagesMap != null && sysMessagesMap.size() > 0) {
+            for (Map<String, Object> sysMessages : sysMessagesMap) {
                 int id = (Integer) sysMessages.get("id");
-                SysMessage sysMessage =sysMessageService.getSysMessageById(id);
+                SysMessage sysMessage = sysMessageService.getSysMessageById(id);
                 String status = sysMessage.getStatus();
-                if (status.equals("1")){
+                if (status.equals("1")) {
                     sysMessage.setStatus("0");
                     sysMessageService.updateSysMessage(sysMessage);
                     countReadNum = countReadNum + 1;
@@ -150,19 +150,19 @@ public class UserAccountController extends AbstractBaseController {
         }
 
         //session取出系统消息的数量 - countReadNum；两数之差放入到session
-        int messageNums =(Integer) request.getSession().getAttribute(ApplicationSessionKeys.SYS_MESSAGE_NUMS_COUNT);
+        int messageNums = (Integer) request.getSession().getAttribute(ApplicationSessionKeys.SYS_MESSAGE_NUMS_COUNT);
         int countSysMessages = messageNums - countReadNum;
-        if(countSysMessages <= 0){
+        if (countSysMessages <= 0) {
             countSysMessages = 0;
         }
-        request.getSession().setAttribute(ApplicationSessionKeys.SYS_MESSAGE_NUMS_COUNT,countSysMessages);
+        request.getSession().setAttribute(ApplicationSessionKeys.SYS_MESSAGE_NUMS_COUNT, countSysMessages);
 
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("pageNum", pageNum);
         model.addAttribute("pageSize", pageSize);
 
-         return "userAccount/sysmessage";
+        return "userAccount/sysmessage";
     }
 
 }

@@ -2,45 +2,45 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
     <title>众大技术-SaaS</title>
-    <link rel="stylesheet" type="text/css" href="/css/cloudComputing.css" />
+    <link rel="stylesheet" type="text/css" href="/css/cloudComputing.css"/>
 </head>
 <body>
-    <!-- 头部公共 start -->
-    <div th:replace="/common/header :: commonHeader('SAAS')"></div>
-    <!-- 头部公共 end-->
-    
-    <div class="cloudBanner">
-        <img src="/images/bannerSAAS.jpg" />
-    </div>
-    
-    <div class="weatherBanner ipBanner">
-        <a href="javascript:;" class="applyForBtn">申请API</a>
-        <div class="weatherText">
-            <p>支持国内外IP，全球覆盖99.99%以上，实时更新，平均响应时间小。</p>
-        </div>
-    </div>
-    <!-- 申请提交 start-->
-    <div th:replace="/saas/applySubmit"></div>
-    <!-- 申请提交  end-->
+<!-- 头部公共 start -->
+<div th:replace="/common/header :: commonHeader('SAAS')"></div>
+<!-- 头部公共 end-->
 
-    <div class="findBox clearfix">
-        <form id="dataForm" autocomplete="off">
-            <input id="ip" name="ip" type="text" class="findInput" placeholder="输入要查询的IP" />
-            <a id="search" href="javascript:;" class="findBtn btnEnabled enterEvent">免费查询</a>
-        </form>
-        <!-- 图形验证码弹框 start-->
-        <div th:replace="/common/validateCode"></div>
-        <!-- 图形验证码弹框 end-->
+<div class="cloudBanner">
+    <img src="/images/bannerSAAS.jpg"/>
+</div>
+
+<div class="weatherBanner ipBanner">
+    <a href="javascript:;" class="applyForBtn">申请API</a>
+    <div class="weatherText">
+        <p>支持国内外IP，全球覆盖99.99%以上，实时更新，平均响应时间小。</p>
     </div>
+</div>
+<!-- 申请提交 start-->
+<div th:replace="/saas/applySubmit"></div>
+<!-- 申请提交  end-->
 
-    <div class="weatherDetails" id="content"></div>
+<div class="findBox clearfix">
+    <form id="dataForm" autocomplete="off">
+        <input id="ip" name="ip" type="text" class="findInput" placeholder="输入要查询的IP"/>
+        <a id="search" href="javascript:;" class="findBtn btnEnabled enterEvent">免费查询</a>
+    </form>
+    <!-- 图形验证码弹框 start-->
+    <div th:replace="/common/validateCode"></div>
+    <!-- 图形验证码弹框 end-->
+</div>
 
-    <!-- 公共底部 start -->
-    <div th:replace="/common/footer :: commonFooter"></div>
-    <!-- 公共底部 end -->
-    <!-- 弹框 start-->
-    <div th:replace="/common/prompt"></div>
-    <!-- 弹框 end-->
+<div class="weatherDetails" id="content"></div>
+
+<!-- 公共底部 start -->
+<div th:replace="/common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+<!-- 弹框 start-->
+<div th:replace="/common/prompt"></div>
+<!-- 弹框 end-->
 
 </body>
 <script type="text/javascript" th:src="@{/plugins/template/jquery.tmpl.min.js}"></script>
@@ -50,6 +50,7 @@
         <span class="futureTit">地址归属地：</span>
         <p class="resultTxt" id="region">{{= region}}</p>
     </div>
+
 </script>
 <script type="text/javascript">
     $(function(){
@@ -107,6 +108,7 @@
             }
         });
     });
+
 </script>
 </html>
 

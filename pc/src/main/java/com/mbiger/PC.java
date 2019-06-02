@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
 @ServletComponentScan
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class},scanBasePackages="com.mbiger")
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class}, scanBasePackages = "com.mbiger")
 public class PC extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
@@ -19,7 +19,7 @@ public class PC extends SpringBootServletInitializer {
     }
 
 
-    public static void main(String[] args)  throws Exception{
-        SpringApplication.run(PC.class,args);
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(PC.class, args);
     }
 }

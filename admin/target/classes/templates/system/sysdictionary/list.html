@@ -12,17 +12,19 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">类型名称</label>
                         <div class="layui-input-block">
-                            <input id="likeName" type="text" name="likeName" placeholder="请输入类型名称" autocomplete="off" class="layui-input" th:value="${likeName}" />
+                            <input id="likeName" type="text" name="likeName" placeholder="请输入类型名称" autocomplete="off"
+                                   class="layui-input" th:value="${likeName}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">类型编号</label>
                         <div class="layui-input-block">
-                            <input id="likeCode" type="text" name="likeCode" placeholder="请输入类型编号" autocomplete="off" class="layui-input" th:value="${likeCode}" />
+                            <input id="likeCode" type="text" name="likeCode" placeholder="请输入类型编号" autocomplete="off"
+                                   class="layui-input" th:value="${likeCode}"/>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <a class="layui-btn " data-type="search" >
+                        <a class="layui-btn " data-type="search">
                             <i class="layui-icon layui-icon-search"></i>
                         </a>
                         <a type="button" class="layui-btn" data-type="searchFormClear">
@@ -35,7 +37,8 @@
 
         <div class="layui-card-body">
             <div style="padding-bottom: 10px;">
-                <button class="layui-btn layui-btn-normal addLink_btn" data-type="add"><i class="layui-icon"></i>添加数据字典</button>
+                <button class="layui-btn layui-btn-normal addLink_btn" data-type="add"><i class="layui-icon"></i>添加数据字典
+                </button>
             </div>
 
             <table id="dictionaryTables" lay-filter="dictionaryTables"></table>

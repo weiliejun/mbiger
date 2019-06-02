@@ -70,19 +70,19 @@ public class MbigerServiceImpl implements MbigerService {
     @Autowired
     ThirdPartyCallService thirdPartyCallService;
 
-    public int getRemainderFreeCount(String serviceCode, String menuType,String userId) {
-        String freeCountKey = RedisUtil.keyBuilder("freeCount",serviceCode,userId);
+    public int getRemainderFreeCount(String serviceCode, String menuType, String userId) {
+        String freeCountKey = RedisUtil.keyBuilder("freeCount", serviceCode, userId);
         //已使用的免费次数
-        Integer freeCount = (Integer)cacheService.getObject(freeCountKey);
-        freeCount = freeCount == null?0:freeCount;
+        Integer freeCount = (Integer) cacheService.getObject(freeCountKey);
+        freeCount = freeCount == null ? 0 : freeCount;
         Integer defaultFreeCount = GlobalConstant.SERVICE_FREE_COUNT;
-        ServiceCallLimit serviceCallLimit = serviceCallLimitDao.getServiceCallLimitByServiceCodeAndMenuType(serviceCode,menuType);
-        if(serviceCallLimit != null){
+        ServiceCallLimit serviceCallLimit = serviceCallLimitDao.getServiceCallLimitByServiceCodeAndMenuType(serviceCode, menuType);
+        if (serviceCallLimit != null) {
             defaultFreeCount = serviceCallLimit.getFreeLimit();
         }
         //剩余免费调用次数
         Integer remainderFreeCount = 0;
-        if(freeCount <= defaultFreeCount){
+        if (freeCount <= defaultFreeCount) {
             remainderFreeCount = defaultFreeCount - freeCount;
         }
         return remainderFreeCount;
@@ -90,8 +90,8 @@ public class MbigerServiceImpl implements MbigerService {
 
     public BigDecimal getSingleCost(String serviceCode, String menuType) {
         ServiceCallCost serviceCallCost = null;
-        serviceCallCost = serviceCallCostDao.getServiceCallCostByServiceCodeAndMenuType(serviceCode,menuType);
-        if(serviceCallCost != null){
+        serviceCallCost = serviceCallCostDao.getServiceCallCostByServiceCodeAndMenuType(serviceCode, menuType);
+        if (serviceCallCost != null) {
             return serviceCallCost.getSingleCost();
         }
         return BigDecimal.ZERO;
@@ -99,35 +99,35 @@ public class MbigerServiceImpl implements MbigerService {
 
     @Transactional
     public String processBusiness(Map<String, String> params) {
-        Map<String,String> resultMap = new HashMap<String,String>();
+        Map<String, String> resultMap = new HashMap<String, String>();
         //参数校验
-        if(params == null || params.size() == 0){
-            resultMap.put(STATUS,"paramIsNull");
-            resultMap.put(MSG,"参数不能为空");
+        if (params == null || params.size() == 0) {
+            resultMap.put(STATUS, "paramIsNull");
+            resultMap.put(MSG, "参数不能为空");
             return JSON.toJSONString(resultMap);
         }
         String service = params.get("service");
-        if(StringHelper.isEmpty(service)){
-            resultMap.put(STATUS,"paramIsNull");
-            resultMap.put(MSG,"参数不能为空");
+        if (StringHelper.isEmpty(service)) {
+            resultMap.put(STATUS, "paramIsNull");
+            resultMap.put(MSG, "参数不能为空");
             return JSON.toJSONString(resultMap);
         }
 
         ServiceInfo serviceInfo = serviceInfoDao.getServiceInfoByServiceCode(service);
-        if(serviceInfo == null){
-            resultMap.put(STATUS,"serviceInfoNotExist");
-            resultMap.put(MSG,"调用的接口不存在");
+        if (serviceInfo == null) {
+            resultMap.put(STATUS, "serviceInfoNotExist");
+            resultMap.put(MSG, "调用的接口不存在");
             return JSON.toJSONString(resultMap);
         }
 
         //接口流量控制
         String rateLimitKey = params.get("rateLimitKey");
-        if(StringHelper.isNotEmpty(rateLimitKey)){
+        if (StringHelper.isNotEmpty(rateLimitKey)) {
             params.remove("rateLimitKey");
-            boolean allowFlag = rateLimit.allow(service,rateLimitKey,RATE_LIMIT_TIME,RATE_LIMIT_COUNT);
-            if(!allowFlag){
-                resultMap.put(STATUS,"callFrequently");
-                resultMap.put(MSG,"接口调用频繁，请稍后重试");
+            boolean allowFlag = rateLimit.allow(service, rateLimitKey, RATE_LIMIT_TIME, RATE_LIMIT_COUNT);
+            if (!allowFlag) {
+                resultMap.put(STATUS, "callFrequently");
+                resultMap.put(MSG, "接口调用频繁，请稍后重试");
                 return JSON.toJSONString(resultMap);
             }
         }
@@ -139,24 +139,24 @@ public class MbigerServiceImpl implements MbigerService {
          * 接口调用次数控制
          *
          */
-        ServiceCallLimit serviceCallLimit = serviceCallLimitDao.getServiceCallLimitByServiceCodeAndMenuType(service,menuType);
-        if(serviceCallLimit == null){
-            resultMap.put(STATUS,"serviceCallLimitNotExist");
-            resultMap.put(MSG,"接口次数配置信息不存在");
+        ServiceCallLimit serviceCallLimit = serviceCallLimitDao.getServiceCallLimitByServiceCodeAndMenuType(service, menuType);
+        if (serviceCallLimit == null) {
+            resultMap.put(STATUS, "serviceCallLimitNotExist");
+            resultMap.put(MSG, "接口次数配置信息不存在");
             return JSON.toJSONString(resultMap);
         }
 
-        ServiceCallCost serviceCallCost = serviceCallCostDao.getServiceCallCostByServiceCodeAndMenuType(service,menuType);
-        if(serviceCallCost == null){
-            resultMap.put(STATUS,"serviceCallCostNotExist");
-            resultMap.put(MSG,"接口费用配置信息不存在");
+        ServiceCallCost serviceCallCost = serviceCallCostDao.getServiceCallCostByServiceCodeAndMenuType(service, menuType);
+        if (serviceCallCost == null) {
+            resultMap.put(STATUS, "serviceCallCostNotExist");
+            resultMap.put(MSG, "接口费用配置信息不存在");
             return JSON.toJSONString(resultMap);
         }
         //单次调用费用
         BigDecimal singleCost = serviceCallCost.getSingleCost();
         //接口调用是否免费
         boolean freeUseFlag = false;
-        if(singleCost.compareTo(BigDecimal.ZERO) == 0){
+        if (singleCost.compareTo(BigDecimal.ZERO) == 0) {
             freeUseFlag = true;
         }
         //用户id
@@ -164,11 +164,11 @@ public class MbigerServiceImpl implements MbigerService {
         //是否有用户信息
         boolean userExistFlag = false;
         UserInfo userInfo = null;
-        if(StringHelper.isNotEmpty(userId)){
+        if (StringHelper.isNotEmpty(userId)) {
             userInfo = userInfoDao.getUserInfoById(Integer.valueOf(userId));
-            if(userInfo == null){
-                resultMap.put(STATUS,"userInfoNotExist");
-                resultMap.put(MSG,"用户信息不存在");
+            if (userInfo == null) {
+                resultMap.put(STATUS, "userInfoNotExist");
+                resultMap.put(MSG, "用户信息不存在");
                 return JSON.toJSONString(resultMap);
             }
             userExistFlag = true;
@@ -177,23 +177,23 @@ public class MbigerServiceImpl implements MbigerService {
         int defaultFreeCount = 0;
         String freeCountKey = null;
         Integer freeCount = 0;
-        if(!freeUseFlag && userExistFlag){
+        if (!freeUseFlag && userExistFlag) {
             //免费使用次数校验
             defaultFreeCount = serviceCallLimit.getFreeLimit();
-            freeCountKey = RedisUtil.keyBuilder("freeCount",service,userId);
-            freeCount = (Integer)cacheService.getObject(freeCountKey);
-            freeCount = freeCount == null?0:freeCount;
-            if(freeCount < defaultFreeCount){
+            freeCountKey = RedisUtil.keyBuilder("freeCount", service, userId);
+            freeCount = (Integer) cacheService.getObject(freeCountKey);
+            freeCount = freeCount == null ? 0 : freeCount;
+            if (freeCount < defaultFreeCount) {
                 freeUseFlag = true;
             }
         }
 
         //接口调用费用校验
-        if(!freeUseFlag && userExistFlag){
+        if (!freeUseFlag && userExistFlag) {
             BigDecimal userAccountBalance = userInfo.getUserAccountBalance();
-            if(userAccountBalance.compareTo(singleCost) < 0){
-                resultMap.put(STATUS,"AccountBalanceLess");
-                resultMap.put(MSG,"账户余额不足");
+            if (userAccountBalance.compareTo(singleCost) < 0) {
+                resultMap.put(STATUS, "AccountBalanceLess");
+                resultMap.put(MSG, "账户余额不足");
                 return JSON.toJSONString(resultMap);
             }
         }
@@ -204,7 +204,7 @@ public class MbigerServiceImpl implements MbigerService {
         //登录状态时，新增用户消费记录
         UserExpense userExpense = null;
         String ordId = null;
-        if(userExistFlag){
+        if (userExistFlag) {
             ordId = RandomUtil.getSerialNumber();
             userExpense = new UserExpense();
             userExpense.setUserId(Integer.valueOf(userId));
@@ -215,7 +215,7 @@ public class MbigerServiceImpl implements MbigerService {
             userExpense.setServiceName(serviceInfo.getServiceName());
             userExpense.setExpenseAmount(singleCost);
             String expenseType = params.get("expenseType");
-            expenseType = StringHelper.isEmpty(expenseType)?"online":expenseType;
+            expenseType = StringHelper.isEmpty(expenseType) ? "online" : expenseType;
             userExpense.setExpenseType(expenseType);
             userExpense.setStatus("1");
             userExpense.setDataStatus(GlobalConstant.DATA_VALID);
@@ -223,38 +223,39 @@ public class MbigerServiceImpl implements MbigerService {
             userExpenseDao.addUserExpense(userExpense);
         }
 
-        if(StringHelper.isEmpty(ordId)){
+        if (StringHelper.isEmpty(ordId)) {
             ordId = RandomUtil.getSerialNumber();
         }
-        params.put("ordId",ordId);
+        params.put("ordId", ordId);
         params.remove("expenseType");
         String respcontent = thirdPartyCallService.callThirdPartyAPI(params);
         JSONObject resultJson = JSON.parseObject(respcontent);
         //返回结果
         String status = resultJson.getString("status");
         //接口调用成功处理 ,（全国身份证实名认证，认证成功状态为：01）
-        if("0".equals(status) || ("01".equals(status) && "identityCardIdentify".equals(service))){
-            if(userExpense != null){
+        if ("0".equals(status) || ("01".equals(status) && "identityCardIdentify".equals(service))) {
+            if (userExpense != null) {
                 //修改用户消费记录状态
-                userExpenseDao.updateUserExpenseStatusByAppKey(userInfo.getAppkey(),"0");
-                if(!freeUseFlag){
+                userExpenseDao.updateUserExpenseStatusByAppKey(userInfo.getAppkey(), "0");
+                if (!freeUseFlag) {
                     //免费使用次数状态为false，修改用户账户金额
-                    userInfoDao.updateUserAccountBalance(userInfo.getId(),userInfo.getUserAccountBalance().subtract(singleCost));
+                    userInfoDao.updateUserAccountBalance(userInfo.getId(), userInfo.getUserAccountBalance().subtract(singleCost));
                 }
             }
         }
         //增加免费调用次数
-        if(freeUseFlag && (defaultFreeCount > 0)){
+        if (freeUseFlag && (defaultFreeCount > 0)) {
             freeCount++;
-            cacheService.set(freeCountKey,freeCount);
+            cacheService.set(freeCountKey, freeCount);
         }
         return respcontent;
     }
 
     public ServiceInfo getServiceInfoByCode(String serviceCode) {
-       return  serviceInfoDao.getServiceInfoByServiceCode(serviceCode);
+        return serviceInfoDao.getServiceInfoByServiceCode(serviceCode);
     }
-    public List<ServiceInfo> listServiceInfosByServiceModule(String serviceModule){
-        return  serviceInfoDao.listServiceInfosByServiceModule(serviceModule);
+
+    public List<ServiceInfo> listServiceInfosByServiceModule(String serviceModule) {
+        return serviceInfoDao.listServiceInfosByServiceModule(serviceModule);
     }
 }

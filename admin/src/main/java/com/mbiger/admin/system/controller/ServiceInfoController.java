@@ -29,7 +29,7 @@ public class ServiceInfoController extends AbstractBaseController {
     @Autowired
     private ServiceInfoService serviceInfoService;
     @Autowired
-    private SysDictionaryService sysDictionaryService ;
+    private SysDictionaryService sysDictionaryService;
 
     /**
      * @Description 跳转新增页面
@@ -40,10 +40,11 @@ public class ServiceInfoController extends AbstractBaseController {
         return "/system/serviceInfo/add";
     }
 
-    @GetMapping(value ="/list")
+    @GetMapping(value = "/list")
     public String toListSysServices() {
         return "/system/serviceInfo/list";
     }
+
     /**
      * @Description 分页查询服务信息
      * @UpadteDate: 2019/3/11 14:42
@@ -52,16 +53,16 @@ public class ServiceInfoController extends AbstractBaseController {
     @ResponseBody
     public Map<String, Object> listSysServices(HttpServletRequest request) {
         LinkedHashMap<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        Map<String,Object> requestParams = formQueryRemenber(request);
+        Map<String, Object> requestParams = formQueryRemenber(request);
         PageHelper.startPage(Integer.parseInt(requestParams.get("currentPage").toString()),
                 Integer.parseInt(requestParams.get("pageSize").toString()));
         final Map<String, Object> params = getQureyParams(requestParams);
 
-        final Page<ServiceInfo> results = (Page<ServiceInfo>)serviceInfoService.listServiceInfosByParams(null);
+        final Page<ServiceInfo> results = (Page<ServiceInfo>) serviceInfoService.listServiceInfosByParams(null);
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");
-        resultMap.put("count",String.valueOf(results.getTotal()));
-        resultMap.put("data",results.getResult());
+        resultMap.put("count", String.valueOf(results.getTotal()));
+        resultMap.put("data", results.getResult());
         return resultMap;
     }
 
@@ -106,10 +107,10 @@ public class ServiceInfoController extends AbstractBaseController {
      */
     @RequestMapping(value = "/{operateType}")
     @ResponseBody
-    public Map<String, Object> operateDictionary(@PathVariable String operateType,Integer id) {
+    public Map<String, Object> operateDictionary(@PathVariable String operateType, Integer id) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         ServiceInfo serviceInfo = serviceInfoService.getServiceInfoById(id);
-        if(serviceInfo == null){
+        if (serviceInfo == null) {
             resultMap.put("flag", "false");
             resultMap.put("msg", "该类型不存在");
             return resultMap;
@@ -117,7 +118,7 @@ public class ServiceInfoController extends AbstractBaseController {
         ServiceInfo temp = new ServiceInfo();
         temp.setId(id);
         //删除
-        if("delete".equals(operateType)){
+        if ("delete".equals(operateType)) {
             temp.setDataStatus("1");
             serviceInfoService.updateServiceInfo(temp);
             resultMap.put("flag", "true");
@@ -125,7 +126,7 @@ public class ServiceInfoController extends AbstractBaseController {
             return resultMap;
         }
         //启用
-        if("enable".equals(operateType)){
+        if ("enable".equals(operateType)) {
             temp.setStatus(GlobalConstant.STATUS_VALID);
             serviceInfoService.updateServiceInfo(temp);
             resultMap.put("flag", "true");
@@ -133,7 +134,7 @@ public class ServiceInfoController extends AbstractBaseController {
             return resultMap;
         }
         //禁用
-        if("disable".equals(operateType)){
+        if ("disable".equals(operateType)) {
             temp.setStatus(GlobalConstant.STATUS_INVALID);
             serviceInfoService.updateServiceInfo(temp);
             resultMap.put("flag", "true");
@@ -147,26 +148,26 @@ public class ServiceInfoController extends AbstractBaseController {
 
 
     /**
-     * @Description 分页查询 所有字典列表
      * @param
+     * @Description 分页查询 所有字典列表
      * @auther: fym
      * @UpadteDate: 2019/3/13 14:42
      */
     @PostMapping(value = "/tableSelectAll/list")
     @ResponseBody
-    public Map<String, Object> tableSelectAllList(HttpServletRequest request ) {
+    public Map<String, Object> tableSelectAllList(HttpServletRequest request) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         String aa = request.getParameter("selectRange");
-        Map<String,Object> requestParams = formQueryRemenber(request);
+        Map<String, Object> requestParams = formQueryRemenber(request);
         PageHelper.startPage(Integer.parseInt(requestParams.get("currentPage").toString()),
                 Integer.parseInt(requestParams.get("pageSize").toString()));
         final Map<String, Object> params = getQureyParams(requestParams);
-        params.put("status","0");
-        final Page<SysDictionary> results = (Page<SysDictionary>)sysDictionaryService.listSysDictionaryByParams(params);
+        params.put("status", "0");
+        final Page<SysDictionary> results = (Page<SysDictionary>) sysDictionaryService.listSysDictionaryByParams(params);
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");
-        resultMap.put("count",String.valueOf(results.getTotal()));
-        resultMap.put("data",results.getResult());
+        resultMap.put("count", String.valueOf(results.getTotal()));
+        resultMap.put("data", results.getResult());
         return resultMap;
     }
 }

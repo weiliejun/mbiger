@@ -132,14 +132,15 @@
             <id>local</id>
             <properties>
                 <!-- 数据库配置 -->
-                <spring.datasource.url><![CDATA[jdbc:mysql://127.0.0.1:3306/mbiger?useSSL=false&useTimezone=true&serverTimezone=GMT%2B8]]></spring.datasource.url>
+                <spring.datasource.url>
+                    <![CDATA[jdbc:mysql://127.0.0.1:3306/mbiger?useSSL=false&useTimezone=true&serverTimezone=GMT%2B8]]></spring.datasource.url>
                 <spring.datasource.username>mbiger</spring.datasource.username>
                 <spring.datasource.password>mbiger</spring.datasource.password>
 
                 <!-- redis配置 -->
                 <redis.host>127.0.0.1</redis.host>
                 <redis.port>6379</redis.port>
-                <!--                <redis.password>junde</redis.password>-->
+                <redis.password>junde</redis.password>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -150,14 +151,15 @@
             <id>test</id>
             <properties>
                 <!-- 数据库配置 -->
-                <spring.datasource.url><![CDATA[jdbc:mysql://127.0.0.1:3306/mbiger?useSSL=false&useTimezone=true&serverTimezone=GMT%2B8]]></spring.datasource.url>
+                <spring.datasource.url>
+                    <![CDATA[jdbc:mysql://127.0.0.1:3306/mbiger?useSSL=false&useTimezone=true&serverTimezone=GMT%2B8]]></spring.datasource.url>
                 <spring.datasource.username>mbiger</spring.datasource.username>
                 <spring.datasource.password>mbiger</spring.datasource.password>
 
                 <!-- redis配置 -->
                 <redis.host>127.0.0.1</redis.host>
                 <redis.port>6379</redis.port>
-                <!--                <redis.password>junde</redis.password>-->
+                <redis.password>junde</redis.password>
             </properties>
             <activation>
                 <activeByDefault>false</activeByDefault>
@@ -168,14 +170,15 @@
             <id>product</id>
             <properties>
                 <!-- 数据库配置 -->
-                <spring.datasource.url><![CDATA[jdbc:mysql://127.0.0.1:3306/mbiger?useSSL=false&useTimezone=true&serverTimezone=GMT%2B8]]></spring.datasource.url>
+                <spring.datasource.url>
+                    <![CDATA[jdbc:mysql://127.0.0.1:3306/mbiger?useSSL=false&useTimezone=true&serverTimezone=GMT%2B8]]></spring.datasource.url>
                 <spring.datasource.username>mbiger</spring.datasource.username>
                 <spring.datasource.password>mbiger</spring.datasource.password>
 
                 <!-- redis配置 -->
                 <redis.host>127.0.0.1</redis.host>
                 <redis.port>6379</redis.port>
-                <!--                <redis.password>junde</redis.password>-->
+                <redis.password>junde</redis.password>
             </properties>
             <activation>
                 <activeByDefault>false</activeByDefault>
@@ -214,7 +217,7 @@
                     <target>1.8</target>
                     <encoding>utf-8</encoding>
                     <compilerArguments>
-                        <verbose />
+                        <verbose/>
                         <bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>
                     </compilerArguments>
                 </configuration>

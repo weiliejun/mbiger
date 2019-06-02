@@ -74,11 +74,12 @@ public class TopUpManageController extends AbstractBaseController {
         return resultMap;
     }
 
-    @RequestMapping(value = {"/userTopUp/list"}, method = RequestMethod.GET )
+    @RequestMapping(value = {"/userTopUp/list"}, method = RequestMethod.GET)
     public String toListUserTopUps(HttpServletRequest request, Model model) {
         model.addAllAttributes((Map<String, Object>) request.getSession().getAttribute(request.getRequestURI()));
         return "/business/user/topUp/list";
     }
+
     /**
      * @Description 分页查询用户充值信息
      * @auther: xsp
@@ -88,21 +89,21 @@ public class TopUpManageController extends AbstractBaseController {
     @ResponseBody
     public Map<String, Object> listUserTopUps(HttpServletRequest request) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        Map<String,Object> requestParams = formQueryRemenber(request);
+        Map<String, Object> requestParams = formQueryRemenber(request);
         PageHelper.startPage(Integer.parseInt(requestParams.get("currentPage").toString()),
                 Integer.parseInt(requestParams.get("pageSize").toString()));
         final Map<String, Object> params = getQureyParams(requestParams);
         Page<UserTopup> results = (Page<UserTopup>) userTopupService.listUserTopupsByParams(params);
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");
-        resultMap.put("count",String.valueOf(results.getTotal()));
-        resultMap.put("data",results.getResult());
+        resultMap.put("count", String.valueOf(results.getTotal()));
+        resultMap.put("data", results.getResult());
         return resultMap;
     }
 
     @RequestMapping("/userTopUp/editStatus")
     @ResponseBody
-    public Map<String, Object> editStatus (@RequestParam(value = "userTopupId", required = true)Integer userTopupId) {
+    public Map<String, Object> editStatus(@RequestParam(value = "userTopupId", required = true) Integer userTopupId) {
         Map<String, Object> resultMap = userTopupService.updateTopUpStatus(userTopupId);
         return resultMap;
     }

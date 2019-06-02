@@ -29,6 +29,7 @@
     }
 
     .color_f00{color: #f00;}
+
 </style>
 <body>
 <div class="layui-fluid">
@@ -39,7 +40,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label"><i class="color_f00">* </i> 父级类型</label>
             <div class="layui-input-block">
-                <itech:code property="parentCode" parentCode="user.message.parentCode" type="select" lay-verify="required"/>
+                <itech:code property="parentCode" parentCode="user.message.parentCode" type="select"
+                            lay-verify="required"/>
             </div>
         </div>
         <div class="layui-form-item">
@@ -58,13 +60,15 @@
         <div class="layui-form-item">
             <label class="layui-form-label"><i class="color_f00">* </i> 消息标题</label>
             <div class="layui-input-block">
-                <input id="title" type="text" name="title" class="layui-input" lay-verify="required" placeholder="请输入消息标题">
+                <input id="title" type="text" name="title" class="layui-input" lay-verify="required"
+                       placeholder="请输入消息标题">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"><i class="color_f00">* </i> 消息内容</label>
             <div class="layui-input-block">
-                <textarea id="content" name="content" placeholder="请输入消息内容" lay-verify="required" class="layui-textarea"></textarea>
+                <textarea id="content" name="content" placeholder="请输入消息内容" lay-verify="required"
+                          class="layui-textarea"></textarea>
             </div>
         </div>
 

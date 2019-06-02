@@ -24,7 +24,7 @@ public class CustomerAppointmentServiceImpl implements CustomerAppointmentServic
         return customerAppointmentDao.getCustomerAppointmentById(id);
     }
 
-    public int countCustomerAppointmentsByParams(Map<String,Object> params) {
+    public int countCustomerAppointmentsByParams(Map<String, Object> params) {
         return customerAppointmentDao.countCustomerAppointmentsByParams(params);
     }
 }

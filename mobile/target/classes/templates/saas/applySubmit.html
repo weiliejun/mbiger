@@ -1,67 +1,72 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <!--head start-->
-    <div class="applicationPart">
-        <div class="applicationTit clearfix">
-            <h3>在线申请免费API</h3>
-            <a href="javascript:;" class="appliClose"></a>
-        </div>
-        <form id="appointmentForm" name ="appointmentForm" action="" method="post">
-            <ul class="applyInfo">
-                <li>
-                    <div class="clearfix wInfo">
-                        <span>姓名</span>
-                        <input type="text" class="form-control" placeholder="输入您的姓名" id="customerName" name="customerName" th:value="${customerName}"/>
-                        <label id="customerNameError" for="customerName" class="error" ></label>
-                    </div>
-                </li>
-                <li>
-                    <div class="clearfix wInfo">
-                        <span>手机号码</span>
-                        <input type="text" class="form-control" placeholder="输入您的手机号" id="customerPhone" name="customerPhone" th:value="${customerPhone}"/>
-                        <label id="customerPhoneError" for="customerPhone" class="error" ></label>
-                    </div>
-                </li>
-                <li class="clearfix">
-                    <div class="wInfo">
-                        <span class="regiTit">验证码</span>
-                        <input type="text" class="form-control applyYzm" id="validateCode" name="validateCode" placeholder="验证码" />
-                        <span  ><img class="verifyCodeImage" alt="" style="display: none;"></span>
-                        <label id="verifyCodeError" for="validateCode" class="error" style="display: none;"></label>
-                    </div>
-                </li>
-                <li id="remoteValidateCodeDiv" style="display: none;">
-                    <div class="wInfo clearfix">
-                        <span>短信验证码</span>
-                        <input  id="remoteValidateCode" name="remoteValidateCode" type="text" class="form-control applyYzm" placeholder="输入手机验证码" />
-                        <a id="sendremotecodebutton" href="javascript:;" class="getYzm btnEnabled">获取验证码</a>
-                        <label id="remoteValidateCodeError" for="remoteValidateCode" class="error" style="display: none;"></label>
-                    </div>
-                </li>
-            </ul>
-            <a href="javascript:;" class="subApply btnEnabled" id="applySubmit">提交申请</a>
-            <p class="applyTip">提交申请后我们会尽快联系您！</p>
-        </form>
-
-
+<div class="applicationPart">
+    <div class="applicationTit clearfix">
+        <h3>在线申请免费API</h3>
+        <a href="javascript:;" class="appliClose"></a>
     </div>
+    <form id="appointmentForm" name="appointmentForm" action="" method="post">
+        <ul class="applyInfo">
+            <li>
+                <div class="clearfix wInfo">
+                    <span>姓名</span>
+                    <input type="text" class="form-control" placeholder="输入您的姓名" id="customerName" name="customerName"
+                           th:value="${customerName}"/>
+                    <label id="customerNameError" for="customerName" class="error"></label>
+                </div>
+            </li>
+            <li>
+                <div class="clearfix wInfo">
+                    <span>手机号码</span>
+                    <input type="text" class="form-control" placeholder="输入您的手机号" id="customerPhone"
+                           name="customerPhone" th:value="${customerPhone}"/>
+                    <label id="customerPhoneError" for="customerPhone" class="error"></label>
+                </div>
+            </li>
+            <li class="clearfix">
+                <div class="wInfo">
+                    <span class="regiTit">验证码</span>
+                    <input type="text" class="form-control applyYzm" id="validateCode" name="validateCode"
+                           placeholder="验证码"/>
+                    <span><img class="verifyCodeImage" alt="" style="display: none;"></span>
+                    <label id="verifyCodeError" for="validateCode" class="error" style="display: none;"></label>
+                </div>
+            </li>
+            <li id="remoteValidateCodeDiv" style="display: none;">
+                <div class="wInfo clearfix">
+                    <span>短信验证码</span>
+                    <input id="remoteValidateCode" name="remoteValidateCode" type="text" class="form-control applyYzm"
+                           placeholder="输入手机验证码"/>
+                    <a id="sendremotecodebutton" href="javascript:;" class="getYzm btnEnabled">获取验证码</a>
+                    <label id="remoteValidateCodeError" for="remoteValidateCode" class="error"
+                           style="display: none;"></label>
+                </div>
+            </li>
+        </ul>
+        <a href="javascript:;" class="subApply btnEnabled" id="applySubmit">提交申请</a>
+        <p class="applyTip">提交申请后我们会尽快联系您！</p>
+    </form>
 
-    <div class="everyCloud applyClound">
-        <div class="demandListBox">
-            <p>免费查询服务</p>
-            <div class="demandList clearfix">
-                <a href="/saas/weatherQuery" class="demandActive">全国天气预报查询</a>
-                <a href="/saas/mobileNumberPlaceQuery">手机号码归属地查询</a>
-                <a href="/saas/ipPlaceQuery">全球IP地址归属地查询</a>
-                <a href="/saas/drivingQuestionsQuery">驾考公开题库查询</a>
-            </div>
+
+</div>
+
+<div class="everyCloud applyClound">
+    <div class="demandListBox">
+        <p>免费查询服务</p>
+        <div class="demandList clearfix">
+            <a href="/saas/weatherQuery" class="demandActive">全国天气预报查询</a>
+            <a href="/saas/mobileNumberPlaceQuery">手机号码归属地查询</a>
+            <a href="/saas/ipPlaceQuery">全球IP地址归属地查询</a>
+            <a href="/saas/drivingQuestionsQuery">驾考公开题库查询</a>
         </div>
     </div>
+</div>
 
 <!--  发送短信验证码 图形验证码  -->
-    <script type="text/javascript" th:src="@{/js/codeValidate.js}"></script>
+<script type="text/javascript" th:src="@{/js/codeValidate.js}"></script>
 
-    <script type="text/javascript" th:inline="javascript">
+<script type="text/javascript" th:inline="javascript">
         $(function(){
             /********  点击申请api 未登录跳转登录页面 **************/
             $('.applyForBtn').click(function(){
@@ -108,8 +113,9 @@
                 $(this).addClass('demandActive').siblings().removeClass('demandActive');
             });
         });
-    </script>
-    <script type="text/javascript" th:inline="javascript">
+
+</script>
+<script type="text/javascript" th:inline="javascript">
         //加载图形验证码
         loadVerifyCodeImage();
         //********************  API 申请提交 start ******************************************//
@@ -253,5 +259,6 @@
             });
         })
 
-    </script>
+
+</script>
 </html>

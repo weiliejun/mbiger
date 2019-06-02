@@ -5,10 +5,10 @@ package com.mbiger.common.redis.util;
  */
 public enum RedisEnum {
     //密码错误次数
-    USER_LOGIN_SESSION (
+    USER_LOGIN_SESSION(
             RedisUtil.PC_PREFIX, "portalService", "saveSession", "session信息Redis缓存"),
     //密码错误次数
-    USER_LOGIN_PASSWORDERRORCOUNT (
+    USER_LOGIN_PASSWORDERRORCOUNT(
             RedisUtil.PC_PREFIX, "portalService", "passwordErrorCount", "登录密码校验失败次数Redis缓存");
 
     /**

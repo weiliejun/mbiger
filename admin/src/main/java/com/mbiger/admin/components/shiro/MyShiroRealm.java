@@ -5,16 +5,15 @@ import com.mbiger.admin.system.service.SysManagerService;
 import com.mbiger.common.model.sysFunction.bean.SysFunction;
 import com.mbiger.common.model.sysManager.bean.SysManager;
 import com.mbiger.common.model.sysRole.bean.SysRole;
-import com.mbiger.common.util.MD5Util;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,14 +69,14 @@ public class MyShiroRealm extends AuthorizingRealm {
             SysManager sysManager = (SysManager) principal;
             List<SysRole> roleList = securityService.listRoleByManagerId(sysManager.getId());
             List<String> roles = new ArrayList<String>();
-            for(SysRole sysRole:roleList){
+            for (SysRole sysRole : roleList) {
                 roles.add(sysRole.getName());
             }
             authorizationInfo.addRoles(roles);
 
             List<SysFunction> functionList = securityService.listSysFunctionByManagerId(sysManager.getId());
             List<String> permissions = new ArrayList<String>();
-            for(SysFunction sysFunction:functionList){
+            for (SysFunction sysFunction : functionList) {
                 permissions.add(sysFunction.getCode());
             }
             authorizationInfo.addStringPermissions(permissions);

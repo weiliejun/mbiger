@@ -9,7 +9,7 @@
         <h3>温馨提示：</h3>
         <p>1、每个用户最多申请5个签名；</p>
     </div>
-    <form id="appointmentForm" name ="appointmentForm" action="" method="post">
+    <form id="appointmentForm" name="appointmentForm" action="" method="post">
         <ul class="bsApplyInfo clearfix">
             <!--<li>
                 <div class="clearfix">
@@ -23,7 +23,8 @@
             <li>
                 <div class="clearfix">
                     <span class="bsInfoTit"><i>* </i>短信签名</span>
-                    <input type="text" id="signature" name="signature" placeholder="输入您的短信签名" class="bsInfoTxt form-control" />
+                    <input type="text" id="signature" name="signature" placeholder="输入您的短信签名"
+                           class="bsInfoTxt form-control"/>
                 </div>
                 <div class="bsErrorBox">
                     <label id="signatureError" for="signature" class="error"></label>
@@ -48,12 +49,12 @@
                 </div>
             </li>-->
         </ul>
-        <a href="javascript:;"  class="bsSubmitBtn btnEnabled" id="applySubmit">提交申请</a>
+        <a href="javascript:;" class="bsSubmitBtn btnEnabled" id="applySubmit">提交申请</a>
         <p class="bsSubTip">提交申请，1-3个工作日完成审核！</p>
     </form>
 </div>
 
-    <script type="text/javascript" th:inline="javascript">
+<script type="text/javascript" th:inline="javascript">
         //********************  API 申请提交 start ******************************************//
         var appointmentFormValidate = $("#appointmentForm").validate({
              rules : {
@@ -134,5 +135,6 @@
         });
 
 
-    </script>
+
+</script>
 </html>

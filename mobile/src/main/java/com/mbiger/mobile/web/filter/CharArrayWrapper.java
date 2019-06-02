@@ -7,24 +7,24 @@ import java.io.PrintWriter;
 
 
 public class CharArrayWrapper extends HttpServletResponseWrapper {
-	private CharArrayWriter charWriter;
+    private CharArrayWriter charWriter;
 
-	public CharArrayWrapper(HttpServletResponse response) {
-		super(response);
-		charWriter = new CharArrayWriter();
-	}
+    public CharArrayWrapper(HttpServletResponse response) {
+        super(response);
+        charWriter = new CharArrayWriter();
+    }
 
-	@Override
-	public PrintWriter getWriter() {
-		return new PrintWriter(charWriter);
-	}
+    @Override
+    public PrintWriter getWriter() {
+        return new PrintWriter(charWriter);
+    }
 
-	@Override
-	public String toString() {
-		return charWriter.toString();
-	}
+    @Override
+    public String toString() {
+        return charWriter.toString();
+    }
 
-	public char[] toCharArray() {
-		return charWriter.toCharArray();
-	}
+    public char[] toCharArray() {
+        return charWriter.toCharArray();
+    }
 }

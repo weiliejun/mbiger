@@ -7,7 +7,7 @@
 
     <!-- 引入配置文件 -->
     <properties resource="application.properties"/>
-     <!--mysql驱动-->
+    <!--mysql驱动-->
     <classPathEntry location="D:\meaven\repository\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar"/>
 
     <context id="context" targetRuntime="MyBatis3" defaultModelType="flat">
@@ -16,7 +16,7 @@
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
 
         <commentGenerator> <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-            <property name="suppressAllComments" value="true" />
+            <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
@@ -27,18 +27,19 @@
 
         <!-- 默认情况下数据库中的 decimal，bigInt 在 Java 对应是 sql 下的 BigDecimal 类 -->
         <!-- 不是 double 和 long 类型 --> <!-- 使用常用的基本类型代替 sql 包下的引用类型 -->
-       <!-- 如果精度>0或者长度>18，就会使用java.math.BigDecimal
-        如果精度=0并且10<=长度<=18，就会使用java.lang.Long
-        如果精度=0并且5<=长度<=9，就会使用java.lang.Integer
-        如果精度=0并且长度<5，就会使用java.lang.Short
-        如果设置为true，那么一定会使用java.math.BigDecimal-->
+        <!-- 如果精度>0或者长度>18，就会使用java.math.BigDecimal
+         如果精度=0并且10<=长度<=18，就会使用java.lang.Long
+         如果精度=0并且5<=长度<=9，就会使用java.lang.Integer
+         如果精度=0并且长度<5，就会使用java.lang.Short
+         如果设置为true，那么一定会使用java.math.BigDecimal-->
         <javaTypeResolver>
             <property name="forceBigDecimals" value="true"/>
         </javaTypeResolver>
 
 
-        <javaModelGenerator targetPackage="com.mbiger.common.model.userSmsTemplateApplication.bean" targetProject="D:\mbiger\mbiger\mbiger\common\src\main\java">
-           <!-- //针对 oracle 数据库的一个配置，是否把 schema 作为字包名-->
+        <javaModelGenerator targetPackage="com.mbiger.common.model.userSmsTemplateApplication.bean"
+                            targetProject="D:\mbiger\mbiger\mbiger\common\src\main\java">
+            <!-- //针对 oracle 数据库的一个配置，是否把 schema 作为字包名-->
             <property name="enableSubPackages" value="true"/>
             <!--//是否清理从数据库中查询出的字符串左右两边的空白字符-->
             <property name="trimStrings" value="true"/>
@@ -46,7 +47,8 @@
 
 
         <!-- targetPackage 和 targetProject：生成的 mapper.xml文件的包和位置 -->
-        <sqlMapGenerator targetPackage="com.mbiger.common.model.userSmsTemplateApplication.mapper" targetProject="D:\mbiger\mbiger\mbiger\common\src\main\java">
+        <sqlMapGenerator targetPackage="com.mbiger.common.model.userSmsTemplateApplication.mapper"
+                         targetProject="D:\mbiger\mbiger\mbiger\common\src\main\java">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
@@ -56,7 +58,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-      <table tableName="USER_SMS_TEMPLATE_APPLICATION"
+        <table tableName="USER_SMS_TEMPLATE_APPLICATION"
                domainObjectName="userSmsTemplateApplication"
                enableInsert="true"
                enableCountByExample="false"

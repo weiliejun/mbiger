@@ -2,17 +2,12 @@ package com.mbiger.admin.system.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.mbiger.admin.system.service.ServiceInfoService;
 import com.mbiger.admin.system.service.UserExpenseService;
 import com.mbiger.admin.system.service.UserInfoService;
 import com.mbiger.admin.system.service.UserSmsTemplateApplicationService;
 import com.mbiger.admin.web.base.AbstractBaseController;
 import com.mbiger.common.constant.GlobalConstant;
-import com.mbiger.common.model.serviceinfo.bean.ServiceInfo;
-import com.mbiger.common.model.user.bean.UserInfo;
-import com.mbiger.common.model.userExpense.bean.UserExpense;
 import com.mbiger.common.model.userSmsTemplateApplication.bean.UserSmsTemplateApplication;
-import com.mbiger.common.util.RandomUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +31,7 @@ public class UserSmsSignatureController extends AbstractBaseController {
     @Autowired
     private UserExpenseService userExpenseService;
     @Autowired
-    private UserInfoService  userInfoService;
+    private UserInfoService userInfoService;
     @Autowired
     private UserSmsTemplateApplicationService userSmsTemplateApplicationService;
 
@@ -51,10 +46,11 @@ public class UserSmsSignatureController extends AbstractBaseController {
     }
 
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
-    public String toListUserSmsSignature(HttpServletRequest request,Model model) {
+    public String toListUserSmsSignature(HttpServletRequest request, Model model) {
         model.addAllAttributes((Map<String, Object>) request.getSession().getAttribute(request.getRequestURI()));
         return "/system/userSmsSignature/list";
     }
+
     /**
      * @Description 分页查询用户消费信息
      * @auther: cyp
@@ -64,18 +60,17 @@ public class UserSmsSignatureController extends AbstractBaseController {
     @ResponseBody
     public Map<String, Object> listUserSmsSignature(HttpServletRequest request) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        Map<String,Object> requestParams = formQueryRemenber(request);
+        Map<String, Object> requestParams = formQueryRemenber(request);
         PageHelper.startPage(Integer.parseInt(requestParams.get("currentPage").toString()),
                 Integer.parseInt(requestParams.get("pageSize").toString()));
         final Map<String, Object> params = getQureyParams(requestParams);
-        final Page<UserSmsTemplateApplication> results = (Page<UserSmsTemplateApplication>)userSmsTemplateApplicationService.listUserSmsTemplateApplicationsByParams(params);
+        final Page<UserSmsTemplateApplication> results = (Page<UserSmsTemplateApplication>) userSmsTemplateApplicationService.listUserSmsTemplateApplicationsByParams(params);
         resultMap.put("flag", "true");
         resultMap.put("msg", "查询成功");
-        resultMap.put("count",String.valueOf(results.getTotal()));
-        resultMap.put("data",results.getResult());
+        resultMap.put("count", String.valueOf(results.getTotal()));
+        resultMap.put("data", results.getResult());
         return resultMap;
     }
-
 
 
     /**
@@ -111,17 +106,17 @@ public class UserSmsSignatureController extends AbstractBaseController {
      */
     @RequestMapping(value = "/{operateType}")
     @ResponseBody
-    public Map<String, Object> operate(@PathVariable String operateType,Integer id) {
+    public Map<String, Object> operate(@PathVariable String operateType, Integer id) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         UserSmsTemplateApplication userSmsTemplateApplication = userSmsTemplateApplicationService.getUserSmsTemplateApplicationById(id);
-        if(userSmsTemplateApplication == null){
+        if (userSmsTemplateApplication == null) {
             resultMap.put("flag", "false");
             resultMap.put("msg", "该短信签名不存在");
             return resultMap;
         }
         userSmsTemplateApplication.setId(id);
         //删除
-        if("delete".equals(operateType)){
+        if ("delete".equals(operateType)) {
             userSmsTemplateApplication.setDataStatus(GlobalConstant.DATA_INVALID);
             userSmsTemplateApplicationService.updateUserSmsTemplateApplication(userSmsTemplateApplication);
             resultMap.put("flag", "true");
@@ -129,7 +124,7 @@ public class UserSmsSignatureController extends AbstractBaseController {
             return resultMap;
         }
         //通过
-        if("enable".equals(operateType)){
+        if ("enable".equals(operateType)) {
             userSmsTemplateApplication.setReviewStatus("0");
             userSmsTemplateApplicationService.updateUserSmsTemplateApplication(userSmsTemplateApplication);
             resultMap.put("flag", "true");
@@ -137,7 +132,7 @@ public class UserSmsSignatureController extends AbstractBaseController {
             return resultMap;
         }
         //拒绝
-        if("disable".equals(operateType)){
+        if ("disable".equals(operateType)) {
             userSmsTemplateApplication.setReviewStatus("1");
             userSmsTemplateApplicationService.updateUserSmsTemplateApplication(userSmsTemplateApplication);
             resultMap.put("flag", "true");

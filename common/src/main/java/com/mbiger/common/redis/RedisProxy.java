@@ -4,11 +4,11 @@ import org.springframework.data.redis.core.RedisCommand;
 
 public interface RedisProxy {
 
-	public RedisTemplate getRedisTemplate(RedisCommand command);
-	
-	public StringRedisTemplate getStringRedisTemplate(RedisCommand command);
-	
-	public RedisTemplate getMasterRedisTemplate();
-	
-	public StringRedisTemplate getMasterStringRedisTemplate();
+    public RedisTemplate getRedisTemplate(RedisCommand command);
+
+    public StringRedisTemplate getStringRedisTemplate(RedisCommand command);
+
+    public RedisTemplate getMasterRedisTemplate();
+
+    public StringRedisTemplate getMasterStringRedisTemplate();
 }

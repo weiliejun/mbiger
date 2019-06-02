@@ -6,54 +6,55 @@
     <link rel="stylesheet" th:href="@{/css/login_register.css}">
 </head>
 <body>
-    <!-- 头部公共 start -->
-    <div th:replace="/common/header :: commonHeader('register')"></div>
-    <!-- 头部公共 end-->
-    <form id="registerForm" autocomplete="off">
-        <ul class="userInfo">
-            <li class="clearfix">
-                <span class="userTit">用户名</span>
-                <input id="nickName" name="nickName" type="text" class="longText" placeholder="请输入用户名（8-16位字母数字组合）">
-            </li>
-            <li class="clearfix">
-                <span class="userTit">密码</span>
-                <input id="password" name="password" type="password" class="longText" placeholder="请输入密码（8-16位字母数字组合）">
-            </li>
-            <li class="clearfix">
-                <span class="userTit">手机号</span>
-                <input id="mobile" name="mobile" type="text" class="longText" placeholder="请输入手机号">
-            </li>
-            <li class="clearfix">
-                <span class="userTit">验证码</span>
-                <input id="validateCode" name="validateCode" type="text" class="pwdText shortText" placeholder="请输入验证码">
-                <p class="rightBox"><img class="verifyCodeImage" alt="" style="display: none;"></p>
-            </li>
-            <li class="clearfix">
-                <span class="userTit">短信验证码</span>
-                <input id="remoteValidateCode" name="remoteValidateCode" type="text" class="pwdText shortText" placeholder="请输入短信验证码">
-                <p class="rightBox"><a id="sendremotecodebutton" href="javascript:;" class="getYzm">获取验证码</a></p>
-            </li>
-        </ul>
-        <div class="errorBox addMarCen"><label id="validatecode_label"></label></div>
-        <div class="readProtocol clearfix">
-            <input id="protocol" name="protocol"  type="checkbox">
-            <label for="protocol">我已阅读并同意</label>
-            <a href="javascript:;">《众大网站服务协议》</a>
-        </div>
-    </form>
-    <a id="registerBtn" href="javascript:;" class="publicBtn">立即注册</a>
+<!-- 头部公共 start -->
+<div th:replace="/common/header :: commonHeader('register')"></div>
+<!-- 头部公共 end-->
+<form id="registerForm" autocomplete="off">
+    <ul class="userInfo">
+        <li class="clearfix">
+            <span class="userTit">用户名</span>
+            <input id="nickName" name="nickName" type="text" class="longText" placeholder="请输入用户名（8-16位字母数字组合）">
+        </li>
+        <li class="clearfix">
+            <span class="userTit">密码</span>
+            <input id="password" name="password" type="password" class="longText" placeholder="请输入密码（8-16位字母数字组合）">
+        </li>
+        <li class="clearfix">
+            <span class="userTit">手机号</span>
+            <input id="mobile" name="mobile" type="text" class="longText" placeholder="请输入手机号">
+        </li>
+        <li class="clearfix">
+            <span class="userTit">验证码</span>
+            <input id="validateCode" name="validateCode" type="text" class="pwdText shortText" placeholder="请输入验证码">
+            <p class="rightBox"><img class="verifyCodeImage" alt="" style="display: none;"></p>
+        </li>
+        <li class="clearfix">
+            <span class="userTit">短信验证码</span>
+            <input id="remoteValidateCode" name="remoteValidateCode" type="text" class="pwdText shortText"
+                   placeholder="请输入短信验证码">
+            <p class="rightBox"><a id="sendremotecodebutton" href="javascript:;" class="getYzm">获取验证码</a></p>
+        </li>
+    </ul>
+    <div class="errorBox addMarCen"><label id="validatecode_label"></label></div>
+    <div class="readProtocol clearfix">
+        <input id="protocol" name="protocol" type="checkbox">
+        <label for="protocol">我已阅读并同意</label>
+        <a href="javascript:;">《众大网站服务协议》</a>
+    </div>
+</form>
+<a id="registerBtn" href="javascript:;" class="publicBtn">立即注册</a>
 
 
-    <!-- 弹框 start-->
-    <div th:replace="/common/prompt"></div>
-    <!-- 弹框 end-->
+<!-- 弹框 start-->
+<div th:replace="/common/prompt"></div>
+<!-- 弹框 end-->
 
-    <!-- 公共JS start -->
-    <div th:include="/common/publicJs :: onloadJS"></div>
-    <!-- 公共JS start -->
-    <!--  发送短信验证码 图形验证码  -->
-    <script type="text/javascript" th:src="@{/js/public/codeValidate.js}"></script>
-    <script>
+<!-- 公共JS start -->
+<div th:include="/common/publicJs :: onloadJS"></div>
+<!-- 公共JS start -->
+<!--  发送短信验证码 图形验证码  -->
+<script type="text/javascript" th:src="@{/js/public/codeValidate.js}"></script>
+<script>
         //注册表单校验
         var registerFormValidate = null;
         $(function() {
@@ -244,6 +245,7 @@
             //********************  发送短信验证码  end  ******************************************//
 
         });
-    </script>
+
+</script>
 </body>
 </html>

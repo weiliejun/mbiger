@@ -12,7 +12,7 @@ import java.util.Map;
 public class WebsiteCaseServiceImpl implements WebsiteCaseService {
 
     @Autowired
-    private WebsiteCaseDao websiteCaseDao ;
+    private WebsiteCaseDao websiteCaseDao;
 
     public WebsiteCase addCase(WebsiteCase record) {
         return websiteCaseDao.addCase(record);

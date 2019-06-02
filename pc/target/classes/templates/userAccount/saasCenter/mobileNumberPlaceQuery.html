@@ -2,57 +2,59 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="common/public :: commonStyle(~{::title},~{::link},~{})">
     <title>众大技术-账户中心-手机号归属地</title>
-    <link rel="stylesheet" type="text/css" href="/css/Account_center.css" />
+    <link rel="stylesheet" type="text/css" href="/css/Account_center.css"/>
 </head>
 <body>
-    <!-- 头部公共 start -->
-    <div th:replace="common/header :: commonHeader('index')"></div>
-    <!-- 头部公共 end-->
-    
-    <div class="personalBox">
-        <div class="personalCon clearfix">
-            <!-- 账户左侧导航栏  start  -->
-            <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('saasCenter')"></div>
-            <!-- 账户左侧导航栏  end    -->
-            <div class="perRight">
-                <div class="daohang">
-                    <h5 class=""><img src="/images/personalCenter/blue.png" alt=""><span>众大服务</span>/<span>云计算SaaS</span>/<span>手机号码归属地查询</span></h5>
-                    <div class="banner">
-                        <div class="bg_01 bg_sjh">
-                            <a href="javascript:;" class="applyForBtn">申请API</a>
-                            <div class="weatherText">
-                                <p>全国移动、联通、电信等手机号码归属地查询，更新及时、准确度高。</p>
-                                <p>（接口流量限制情况：10次流控/分钟）</p>
-                            </div>
+<!-- 头部公共 start -->
+<div th:replace="common/header :: commonHeader('index')"></div>
+<!-- 头部公共 end-->
+
+<div class="personalBox">
+    <div class="personalCon clearfix">
+        <!-- 账户左侧导航栏  start  -->
+        <div th:replace="userAccount/common/accountNavLeft :: bannerLeft('saasCenter')"></div>
+        <!-- 账户左侧导航栏  end    -->
+        <div class="perRight">
+            <div class="daohang">
+                <h5 class=""><img src="/images/personalCenter/blue.png"
+                                  alt=""><span>众大服务</span>/<span>云计算SaaS</span>/<span>手机号码归属地查询</span></h5>
+                <div class="banner">
+                    <div class="bg_01 bg_sjh">
+                        <a href="javascript:;" class="applyForBtn">申请API</a>
+                        <div class="weatherText">
+                            <p>全国移动、联通、电信等手机号码归属地查询，更新及时、准确度高。</p>
+                            <p>（接口流量限制情况：10次流控/分钟）</p>
                         </div>
                     </div>
-                    <!-- 申请API 提交 start-->
-                    <div th:replace="/userAccount/saasCenter/applyAPISubmit"></div>
-                    <!-- 申请API提交  end-->
-                    <div class="chaxun">
-                        <form id="dataForm" autocomplete="off">
+                </div>
+                <!-- 申请API 提交 start-->
+                <div th:replace="/userAccount/saasCenter/applyAPISubmit"></div>
+                <!-- 申请API提交  end-->
+                <div class="chaxun">
+                    <form id="dataForm" autocomplete="off">
                         <div class="input-group">
-                            <input id="mobileNumber" type="text" name="mobileNumber" class="form-control selectInput" placeholder="手机号码归属地查询">
+                            <input id="mobileNumber" type="text" name="mobileNumber" class="form-control selectInput"
+                                   placeholder="手机号码归属地查询">
                             <a id="search" href="javascript:;" class="centerBtn btnEnabled enterEvent">
                                 免费查询
                             </a>
                         </div>
-                        </form>
-                    </div>
-                    <!-- 图形验证码弹框 start-->
-                    <div th:replace="/userAccount/common/validateCode"></div>
-                    <!-- 图形验证码弹框 end-->
-                    <div id="line" class="line"></div>
+                    </form>
                 </div>
+                <!-- 图形验证码弹框 start-->
+                <div th:replace="/userAccount/common/validateCode"></div>
+                <!-- 图形验证码弹框 end-->
+                <div id="line" class="line"></div>
             </div>
         </div>
     </div>
-    <!-- 公共底部 start -->
-    <div th:replace="common/footer :: commonFooter"></div>
-    <!-- 公共底部 end -->
-    <!-- 弹框 start-->
-    <div th:replace="/common/prompt"></div>
-    <!-- 弹框 end-->
+</div>
+<!-- 公共底部 start -->
+<div th:replace="common/footer :: commonFooter"></div>
+<!-- 公共底部 end -->
+<!-- 弹框 start-->
+<div th:replace="/common/prompt"></div>
+<!-- 弹框 end-->
 </body>
 <script type="text/javascript" th:src="@{/plugins/template/jquery.tmpl.min.js}"></script>
 <script id="mobileNumberPlaceQueryTmpl" type="text/x-jquery-tmpl">
@@ -60,6 +62,7 @@
         <h5>归属地查询结果</h5>
         <p class="guishudi">地址归属地：<span id="region">{{= region}}</span></p>
     </div>
+
 </script>
 
 <script type="text/javascript">
@@ -122,6 +125,7 @@
             }
         });
     });
+
 </script>
 </html>
 

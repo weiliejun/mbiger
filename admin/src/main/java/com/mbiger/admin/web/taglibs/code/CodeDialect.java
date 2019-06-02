@@ -12,7 +12,7 @@ import java.util.Set;
 public class CodeDialect extends AbstractProcessorDialect {
 
     //定义方言名称
-	private static final String DIALECT_NAME = "Dictionary";
+    private static final String DIALECT_NAME = "Dictionary";
     private static final String PREFIX = "itech";
 
     public CodeDialect() {

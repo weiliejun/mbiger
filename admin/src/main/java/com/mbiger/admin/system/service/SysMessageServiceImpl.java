@@ -43,7 +43,7 @@ public class SysMessageServiceImpl implements SysMessageService {
      * @auther: xsp
      * @UpadteDate: 2019/3/12 16:43
      */
-    public Map<String, Object> sendWebSiteMessage (Integer userId, String busiType, Map<String, String> params) {
+    public Map<String, Object> sendWebSiteMessage(Integer userId, String busiType, Map<String, String> params) {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         String type = GlobalConstant.MessageType.WEBSITE;
 

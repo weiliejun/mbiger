@@ -49,6 +49,7 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
     public void setSessionManager(SessionManager sessionManager) {
         this.sessionManager = sessionManager;
     }
+
     //设置Cache的key的前缀
     public void setCacheManager(CacheManager cacheManager) {
         this.cache = cacheManager.getCache("sessionIdCache");
@@ -63,15 +64,15 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         Subject subject = getSubject(request, response);
         //如果没有登录，直接进行之后的流程
-        if(!subject.isAuthenticated() && !subject.isRemembered()) {
+        if (!subject.isAuthenticated() && !subject.isRemembered()) {
             return true;
         }
 
 
         Session session = subject.getSession();
         //已经被踢出
-        if(session.getAttribute("kickout") != null){
-            return kickLoginOut(request,response);
+        if (session.getAttribute("kickout") != null) {
+            return kickLoginOut(request, response);
         }
 
         /**
@@ -79,7 +80,7 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
          */
 
         //sid已经缓存
-        if(session.getAttribute("cachSid") != null){
+        if (session.getAttribute("cachSid") != null) {
             return true;
         }
 
@@ -94,20 +95,20 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
          * 如果此用户没有session队列，也就是还没有登录过，缓存中没有
          * 就new一个空队列，不然deque对象为空，会报空指针
          */
-        if(deque==null){
+        if (deque == null) {
             deque = new LinkedList<Serializable>();
         }
         //清除队列中无效的sessionId
-        if(deque.size() > 0){
+        if (deque.size() > 0) {
             Iterator<Serializable> it = deque.iterator();
-            while(it.hasNext()){
+            while (it.hasNext()) {
                 Serializable cacheSid = it.next();
-                try{
+                try {
                     Session cacheSession = sessionManager.getSession(new DefaultSessionKey(cacheSid));
-                    if(cacheSession == null){
+                    if (cacheSession == null) {
                         deque.remove(cacheSid);
                     }
-                }catch (UnknownSessionException e){
+                } catch (UnknownSessionException e) {
                     deque.remove(cacheSid);
                 }
 
@@ -115,19 +116,19 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
         }
 
         //缓存sessionId
-        if(!deque.contains(sessionId)) {
+        if (!deque.contains(sessionId)) {
             //将sessionId存入队列
             deque.push(sessionId);
             //将用户的sessionId队列缓存
             cache.put(username, deque);
-            session.setAttribute("cachSid",true);
+            session.setAttribute("cachSid", true);
         }
 
 
         //如果队列里的sessionId数超出最大会话数，开始踢人
-        while(deque.size() > maxSession) {
+        while (deque.size() > maxSession) {
             Serializable kickoutSessionId = null;
-            if(kickoutAfter) { //如果踢出后者
+            if (kickoutAfter) { //如果踢出后者
                 kickoutSessionId = deque.removeFirst();
                 //踢出后再更新下缓存队列
                 cache.put(username, deque);
@@ -140,17 +141,17 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
             try {
                 //获取被踢出的sessionId的session对象
                 Session kickoutSession = sessionManager.getSession(new DefaultSessionKey(kickoutSessionId));
-                if(kickoutSession != null) {
+                if (kickoutSession != null) {
                     //设置会话的kickout属性表示踢出了
                     kickoutSession.setAttribute("kickout", true);
                 }
             } catch (Exception e) {
-                logger.error("获取session对象",e);
+                logger.error("获取session对象", e);
             }
         }
         //已经被踢出
-        if(session.getAttribute("kickout") != null){
-            return kickLoginOut(request,response);
+        if (session.getAttribute("kickout") != null) {
+            return kickLoginOut(request, response);
         }
         return true;
     }
@@ -158,7 +159,7 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
     /**
      * 被踢出退出登录
      */
-    private boolean kickLoginOut(ServletRequest request, ServletResponse response){
+    private boolean kickLoginOut(ServletRequest request, ServletResponse response) {
         Subject subject = getSubject(request, response);
         Session session = subject.getSession();
         //如果被踢出了，直接退出，重定向到踢出后的地址
@@ -168,7 +169,7 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
                 //退出登录
                 subject.logout();
             } catch (Exception e) {
-                logger.error("退出登录异常",e);
+                logger.error("退出登录异常", e);
             }
             saveRequest(request);
 
@@ -179,12 +180,12 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
                 resultMap.put("msg", "您已经在其他地方登录，请重新登录！");
                 //输出json串
                 out(response, resultMap);
-            }else{
+            } else {
                 //重定向
                 try {
                     WebUtils.issueRedirect(request, response, kickoutUrl);
                 } catch (IOException e) {
-                    logger.error("被踢出退出登录，重定向异常",e);
+                    logger.error("被踢出退出登录，重定向异常", e);
                 }
             }
             return false;
@@ -203,7 +204,7 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
             out.flush();
             out.close();
         } catch (Exception e) {
-            logger.error("KickoutSessionFilter.class 输出JSON异常。",e);
+            logger.error("KickoutSessionFilter.class 输出JSON异常。", e);
         }
     }
 }

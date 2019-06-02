@@ -27,16 +27,16 @@ public class SysDictionaryServiceImpl implements SysDictionaryService {
         return sysDictionaryDao.getSysDictionaryById(id);
     }
 
-    public SysDictionary getSysDictionaryByCode(String parentCode,String code){
-        return sysDictionaryDao.getSysDictionaryByCode(parentCode,code);
+    public SysDictionary getSysDictionaryByCode(String parentCode, String code) {
+        return sysDictionaryDao.getSysDictionaryByCode(parentCode, code);
     }
 
-    public SysDictionary getSysDictionaryByCode(String code){
+    public SysDictionary getSysDictionaryByCode(String code) {
         return sysDictionaryDao.getSysDictionaryByCode(code);
     }
 
-    public SysDictionary getSysDictionaryByName(String parentCode,String name,String isHasChild){
-        return sysDictionaryDao.getSysDictionaryByName(parentCode,name,isHasChild);
+    public SysDictionary getSysDictionaryByName(String parentCode, String name, String isHasChild) {
+        return sysDictionaryDao.getSysDictionaryByName(parentCode, name, isHasChild);
     }
 
     public List<SysDictionary> listSysDictionaryByParams(Map<String, Object> params) {

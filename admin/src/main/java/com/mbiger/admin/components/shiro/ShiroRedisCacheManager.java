@@ -1,12 +1,12 @@
 package com.mbiger.admin.components.shiro;
 
-import javax.annotation.Resource;
-
 import com.mbiger.common.redis.RedisTemplate;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 
 @Component
@@ -14,7 +14,7 @@ public class ShiroRedisCacheManager implements CacheManager {
     @Resource
     private RedisTemplate redisTemplate;
 
-    public ShiroRedisCacheManager(RedisTemplate redisTemplate){
+    public ShiroRedisCacheManager(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 

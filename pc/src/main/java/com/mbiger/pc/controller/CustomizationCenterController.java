@@ -25,9 +25,9 @@ public class CustomizationCenterController extends AbstractBaseController {
     private MbigerService mbigerService;
 
     @RequestMapping("/customizationCenter/{serviceType}")
-    public String customizationCenterIndex(HttpServletRequest request , Model model, @PathVariable String serviceType ){
+    public String customizationCenterIndex(HttpServletRequest request, Model model, @PathVariable String serviceType) {
         // 查询  服务信息
-        ServiceInfo serviceInfo =  mbigerService.getServiceInfoByCode(serviceType);
+        ServiceInfo serviceInfo = mbigerService.getServiceInfoByCode(serviceType);
 
         model.addAttribute("serviceInfo", serviceInfo);
         model.addAttribute("serviceType", serviceType);

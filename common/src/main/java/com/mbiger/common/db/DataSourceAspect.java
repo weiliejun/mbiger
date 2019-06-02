@@ -13,20 +13,21 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 public class DataSourceAspect {
-	@Pointcut("execution (* com.mbiger.*.service..*.*(..))")
-    public void pointCut(){
-    };  
-    
+    @Pointcut("execution (* com.mbiger.*.service..*.*(..))")
+    public void pointCut() {
+    }
+
+    ;
+
     @Before(value = "pointCut()")
-    public void before(JoinPoint point)
-    { 
+    public void before(JoinPoint point) {
         Object target = point.getTarget();
         String method = point.getSignature().getName();
         Class<?>[] classz = target.getClass().getInterfaces();
         Class<?>[] parameterTypes = ((MethodSignature) point.getSignature())
                 .getMethod().getParameterTypes();
         try {
-            if(classz.length > 0) {
+            if (classz.length > 0) {
                 Method m = classz[0].getMethod(method, parameterTypes);
                 //接口上有标注使用哪个数据源
                 if (m != null && m.isAnnotationPresent(DataSource.class)) {
@@ -36,14 +37,14 @@ public class DataSourceAspect {
                     CustomerContextHolder.setServiceDataSource(CustomerContextHolder.DATA_SOURCE_X);
                 }
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @After(value = "pointCut()")
-    public void after(JoinPoint point)
-    {
-    	CustomerContextHolder.removeServiceDataSource();
+    public void after(JoinPoint point) {
+        CustomerContextHolder.removeServiceDataSource();
     }
 }

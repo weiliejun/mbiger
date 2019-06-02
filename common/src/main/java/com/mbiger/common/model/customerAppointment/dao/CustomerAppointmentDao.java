@@ -10,23 +10,23 @@ import java.util.Map;
 @Repository
 public class CustomerAppointmentDao extends AbstractBaseDao {
 
-    public CustomerAppointment addCustomerAppointment(CustomerAppointment customerAppointment){
-        return (CustomerAppointment) queryForObject("customerAppointment.addCustomerAppointment",customerAppointment);
+    public CustomerAppointment addCustomerAppointment(CustomerAppointment customerAppointment) {
+        return (CustomerAppointment) queryForObject("customerAppointment.addCustomerAppointment", customerAppointment);
     }
 
-    public CustomerAppointment getCustomerAppointmentById(Integer id){
-        return (CustomerAppointment) queryForObject("customerAppointment.getCustomerAppointmentById",id);
+    public CustomerAppointment getCustomerAppointmentById(Integer id) {
+        return (CustomerAppointment) queryForObject("customerAppointment.getCustomerAppointmentById", id);
     }
 
-    public void updateCustomerAppointment(CustomerAppointment customerAppointment){
-        queryForObject("customerAppointment.updateCustomerAppointment",customerAppointment);
+    public void updateCustomerAppointment(CustomerAppointment customerAppointment) {
+        queryForObject("customerAppointment.updateCustomerAppointment", customerAppointment);
     }
 
-    public List<Map<String, Object>> listCustomerAppointmentByParams(Map<String,Object> params){
-        return (List<Map<String, Object>>)queryForList("customerAppointment.listCustomerAppointmentByParams",params);
+    public List<Map<String, Object>> listCustomerAppointmentByParams(Map<String, Object> params) {
+        return (List<Map<String, Object>>) queryForList("customerAppointment.listCustomerAppointmentByParams", params);
     }
 
-    public int countCustomerAppointmentsByParams(Map<String,Object> params) {
-        return (int)queryForObject("customerAppointment.countCustomerAppointmentsByParams",params);
+    public int countCustomerAppointmentsByParams(Map<String, Object> params) {
+        return (int) queryForObject("customerAppointment.countCustomerAppointmentsByParams", params);
     }
 }

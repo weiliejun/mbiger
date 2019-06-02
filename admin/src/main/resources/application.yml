@@ -1,9 +1,9 @@
 server:
-                  port: 82
-                  servlet:
-                    context-path: /console
+  port: 82
+  servlet:
+    context-path: /console
 resources:
-    static-locations: classpath:/resources/, classpath:/static/ ,classpath:/templates/
+  static-locations: classpath:/resources/, classpath:/static/ ,classpath:/templates/
 
 spring:
   thymeleaf:

@@ -21,7 +21,7 @@ public class MyRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         String username = (String) principals.getPrimaryPrincipal();
-        
+
         SysManager sysManager = sysManagerService.getSysManagerByCode(username);
         
         /*for (SysRole role : user.getRoles()) {
