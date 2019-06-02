@@ -72,11 +72,11 @@ public class WebsiteBulletinController extends AbstractBaseController {
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("pageNum", pageNum);
         model.addAttribute("pageSize", pageSize);
-        if ("partLoad".equals(loadingType)) {
-            return "userAccount/websiteBulletin::websiteBulletinList";
-        } else {
-            return "userAccount/websiteBulletin";
-        }
+//        if ("partLoad".equals(loadingType)) {
+//            return "user/account/websiteBulletin::websiteBulletinList";
+//        } else {
+            return "user/account/websiteBulletin";
+//        }
     }
 
     @RequestMapping("/account/websiteBulletin/detail/{id}")
@@ -123,7 +123,7 @@ public class WebsiteBulletinController extends AbstractBaseController {
             }
         }
         model.addAttribute("websiteBulletin",websiteBulletin);
-        return  "userAccount/websiteBulletinDetail";
+        return  "user/account/websiteBulletinDetail";
     }
 
 }

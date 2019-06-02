@@ -12,6 +12,7 @@ public class DateHelper {
     public static final String DATE_FORMAT_YMDHMS = "YYYY-MM-DD HH24:MI:SS";
 
 
+
     /**
      * 将[日期型] 数据转换成 [日期格式] 的字符串
      * @param formatStr
@@ -23,6 +24,15 @@ public class DateHelper {
         return sdf.format(date);
     }
 
+
+    /**
+     * 获取当前系统时间
+     * @return 格式化后的字符串
+     */
+    public static String getCurrentDate() {
+        return getYMDHMSFormatDate(new Date());
+    }
+
     /**
      * 将日期型数据转换成 YYYY-MM-DD 格式的字符串
      * @param d
@@ -30,6 +40,15 @@ public class DateHelper {
      */
     public static String getYMDFormatDate(Date d) {
         return getDate(d, "YYYY-MM-DD");
+    }
+
+    /**
+     * 将[日期型] 数据转换成 [日期格式] 的字符串
+     * @param date
+     * @return 格式化后的字符串
+     */
+    public static String getYMDHMSFormatDate(Date date) {
+        return getDate(date, DATE_FORMAT_YMDHMS);
     }
 
     /**

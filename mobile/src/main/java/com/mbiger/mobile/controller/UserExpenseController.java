@@ -62,9 +62,9 @@ public class UserExpenseController extends AbstractBaseController {
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", endDate);
         if ("partLoad".equals(loadingType)) {
-            return "userAccount/expenseRecord::userExpenseList";
+            return "user/account/expenseList";
         } else {
-            return "userAccount/expenseRecord";
+            return "user/account/expenseList";
         }
     }
 }

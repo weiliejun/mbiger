@@ -54,6 +54,10 @@ public class MbigerServiceController extends AbstractBaseController {
                                @PathVariable(value = "expenseType", required = true) String expenseType,
                                @PathVariable(value = "service", required = true) String service) {
         try {
+            System.out.println("===============================");
+            String str = request.getContextPath();
+            System.out.println(str);
+            System.out.println("===============================");
             Map<String,String> resultMap = new HashMap<String,String>();
             UserInfo userInfo = null;
             //api调用

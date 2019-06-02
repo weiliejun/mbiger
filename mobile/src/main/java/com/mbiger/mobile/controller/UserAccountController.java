@@ -70,7 +70,7 @@ public class UserAccountController extends AbstractBaseController {
         model.addAttribute("userAccountBalance",userInfo.getUserAccountBalance());
 
         if ("partLoad".equals(loadingType)) {
-            return "user/account/index::recServiceList";
+            return "user/account/recServiceList";
         } else {
             return "user/account/index";
         }
@@ -167,7 +167,7 @@ public class UserAccountController extends AbstractBaseController {
         model.addAttribute("pageNum", pageNum);
         model.addAttribute("pageSize", pageSize);
 
-         return "userAccount/sysmessage";
+         return "user/account/sysMessage";
     }
 
 }

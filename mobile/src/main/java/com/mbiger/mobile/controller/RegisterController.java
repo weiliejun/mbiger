@@ -34,6 +34,11 @@ public class RegisterController extends AbstractBaseController {
         return "/user/portal/register";
     }
 
+    @RequestMapping("/register/registerSuf")
+    public String registerSuf(HttpServletRequest request ){
+        return "/user/portal/registerSuf";
+    }
+
     /**
      * 注册信息提交
      * @param request

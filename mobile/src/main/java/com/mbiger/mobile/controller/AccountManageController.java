@@ -1,8 +1,10 @@
 package com.mbiger.mobile.controller;
 
 import com.mbiger.common.constant.ApplicationSessionKeys;
+import com.mbiger.common.constant.ResultCode;
 import com.mbiger.common.model.user.bean.UserInfo;
 import com.mbiger.common.util.MD5Util;
+import com.mbiger.common.util.StringHelper;
 import com.mbiger.common.web.SessionUser;
 import com.mbiger.mobile.service.sysMessageManage.SysMessageService;
 import com.mbiger.mobile.service.userManage.UserInfoService;
@@ -38,17 +40,70 @@ public class AccountManageController extends AbstractBaseController {
     @Autowired
     private SysMessageService sysMessageService;
 
-    @RequestMapping("/accountManage/{operationType}")
-    public String registerIndex(HttpServletRequest request , Model model, @PathVariable String operationType){
+    @RequestMapping("/accountManage")//账户设置界面跳转
+    public String accountIndex(HttpServletRequest request , Model model){
         SessionUser sessionUser =  getSessionUserBySid(request);
         if(sessionUser == null){
             return "redirect:/login";
         }
-        if ("modifyMobile".equals(operationType)) {
-            model.addAttribute("oldMobile", sessionUser.getUserInfo().getMobile());
+        return "user/account/accountSet";
+    }
+
+    @RequestMapping("/accountManage/reset")//APPSECRET重置界面跳转
+    public String appReset(HttpServletRequest request , Model model){
+        UserInfo userInfo = getUserInfoBySid(request);
+        SessionUser sessionUser =  getSessionUserBySid(request);
+        model.addAttribute("userInfo",userInfo);
+        if(sessionUser == null){
+            return "redirect:/login";
         }
-        model.addAttribute("operationType", operationType);
-       return "userAccount/accountManage/"+operationType;
+        return "user/account/appsecretReset";
+    }
+
+    @RequestMapping("/accountManage/resetSuf")//APPSECRET重置界面成功
+    public String appResetSuf(HttpServletRequest request , Model model){
+        SessionUser sessionUser =  getSessionUserBySid(request);
+        if(sessionUser == null){
+            return "redirect:/login";
+        }
+        return "user/account/appsecretResetSuf";
+    }
+
+    @RequestMapping("/accountManage/resetLos")//APPSECRET重置界面失败
+    public String appResetLos(HttpServletRequest request , Model model){
+        SessionUser sessionUser =  getSessionUserBySid(request);
+        if(sessionUser == null){
+            return "redirect:/login";
+        }
+        return "user/account/appsecretResetLos";
+    }
+
+    @RequestMapping("/accountManage/resetPwd")//修改密码成功
+    public String upDatePasswordSuf(){
+        return "user/account/modifyPasswordSuf";
+    }
+
+    //请求跳转界面
+//    @RequestMapping("/accountManage/{operationType}")
+//    public String registerIndex(HttpServletRequest request , Model model, @PathVariable String operationType){
+//        SessionUser sessionUser =  getSessionUserBySid(request);
+//        if(sessionUser == null){
+//            return "redirect:/login";
+//        }
+//        if ("modifyMobile".equals(operationType)) {
+//            model.addAttribute("oldMobile", sessionUser.getUserInfo().getMobile());
+//        }
+//        model.addAttribute("operationType", operationType);
+//       return "user/account/"+operationType;
+//    }
+
+        @RequestMapping("/accountManage/modifyPassword")//修改登录密码界面
+    public String registerIndex(HttpServletRequest request , Model model){
+        SessionUser sessionUser =  getSessionUserBySid(request);
+        if(sessionUser == null){
+            return "redirect:/login";
+        }
+       return "user/account/modifyPassword";
     }
 
     @RequestMapping("/accountManage/checkPassword")
@@ -105,6 +160,39 @@ public class AccountManageController extends AbstractBaseController {
         return  resultMap;
     }
 
+    @RequestMapping("/accountManage/modifyMobile")//修改手机号界面1跳转
+    public String checkMobile01(HttpServletRequest request , Model model){
+        SessionUser sessionUser =  getSessionUserBySid(request);
+        if(sessionUser == null){
+            return "redirect:/login";
+        }
+        UserInfo userById = userInfoService.getUserById(sessionUser.getUserInfo().getId());
+        model.addAttribute("userById",userById);
+        return "user/account/modifyMobileOne";
+    }
+
+    @RequestMapping("/accountManage/modifyMobileTwo")//修改手机号界面2跳转
+    public String checkMobile02(HttpServletRequest request , Model model){
+        SessionUser sessionUser =  getSessionUserBySid(request);
+        if(sessionUser == null){
+            return "redirect:/login";
+        }
+        UserInfo userById = userInfoService.getUserById(sessionUser.getUserInfo().getId());
+        model.addAttribute("user",userById);
+        return "user/account/modifyMobileTwo";
+    }
+
+    @RequestMapping("/accountManage/modifyMobileSuf")//修改手机号界面跳转-成功
+    public String checkMobileSuf(HttpServletRequest request , Model model){
+        SessionUser sessionUser =  getSessionUserBySid(request);
+        if(sessionUser == null){
+            return "redirect:/login";
+        }
+        UserInfo userById = userInfoService.getUserById(sessionUser.getUserInfo().getId());
+        model.addAttribute("user",userById);
+        return "user/account/modifyMobileSuf";
+    }
+
     /**
      * [账户中心] - [修改手机号] - [第一步]
      * @param request
@@ -146,12 +234,12 @@ public class AccountManageController extends AbstractBaseController {
      * [账户中心] - [修改手机号] - [第二步]
      * @param request
      * @param mobile
-     * @param newSmsCode
+     * @param graphicValidateCode
      * @return
      */
     @RequestMapping("/accountManage/modifyMobile/checkNewMobile")
     @ResponseBody
-    public Map<String,?> checkNewMobile(HttpServletRequest request, String mobile, String newSmsCode) {
+    public Map<String,?> checkNewMobile(HttpServletRequest request, String mobile, String graphicValidateCode) {
         String flag = "true";
         String message = "校验通过！";
         Map<String,Object> resultMap = new HashMap<String, Object>();
@@ -169,9 +257,16 @@ public class AccountManageController extends AbstractBaseController {
                 resultMap.put("msg", "您输入的手机号已被注册");
                 return resultMap;
             }
+            String exitValidateCode = (String) request.getSession().getAttribute(ApplicationSessionKeys.LOGIN_VERIFYCODE);
+            // 校验3：图形验证码
+            if (StringHelper.isEmpty(exitValidateCode) || !exitValidateCode.equalsIgnoreCase(graphicValidateCode)) {
+                resultMap.put("flag", ResultCode.VALIDATE_CODE_ERROR.code());
+                resultMap.put("msg",ResultCode.VALIDATE_CODE_ERROR.message());
+                return resultMap;
+            }
             String exitSmsCodeSession =(String)request.getSession().getAttribute(ApplicationSessionKeys.SMS_VERIFY_CODE);
             // 校验：短信验证码是否正确
-            resultMap = sysMessageService.validateSmsCodeByParams(mobile, "mobileBind", newSmsCode, exitSmsCodeSession);
+            resultMap = sysMessageService.validateSmsCodeByParams(mobile, "mobileBind", graphicValidateCode, exitSmsCodeSession);
             String flag1 = (String) resultMap.get("flag");
             if (!"true".equals(flag1)) {
                 return resultMap;

@@ -52,7 +52,7 @@ public class SAASCenterController extends AbstractBaseController {
             model.addAttribute("customerPhone", userInfo.getMobile());
         }
         model.addAttribute("serviceType", serviceType);
-        return "saas/" + serviceType;
+        return "home/saas/" + serviceType;
     }
 
     /**
@@ -100,7 +100,7 @@ public class SAASCenterController extends AbstractBaseController {
             request.setAttribute("customerPhone", userInfo.getMobile());
             request.setAttribute("serviceType", serviceType);
         }
-        return "userAccount/saasCenter/" + serviceType;
+        return "home/saas/" + serviceType;
     }
 
     //检查短信签名的个数

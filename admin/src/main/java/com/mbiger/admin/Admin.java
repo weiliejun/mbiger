@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,6 +21,10 @@ public class Admin extends SpringBootServletInitializer {
         SpringApplication.run(Admin.class,args);
     }
 
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(Admin.class);
+    }
     @Bean
     PageHelper pageHelper(){
         //分页插件

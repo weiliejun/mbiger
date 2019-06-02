@@ -179,7 +179,7 @@
   </sql>
 
   <select id="listWebsiteBulletinsByParams" resultType="java.util.Map" parameterType="hashmap" >
-    SELECT  WB.ID AS "id",WB.TOPIC AS "topic",WB.CREATE_TIME AS "createTime"  FROM(<include refid="listWebsiteBulletin_fragment" />) WB
+    SELECT  WB.ID AS "id",WB.TOPIC AS "topic",WB.CONTENT AS "content",WB.CREATE_TIME AS "createTime"  FROM(<include refid="listWebsiteBulletin_fragment" />) WB
   </select>
 
   <select id="countWebsiteBulletinsByParams" resultType="java.lang.Integer" parameterType="hashmap" >

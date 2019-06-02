@@ -45,7 +45,7 @@ public class TopUpController extends AbstractBaseController {
      * @auther: xsp
      * @UpadteDate: 2019/1/21 16:14
      */
-    @RequestMapping("/topUp")
+    @RequestMapping("/topUp")//线下支付页面
     public String topUpIndex(HttpServletRequest request, Model model, String topUpType) {
         UserInfo userInfo = getUserInfoBySid(request);
         model.addAttribute("userInfo", userInfo);
@@ -54,6 +54,23 @@ public class TopUpController extends AbstractBaseController {
         return "user/account/topUp/topUpOnline";
     }
 
+    @RequestMapping("/topUp/topUpLine")//在线支付页面
+    public String topUpOnline(HttpServletRequest request, Model model, String topUpType) {
+        UserInfo userInfo = getUserInfoBySid(request);
+        model.addAttribute("userInfo", userInfo);
+        model.addAttribute("topUpType", topUpType);
+        model.addAttribute("headText", "充值");
+        return "user/account/topUp/topUpLine";
+    }
+
+    @RequestMapping("/topUpOnlineSuf")//线下支付成功界面跳转
+    public String topUpSuf(HttpServletRequest request, Model model, String topUpType) {
+        UserInfo userInfo = getUserInfoBySid(request);
+        model.addAttribute("userInfo", userInfo);
+        model.addAttribute("topUpType", topUpType);
+        model.addAttribute("headText", "充值");
+        return "user/account/topUp/topUpOnlineSuf";
+    }
     /**
      * @Description 用户充值记录
      * @auther: xsp
@@ -79,10 +96,11 @@ public class TopUpController extends AbstractBaseController {
         model.addAttribute("pageSize", pageSize);
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", endDate);
+//                model.addAttribute("list", userTopups);
         if ("partLoad".equals(loadingType)) {
-            return "userAccount/topUpRecord::userTopUpList";
+            return "user/account/topUp/topUpList";
         } else {
-            return "userAccount/topUpRecord";
+            return "user/account/topUp/topUpList";
         }
     }
 

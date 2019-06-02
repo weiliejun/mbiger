@@ -74,6 +74,27 @@ public class LoginController extends AbstractBaseController {
         model.addAttribute("headText", "找回密码");
         return "/user/portal/forgotPassword";
     }
+    /**
+     * @author cyp
+     * @time : 2019-01-16 13:29
+     * @description 忘记密码-修改新密码页面跳转
+     */
+    @RequestMapping("/user/forgotPwdSuf")
+    public String forgotNewPassword(String mobile,Model model) {
+        model.addAttribute("headText", "找回密码");
+        model.addAttribute("mobile",mobile);
+        return "/user/portal/newPasswordSet";
+    }
+    /**
+     * @author cyp
+     * @time : 2019-01-16 13:29
+     * @description 忘记密码-修改密码成功页面跳转
+     */
+    @RequestMapping("/user/forgotResetPwdSuf")
+    public String forgotPasswordSuf(Model model) {
+        model.addAttribute("headText", "找回密码");
+        return "/user/portal/resetPwdSuf";
+    }
 
     @RequestMapping("/islogin")
     @ResponseBody
